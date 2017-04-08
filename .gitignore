@@ -1,7 +1,4 @@
-.idea/
+BestPrice/.idea/
 *.iml
 *.iws
-/out/
-
-
-/target/
+BestPrice/target/
