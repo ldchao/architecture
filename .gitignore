@@ -2,3 +2,7 @@ BestPrice/.idea/
 *.iml
 *.iws
 BestPrice/target/
+
+BestPrice/.idea/workspace.xml
+
+BestPrice/BestPrice.iml
