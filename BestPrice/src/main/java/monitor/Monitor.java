@@ -61,7 +61,7 @@ public class Monitor {
     }
 
     //若line含有=18ms TTL=16字样,说明已经ping通,返回1,否則返回0.
-    //错误状态码返回
+
     private  int getCheckResult(String line) {
 
         // System.out.println("控制台输出的结果为:"+line);或者log到日志
@@ -79,10 +79,31 @@ public class Monitor {
         this.serverState=state;
     }
 
-    //monitor处理错误接口
-    private boolean handle()
+    //错误状态码返回
+    private void explainState()
     {
-        return this.serverState.handle();
+        this.serverState.explainState();
+    }
+
+    //monitor处理错误接口
+    private boolean handle() throws Exception
+    {
+        try {
+            if(this.serverState.handle())
+            {
+                this.serverState= new NormalState();
+                return  true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //monitor开启接口,调用该方法,20s后开始执行,每10s一次
