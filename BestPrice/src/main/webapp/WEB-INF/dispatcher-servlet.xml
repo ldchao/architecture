@@ -88,4 +88,18 @@
     <task:annotation-driven executor="executor" scheduler="scheduler" />
     <!--理论上只需要加上<task:annotation-driven />这句配置就可以了，这些参数都不是必须的。-->
 
+    <!--AOP 测试模式-->
+    <context:component-scan base-package="archives" />
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <bean id="logAspect" class="archives.ArchivesLogAspect"></bean>
+    <aop:config>
+        <!--调用日志类-->
+        <aop:aspect id="LogAspect" ref="logAspect">
+            <!--配置在controller包下所有的类在调用之前都会被拦截-->
+            <aop:pointcut id="log" expression="execution(* controller.*.*(..))"/>
+            <!-- 方法前触发 --><aop:before pointcut-ref="log" method="before"/>
+            <!-- 方法后触发 --><aop:after pointcut-ref="log" method="after"/>
+        </aop:aspect>
+    </aop:config>
+
 </beans>
