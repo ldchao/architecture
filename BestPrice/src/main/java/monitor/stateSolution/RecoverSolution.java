@@ -6,6 +6,7 @@ package monitor.stateSolution;
 public class RecoverSolution implements  StateSolution {
 
     public boolean solveState() {
+
         return false;
     }
 }
