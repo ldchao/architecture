@@ -17,4 +17,5 @@ public interface ShowGoodsInfoService {
 
     public GoodInfo getByGoodName(String name,List<GoodInfo> goodList);
 
+
 }
