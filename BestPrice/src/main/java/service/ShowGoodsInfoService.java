@@ -9,8 +9,6 @@ import vo.GoodInfo;
 
 public interface ShowGoodsInfoService {
 
-
-
     public List<GoodInfo> getByShopId(int shopId,List<GoodInfo> goodList);
 
 
@@ -20,7 +18,4 @@ public interface ShowGoodsInfoService {
     public GoodInfo getByGoodName(String name,List<GoodInfo> goodList);
 
 
-
-
 }
-t;
