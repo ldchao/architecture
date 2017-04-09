@@ -3,8 +3,9 @@ BestPrice/.idea/
 *.iws
 BestPrice/target/
 
+
+BestPrice/.idea/dataSources.xml
+
+BestPrice/.idea/misc.xml
+
 BestPrice/.idea/workspace.xml
-
-BestPrice/BestPrice.iml
-
-BestPrice/.idea/dataSources.local.xml
