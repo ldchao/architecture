@@ -11,6 +11,13 @@ public class Notify {
     private Integer isDeal;
     private Seller sellerBySellerid;
 
+    public Notify(){}
+
+    public Notify(Seller seller){
+        this.sellerBySellerid = seller;
+        this.isDeal = 0;
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {

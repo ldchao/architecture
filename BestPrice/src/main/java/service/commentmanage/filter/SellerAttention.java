@@ -2,6 +2,7 @@ package service.commentmanage.filter;
 
 import Entity.Comment;
 import Entity.Notify;
+import Entity.Seller;
 import dao.SellerAttentionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,12 +26,11 @@ public class SellerAttention implements CommentCheck {
     public void storeComment(Comment comment) {
         String content = comment.getContent();
         content = content.toLowerCase();
-        int sellerid = comment.getProductByProductid().getSellerBySellerid().getId();
-        List<String> words = sellerAttentionDao.getKeyWords(sellerid);
+        Seller seller = comment.getProductByProductid().getSellerBySellerid();
+        List<String> words = sellerAttentionDao.getKeyWords(seller.getId());
         for (String word : words) {
             if(content.contains(word)){
-                Notify notify = new Notify();
-                sellerAttentionDao.saveNotification(notify);
+                sellerAttentionDao.saveNotification(new Notify(seller));
                 break;
             }
         }
