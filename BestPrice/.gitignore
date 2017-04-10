@@ -1,7 +1,6 @@
 .idea/
+.idea/workspace.xml
 *.iml
 *.iws
-/out/
-
-
-/target/
+out/
+target/

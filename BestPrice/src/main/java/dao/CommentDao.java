@@ -17,7 +17,7 @@ public interface CommentDao {
     /**
      * 获取一条评论
      * @param id 评论id
-     * @return
+     * @return 一条评论
      */
     public Comment fetch(int id);
 
