@@ -53,11 +53,11 @@ public class Notify {
 
     @ManyToOne
     @JoinColumn(name = "sellerid", referencedColumnName = "id")
-    public Entity.Seller getSellerBySellerid() {
+    public Seller getSellerBySellerid() {
         return sellerBySellerid;
     }
 
-    public void setSellerBySellerid(Entity.Seller sellerBySellerid) {
+    public void setSellerBySellerid(Seller sellerBySellerid) {
         this.sellerBySellerid = sellerBySellerid;
     }
 }

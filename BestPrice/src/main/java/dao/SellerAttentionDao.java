@@ -20,7 +20,7 @@ public interface SellerAttentionDao {
      * @param id 商家id
      * @return
      */
-    public List<String> getKeyWords(String id);
+    public List<String> getKeyWords(int id);
 
     /**
      * 保存提醒信息
@@ -33,7 +33,7 @@ public interface SellerAttentionDao {
      * @param id
      * @return 商家id
      */
-    public List<Notify> getNotifications(String id);
+    public List<Notify> getNotifications(int id);
 
 
 }

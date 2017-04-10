@@ -1,10 +1,13 @@
 package service.commentmanage.filter;
 
 import Entity.Comment;
+import Entity.Notify;
 import dao.SellerAttentionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
+import Entity.Product;
+
+import java.util.List;
 
 /**
  * Created by Hanifor on 4/10/2017.
@@ -20,8 +23,17 @@ public class SellerAttention implements CommentCheck {
     }
 
     public void storeComment(Comment comment) {
-        Entity.Product product = comment.getProductByProductid();
-        product.
-        sellerAttentionDao.getKeyWords()
+        String content = comment.getContent();
+        content = content.toLowerCase();
+        int sellerid = comment.getProductByProductid().getSellerBySellerid().getId();
+        List<String> words = sellerAttentionDao.getKeyWords(sellerid);
+        for (String word : words) {
+            if(content.contains(word)){
+                Notify notify = new Notify();
+                sellerAttentionDao.saveNotification(notify);
+                break;
+            }
+        }
+        commentCheck.storeComment(comment);
     }
 }

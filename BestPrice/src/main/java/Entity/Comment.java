@@ -82,31 +82,31 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "productid", referencedColumnName = "id")
-    public Entity.Product getProductByProductid() {
+    public Product getProductByProductid() {
         return productByProductid;
     }
 
-    public void setProductByProductid(Entity.Product productByProductid) {
+    public void setProductByProductid(Product productByProductid) {
         this.productByProductid = productByProductid;
     }
 
     @ManyToOne
     @JoinColumn(name = "userid", referencedColumnName = "userid")
-    public Entity.User getUserByUserid() {
+    public User getUserByUserid() {
         return userByUserid;
     }
 
-    public void setUserByUserid(Entity.User userByUserid) {
+    public void setUserByUserid(User userByUserid) {
         this.userByUserid = userByUserid;
     }
 
     @ManyToOne
     @JoinColumn(name = "replyid", referencedColumnName = "id")
-    public Entity.Comment getCommentByReplyid() {
+    public Comment getCommentByReplyid() {
         return commentByReplyid;
     }
 
-    public void setCommentByReplyid(Entity.Comment commentByReplyid) {
+    public void setCommentByReplyid(Comment commentByReplyid) {
         this.commentByReplyid = commentByReplyid;
     }
 }
