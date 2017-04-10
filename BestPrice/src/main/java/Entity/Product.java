@@ -67,21 +67,21 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "typeid", referencedColumnName = "id")
-    public Entity.ProductType getProductTypeByTypeid() {
+    public ProductType getProductTypeByTypeid() {
         return productTypeByTypeid;
     }
 
-    public void setProductTypeByTypeid(Entity.ProductType productTypeByTypeid) {
+    public void setProductTypeByTypeid(ProductType productTypeByTypeid) {
         this.productTypeByTypeid = productTypeByTypeid;
     }
 
     @ManyToOne
     @JoinColumn(name = "sellerid", referencedColumnName = "id")
-    public Entity.Seller getSellerBySellerid() {
+    public Seller getSellerBySellerid() {
         return sellerBySellerid;
     }
 
-    public void setSellerBySellerid(Entity.Seller sellerBySellerid) {
+    public void setSellerBySellerid(Seller sellerBySellerid) {
         this.sellerBySellerid = sellerBySellerid;
     }
 }

@@ -11,6 +11,13 @@ public class Notify {
     private Integer isDeal;
     private Seller sellerBySellerid;
 
+    public Notify(){}
+
+    public Notify(Seller seller){
+        this.sellerBySellerid = seller;
+        this.isDeal = 0;
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {
@@ -53,11 +60,11 @@ public class Notify {
 
     @ManyToOne
     @JoinColumn(name = "sellerid", referencedColumnName = "id")
-    public Entity.Seller getSellerBySellerid() {
+    public Seller getSellerBySellerid() {
         return sellerBySellerid;
     }
 
-    public void setSellerBySellerid(Entity.Seller sellerBySellerid) {
+    public void setSellerBySellerid(Seller sellerBySellerid) {
         this.sellerBySellerid = sellerBySellerid;
     }
 }

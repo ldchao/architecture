@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by mm on 2017/4/9.
  */
 public class CrawlerController implements CrawlerControllerService,Runnable{
-    private CrawlerConfig crawlerConfig;
+    private ArrayList<CrawlerConfig> crawlerConfigs;
     private CrawlerScheduleService crawlerSchedule;
 
     @Autowired
@@ -26,10 +26,10 @@ public class CrawlerController implements CrawlerControllerService,Runnable{
         Thread thread=new Thread(this);
         thread.start();
     }
-    public boolean updateConfig(CrawlerConfig crawlerConfig) {
-        this.crawlerConfig=crawlerConfig;
-        if (this.crawlerConfig!=null&&this.crawlerConfig.checkNotNull()){
-            this.spiders=crawlerConfigHandler.handleConfig(this.crawlerConfig);
+    public boolean updateConfig(ArrayList<CrawlerConfig> crawlerConfigs) {
+        this.crawlerConfigs=crawlerConfigs;
+        if (this.crawlerConfigs!=null&&checkNotNulls(crawlerConfigs)){
+            this.spiders=crawlerConfigHandler.handleConfig(this.crawlerConfigs);
             return true;
         }else {
             return false;
@@ -55,5 +55,16 @@ public class CrawlerController implements CrawlerControllerService,Runnable{
                 e.printStackTrace();
             }
         }
+    }
+
+
+    private boolean checkNotNulls(ArrayList<CrawlerConfig> crawlerConfigs){
+        for (CrawlerConfig crawlerConfig:crawlerConfigs
+             ) {
+            if (crawlerConfig.checkNotNull()==false){
+                return false;
+            }
+        }
+        return true;
     }
 }

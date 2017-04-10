@@ -7,7 +7,7 @@ import java.sql.Date;
  * Created by marioquer on 2017/4/10.
  */
 @Entity
-@IdClass(Entity.BuyRecordPK.class)
+@IdClass(BuyRecordPK.class)
 public class BuyRecord {
     private int productid;
     private int userid;
@@ -95,21 +95,21 @@ public class BuyRecord {
 
     @ManyToOne
     @JoinColumn(name = "productid", referencedColumnName = "id", nullable = false)
-    public Entity.Product getProductByProductid() {
+    public Product getProductByProductid() {
         return productByProductid;
     }
 
-    public void setProductByProductid(Entity.Product productByProductid) {
+    public void setProductByProductid(Product productByProductid) {
         this.productByProductid = productByProductid;
     }
 
     @ManyToOne
     @JoinColumn(name = "userid", referencedColumnName = "userid", nullable = false)
-    public Entity.User getUserByUserid() {
+    public User getUserByUserid() {
         return userByUserid;
     }
 
-    public void setUserByUserid(Entity.User userByUserid) {
+    public void setUserByUserid(User userByUserid) {
         this.userByUserid = userByUserid;
     }
 }

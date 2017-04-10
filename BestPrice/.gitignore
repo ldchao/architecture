@@ -1,7 +1,5 @@
 .idea/
 *.iml
 *.iws
-/out/
-
-
-/target/
+out/
+target/
