@@ -28,13 +28,43 @@ public class SearchGoodServiceImpl implements SearchGoodService{
     }
 
     public Iterator<GoodVO> shieldGoods(String condition) {
-        
-
-        return null;
+        Class<?> shield_leaf=null;
+        List<GoodVO> afterShield=new ArrayList<GoodVO>();
+        afterShield.addAll(goodVOS);
+        try {
+            shield_leaf=Class.forName("service.search_good_shiled."+condition);
+            Shield concreteShield=(Shield) shield_leaf.newInstance();
+            shield.addShield(concreteShield);
+            shield.shieldGood(afterShield);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }finally {
+            return afterShield.iterator();
+        }
     }
 
     public Iterator<GoodVO> cancleShield(String condition) {
-        return null;
+        Class<?> shield_leaf=null;
+        List<GoodVO> afterShield=new ArrayList<GoodVO>();
+        afterShield.addAll(goodVOS);
+        try {
+            shield_leaf=Class.forName("service.search_good_shiled."+condition);
+            Shield concreteShield=(Shield) shield_leaf.newInstance();
+            shield.removeShield(concreteShield);
+            shield.shieldGood(afterShield);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }finally {
+            return afterShield.iterator();
+        }
     }
 
     public Iterator<GoodVO> sortResult(String sortRule) {
