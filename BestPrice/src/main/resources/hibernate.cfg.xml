@@ -8,5 +8,23 @@
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
     <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/archi</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">Qq6655355</property>
+    <property name="hibernate.connection.useUnicode">true</property>
+    <property name="hibernate.connection.characterEncoding">UTF-8</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <mapping class="Entity.ADs"/>
+    <mapping class="Entity.BuyRecord"/>
+    <mapping class="Entity.Comment"/>
+    <mapping class="Entity.HomoWord"/>
+    <mapping class="Entity.Ip"/>
+    <mapping class="Entity.Notify"/>
+    <mapping class="Entity.Product"/>
+    <mapping class="Entity.ProductType"/>
+    <mapping class="Entity.Seller"/>
+    <mapping class="Entity.SellerWordList"/>
+    <mapping class="Entity.SensitiveWord"/>
+    <mapping class="Entity.User"/>
   </session-factory>
 </hibernate-configuration>
