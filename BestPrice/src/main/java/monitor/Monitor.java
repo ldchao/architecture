@@ -3,10 +3,13 @@ package monitor;
 import monitor.severState.CrashState;
 import monitor.severState.NormalState;
 import monitor.severState.ServerState;
+import task.DispatcherMonitor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Matcher;
@@ -17,6 +20,24 @@ import java.util.regex.Pattern;
  */
 public class Monitor {
     private ServerState serverState = new NormalState();
+    private List<String> allIpList;
+    private List<String> pingableIpList;
+    private static Monitor monitor;
+    private DispatcherMonitor dispatcherMonitor;
+
+    private Monitor(){
+        allIpList=new ArrayList<String>();
+        pingableIpList=new ArrayList<String>();
+        allIpList.add("127.0.0.1");
+        this.run();
+    }
+    public static Monitor GetInstance()
+    {
+        if(monitor==null) {
+            monitor = new Monitor();
+        }
+        return monitor;
+    }
 
     private  boolean pingWebServer(String ipAddress, int pingTimes, int timeOut){
         BufferedReader in = null;
@@ -37,14 +58,21 @@ public class Monitor {
 //            return connectedCount == pingTimes;
             if(connectedCount == pingTimes)
             {
-                if(!(this.serverState instanceof NormalState))
+                if(!(this.serverState instanceof NormalState)) {
                     setState(new NormalState());
+                }
+                if(!pingableIpList.contains(ipAddress))
+                    pingableIpList.add(ipAddress);
                 return true;
             }
             else
             {
-                if(this.serverState instanceof NormalState)
+                if(this.serverState instanceof NormalState) {
                     setState(new CrashState());
+                }
+                if(pingableIpList.contains(ipAddress))
+                    pingableIpList.remove(ipAddress);
+                dispatcherMonitor.update(ipAddress);
                 return false;
             }
 
@@ -89,8 +117,10 @@ public class Monitor {
     private boolean handle() throws Exception
     {
         try {
+
             if(this.serverState.handle())
             {
+
                 this.serverState= new NormalState();
                 return  true;
             }
@@ -105,6 +135,14 @@ public class Monitor {
             return false;
         }
     }
+    //添加负载均衡监视器
+    public void setDispatcherMonitor(DispatcherMonitor dispatcherMonitor) {
+        this.dispatcherMonitor = dispatcherMonitor;
+    }
+   //获得所有可用的ip列表
+    public List<String> getPingableIpList() {
+        return pingableIpList;
+    }
 
     //monitor开启接口,调用该方法,20s后开始执行,每10s一次
     public void run()
@@ -112,9 +150,13 @@ public class Monitor {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
-                pingWebServer("127.0.0.1",5,10000);// 目前是当前ip 5次请求 10秒超时
+                for (String ip:allIpList
+                     ) {
+                    pingWebServer(ip,5,5000);// 目前是当前ip 5次请求 10秒超时
+                }
+
             }
-        }, 200000 , 10000);
+        }, 1000 , 6000);
     }
 
 }
