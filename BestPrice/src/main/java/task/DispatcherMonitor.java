@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,15 +26,23 @@ public class DispatcherMonitor {
         monitor.setDispatcherMonitor(this);
     }
 
-    @Scheduled(fixedDelay = 6000)  //每个十分钟，轮询各个服务器，查找最优的路径
+    @Scheduled(fixedDelay = 60000)  //每隔十分钟，轮询各个服务器，查找最优的路径
     public void getOnlineVolume() {
-        //从连通服务器获得可用的IP地址
+        //从连通监视服务器获得可用的IP地址列表
         List<String> pingableIpList = monitor.getPingableIpList();
-        for (String pingableIp : pingableIpList) {
-            System.out.println(pingableIp);
-            System.out.println(sendGet("http://localhost:8080/test",""));
-        }
+        int num;
+        if(pingableIpList.size()>0){
+            ip=pingableIpList.get(0);
+            num=Integer.parseInt(sendGet("http://"+ip+":8080/getVolume",""));
+            for (String pingableIp : pingableIpList) {
+                int new_num=Integer.parseInt(sendGet("http://"+pingableIp+":8080/getVolume",""));
+                if(new_num<num){
+                    num=new_num;
+                    ip=pingableIp;
+                }
 
+            }
+        }
     }
 
     public void update(String ip) {
@@ -48,7 +57,7 @@ public class DispatcherMonitor {
     }
 
 
-    public static String sendGet(String url, String param) {
+    private String sendGet(String url, String param) {
         String result = "";
         BufferedReader in = null;
         try {
