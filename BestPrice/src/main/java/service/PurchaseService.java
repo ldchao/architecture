@@ -1,6 +1,7 @@
-package dao.daoservice;
+package service;
 
 import Entity.Purchase;
+import service.payStrategy.PayStrategy;
 import vo.ShoppingCart;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * 购买商品
  */
 
-public interface PurchaseDaoService {
+public interface PurchaseService {
 
     /**
      * 创建购买信息记录
@@ -20,7 +21,7 @@ public interface PurchaseDaoService {
      * @param shoppingCart
      * @return
      */
-    public Purchase create(int customerId, ShoppingCart shoppingCart);
+    public Purchase create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy);
 
     /**
      * 可以通过顾客的id得到购买记录

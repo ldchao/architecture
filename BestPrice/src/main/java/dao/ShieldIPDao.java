@@ -1,41 +1,39 @@
-package dao.daoservice;
+package dao;
 
-import Entity.ShieldIP;
+import Entity.Ip;
+
+import java.util.List;
 
 /**
  * Created by lois on 2017/4/9.
  */
-public interface ShieldIPService {
+public interface ShieldIPDao {
 
     /**
      * 向屏蔽ip表内添加特定IP
      * @param ip
      * @return
      */
-    public boolean add(ShieldIP ip);
+    public boolean add(Ip ip);
 
     /**
      * 删除屏蔽IP
      * @param ip
      * @return
      */
-    public boolean delete(ShieldIP ip);
+    public boolean delete(Ip ip);
 
     /**
      * 更新屏蔽IP
      * @param ip
      * @return
      */
-    public boolean update(ShieldIP ip);
+    public boolean update(Ip ip);
 
     /**
-     * 通过相关信息检索IP（？）
-     * @param key
+     * 获取被屏蔽ip
      * @return
      */
-    public boolean query(String key);
-
-
-
+    public List<Ip> query();
 }
 

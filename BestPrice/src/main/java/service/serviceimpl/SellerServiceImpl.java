@@ -3,6 +3,7 @@ package service.serviceimpl;
 import Entity.Notify;
 import dao.SellerAttentionDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import service.SellerService;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by Hanifor on 4/10/2017.
  */
+@Service
 public class SellerServiceImpl implements SellerService {
     @Autowired
     private SellerAttentionDao sellerAttentionDao;

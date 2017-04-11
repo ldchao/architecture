@@ -1,12 +1,14 @@
 package dao;
 
 import Entity.Notify;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Hanifor on 4/10/2017.
  */
+@Repository
 public interface SellerAttentionDao {
     /**
      * 更新或添加商家关注词汇

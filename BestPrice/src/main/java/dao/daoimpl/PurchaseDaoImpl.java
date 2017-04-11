@@ -1,9 +1,9 @@
 package dao.daoimpl;
 
 
+import dao.PurchaseDao;
 import org.springframework.stereotype.Repository;
 import Entity.Purchase;
-import dao.daoservice.PurchaseDaoService;
 import vo.ShoppingCart;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Repository
-public class PurchaseDaoImpl implements PurchaseDaoService {
+public class PurchaseDaoImpl implements PurchaseDao {
 
 //    @Autowired
 //    private SessionFactory sessionFactory;
