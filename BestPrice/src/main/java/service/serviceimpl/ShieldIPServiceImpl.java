@@ -2,6 +2,7 @@ package service.serviceimpl;
 
 import Entity.Ip;
 import dao.ShieldIPDao;
+import dao.daoimpl.ShieldIPDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.ShieldIPService;
@@ -13,8 +14,8 @@ import java.util.Observable;
  */
 @Service
 public class ShieldIPServiceImpl extends Observable implements ShieldIPService {
-    @Autowired
-    private ShieldIPDao shieldIPDao;
+//    @Autowired
+    private ShieldIPDao shieldIPDao=new ShieldIPDaoImpl();
 
     public ShieldIPServiceImpl(){}
 

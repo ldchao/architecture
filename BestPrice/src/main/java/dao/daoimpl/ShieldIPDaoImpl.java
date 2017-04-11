@@ -4,6 +4,7 @@ import Entity.Ip;
 import dao.ShieldIPDao;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +29,6 @@ public class ShieldIPDaoImpl implements ShieldIPDao {
     }
 
     public List<Ip> query() {
-        return null;
+        return new ArrayList<Ip>();
     }
 }

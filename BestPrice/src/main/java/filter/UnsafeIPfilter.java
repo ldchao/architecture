@@ -19,8 +19,7 @@ import java.util.Observer;
  */
 @Component
 public class UnsafeIPfilter implements Filter, Observer {
-    @Autowired
-    private ShieldIPService shieldIPService;
+    private ShieldIPService shieldIPService=new ShieldIPServiceImpl();
     private List<String> ips;
 
     public void init(FilterConfig filterConfig) throws ServletException {

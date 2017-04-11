@@ -2,12 +2,14 @@ package dao.daoimpl;
 
 import Entity.Notify;
 import dao.SellerAttentionDao;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Hanifor on 4/10/2017.
  */
+@Repository
 public class SellerAttentionDaoImpl implements SellerAttentionDao{
     public void updateKeyWords(int id, List<String> keys) {
         //TODO
