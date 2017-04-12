@@ -1,8 +1,8 @@
 package service.admincheck;
 
 import Entity.Comment;
-import dao.daoservice.SensitiveCommentDao;
-import dao.daoservice.WaterUserDao;
+import dao.SensitiveCommentDao;
+import dao.WaterUserDao;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.admincheck.freezestrategy.FreezeStrategy;

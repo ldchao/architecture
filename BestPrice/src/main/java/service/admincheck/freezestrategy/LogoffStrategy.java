@@ -1,6 +1,6 @@
 package service.admincheck.freezestrategy;
 
-import dao.daoservice.WaterUserDao;
+import dao.WaterUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

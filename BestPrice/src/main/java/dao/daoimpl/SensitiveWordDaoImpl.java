@@ -1,7 +1,7 @@
 package dao.daoimpl;
 
 import dao.Connection;
-import dao.daoservice.SensitiveWordDao;
+import dao.SensitiveWordDao;
 import org.hibernate.Session;
 
 import java.util.List;

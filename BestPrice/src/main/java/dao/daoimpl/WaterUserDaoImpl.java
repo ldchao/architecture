@@ -1,6 +1,6 @@
 package dao.daoimpl;
 
-import dao.daoservice.WaterUserDao;
+import dao.WaterUserDao;
 import model.User;
 
 import java.util.ArrayList;

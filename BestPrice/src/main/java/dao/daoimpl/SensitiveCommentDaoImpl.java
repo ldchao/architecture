@@ -1,7 +1,7 @@
 package dao.daoimpl;
 
 import Entity.Comment;
-import dao.daoservice.SensitiveCommentDao;
+import dao.SensitiveCommentDao;
 
 import java.util.List;
 
