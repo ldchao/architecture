@@ -12,7 +12,7 @@
     <property name="hibernate.connection.useUnicode">true</property>
     <property name="hibernate.connection.characterEncoding">UTF-8</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">141250032</property>
+    <property name="hibernate.connection.password">141250089</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <mapping class="Entity.ADs"/>
     <mapping resource="ADs.hbm.xml"/>

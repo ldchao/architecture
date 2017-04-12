@@ -2,11 +2,12 @@ package service.CrawlerServiceImpl;
 
 
 
+import service.CrawlerService.CrawlerControllerService;
 import service.CrawlerService.CrawlerScheduleService;
 
 public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 	
-	private boolean isStart=true;
+	private static boolean isStart=true;
 	
 	private static CrawlerScheduler scheduler;
 	
@@ -55,6 +56,9 @@ public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 			//TODO
 			
 			// start crawling
+			
+			CrawlerControllerService csControllerService=new CrawlerController();
+			csControllerService.StartCrawlling();
 			System.out.println("Crawler is starting");
 			Thread.sleep(timemills);
 			
