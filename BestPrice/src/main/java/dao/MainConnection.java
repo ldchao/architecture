@@ -22,7 +22,7 @@ public class MainConnection {
 
     public static Session getSession(){
         if (sessionFactory==null){
-            configuration=new Configuration().configure("hibernateRead.cfg.xml");
+            configuration=new Configuration().configure("hibernateMain.cfg.xml");
             sessionFactory=configuration.buildSessionFactory();
         
             

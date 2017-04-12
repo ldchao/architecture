@@ -31,7 +31,8 @@ public class AdminCheck {
     // 获取待审核水军
     public ArrayList<User> getWaterUser() {
 
-        return waterService.getWater();
+        //return waterService.getWater();
+        return null;
     }
 
     // 若是敏感评论，则删除敏感评论；
