@@ -33,4 +33,11 @@ public interface CommentDao {
      * @param id 评论id
      */
     public void delete(int id);
+
+    /**
+     * L.H.S
+     * 获取用户历史评论
+     * @param userId 用户Id
+     */
+    public List<Comment> getHistoryComments(int userId);
 }
