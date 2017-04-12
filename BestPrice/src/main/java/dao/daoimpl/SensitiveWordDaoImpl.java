@@ -1,7 +1,7 @@
 package dao.daoimpl;
 
 import dao.Connection;
-import dao.daoservice.SensitiveWordService;
+import dao.daoservice.SensitiveWordDao;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by L.H.S on 2017/4/12.
  */
-public class SensitiveWordDaoImpl implements SensitiveWordService {
+public class SensitiveWordDaoImpl implements SensitiveWordDao {
 
     public List<String> getSentiveWord() {
 

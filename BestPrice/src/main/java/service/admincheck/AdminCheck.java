@@ -1,7 +1,10 @@
 package service.admincheck;
 
-import Entity.SensitiveComment;
+import Entity.Comment;
+import dao.daoservice.SensitiveCommentDao;
+import dao.daoservice.WaterUserDao;
 import model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import service.admincheck.freezestrategy.FreezeStrategy;
 import service.admincheck.freezestrategy.LogoffStrategy;
 import service.admincheck.freezestrategy.LongFreezeStrategy;
@@ -14,29 +17,37 @@ import java.util.ArrayList;
  */
 public class AdminCheck {
 
-    // 获取待审核敏感评论
-    public ArrayList<SensitiveComment> getSenComment() {
+    @Autowired
+    private SensitiveCommentDao senCommentService;
+    @Autowired
+    private WaterUserDao waterService;
 
-        return null;
+    // 获取待审核敏感评论
+    public ArrayList<Comment> getSenComment() {
+
+        return (ArrayList<Comment>) senCommentService.getSenComment();
     }
 
     // 获取待审核水军
     public ArrayList<User> getWaterUser() {
 
-        return null;
+        return waterService.getWater();
     }
 
     // 若是敏感评论，则删除敏感评论；
-    public void deleteSenComment(int senId) {
+    public void deleteSenComment(int comId) {
 
+        senCommentService.deleteSenComment(comId);
     }
 
     // 若评论不是敏感评论，则调用正常的发布接口，并从潜在敏感评论表中删除
-    public void publishSenComment(int senId) {
+    public void publishSenComment(int comId) {
 
+        senCommentService.releaseSenComment(comId);
     }
 
     // 冻结水军用户，短期/长期/永久
+    // 此处用 never
     public void freezeUser(int userId, String freezeType) {
 
         FreezeStrategy freeze;
@@ -54,6 +65,7 @@ public class AdminCheck {
     // 若不是水军用户，则直接从潜在水军表中删除
     public void realeaseWater(int userId) {
 
+        waterService.releaseWaterUser(userId);
     }
 
 }
