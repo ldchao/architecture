@@ -9,7 +9,7 @@ public interface WaterUserService {
     void saveWater(int userId);
 
     // 冻结水军用户
-    void freezeWaterUser(int userId, int days);
+    void freezeWaterUser(int userId);
 
     // 释放水军用户
     void releaseWaterUser(int userId);

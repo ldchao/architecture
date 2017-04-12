@@ -1,6 +1,6 @@
 package dao.daoservice;
 
-import Entity.SensitiveComment;
+import Entity.Comment;
 
 import java.util.List;
 
@@ -10,14 +10,14 @@ import java.util.List;
 public interface SensitiveCommentService {
 
     // 存储敏感评论，返回自增Id
-    int saveSenComment(String comment, int userId);
+    int saveSenComment(String comment, int userId, int proId);
 
     // 获取敏感评论
-    List<SensitiveComment> getSenComment();
+    List<Comment> getSenComment();
 
     // 删除敏感评论
-    void deleteSenComment(int senId);
+    void deleteSenComment(int comId);
 
     // 不是敏感评论，移除
-    void releaseSenComment(int senId);
+    void releaseSenComment(int comId);
 }
