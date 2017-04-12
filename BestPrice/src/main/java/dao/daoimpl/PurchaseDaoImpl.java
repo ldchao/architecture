@@ -1,9 +1,9 @@
 package dao.daoimpl;
 
 
+import Entity.BuyRecord;
 import dao.PurchaseDao;
 import org.springframework.stereotype.Repository;
-import Entity.Purchase;
 import vo.ShoppingCart;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public class PurchaseDaoImpl implements PurchaseDao {
 
-    public List<Purchase> getByGoodId(int goodId) {
+    public List<BuyRecord> getByGoodId(int goodId) {
         return null;
     }
 
@@ -33,7 +33,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
      * @param shoppingCart
      * @return
      */
-    public Purchase create(int customerId, ShoppingCart shoppingCart) {
+    public BuyRecord create(int customerId, ShoppingCart shoppingCart) {
          return null;
 //        Session session = sessionFactory.getCurrentSession();
 
@@ -83,7 +83,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 //        return purchase;
     }
 
-    public List<Purchase> getByCustomerId(int customerId) {
+    public List<BuyRecord> getByCustomerId(int customerId) {
 //        Session session = sessionFactory.getCurrentSession();
 //        //TODO  query语句内容
 //        Query query = session.createQuery("");
@@ -92,7 +92,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
         return null;
     }
 
-    public Purchase getByPurchaseId(int purchaseId) {
+    public BuyRecord getByPurchaseId(int purchaseId) {
 //        Session session = sessionFactory.getCurrentSession();
 //        //TODO query语句内容
 //        Query query = session.createQuery("");
@@ -105,7 +105,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
         return null;
     }
 
-    public Purchase update(Purchase purchase) {
+    public BuyRecord update(BuyRecord purchase) {
 //        Session session = sessionFactory.getCurrentSession();
 //        session.save(purchase);
 //        session.flush();
@@ -114,7 +114,8 @@ public class PurchaseDaoImpl implements PurchaseDao {
     }
 
     /* 要不要这个方法呢QAQ*/
-    public List<Purchase> getTodayByCustomerId(int customerId) {
+    /*都行，这个不是我写的，我也不是很清楚这个要干嘛*/
+    public List<BuyRecord> getTodayByCustomerId(int customerId) {
 
         return null;
     }

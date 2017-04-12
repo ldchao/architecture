@@ -69,7 +69,7 @@ public class BuyRecordVO {
     }
 
     public void update(BuyRecord buyRecord){
-        this.productid=buyRecord.getProductid();
+        this.productid=buyRecord.get();
         this.userid=buyRecord.getUserid();
         this.buydate=buyRecord.getBuydate().toString();
         this.buynum=buyRecord.getBuynum();

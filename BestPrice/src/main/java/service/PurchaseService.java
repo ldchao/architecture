@@ -1,6 +1,6 @@
 package service;
 
-import Entity.Purchase;
+import Entity.BuyRecord;
 import service.payStrategy.PayStrategy;
 import vo.ShoppingCart;
 
@@ -21,14 +21,14 @@ public interface PurchaseService {
      * @param shoppingCart
      * @return
      */
-    public Purchase create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy);
+    public BuyRecord create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy);
 
     /**
      * 可以通过顾客的id得到购买记录
      * @param customerId
      * @return
      */
-    public List<Purchase> getByCustomerId(int customerId);
+    public List<BuyRecord> getByCustomerId(int customerId);
 
 
     /**
@@ -36,19 +36,19 @@ public interface PurchaseService {
      * @param purchseId
      * @return
      */
-    public Purchase getByPurchaseId(int purchseId);
+    public BuyRecord getByPurchaseId(int purchseId);
 
     /**
      * 更新购买记录
      * @param purchase
      * @return
      */
-    public Purchase update(Purchase purchase);
+    public BuyRecord update(BuyRecord purchase);
 
     /**
      * 获得当日购买信息
      * @param customerId
      * @return
      */
-    public List<Purchase> getTodayByCustomerId(int customerId);
+    public List<BuyRecord> getTodayByCustomerId(int customerId);
 }

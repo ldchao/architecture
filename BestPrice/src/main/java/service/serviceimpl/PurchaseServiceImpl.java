@@ -1,6 +1,6 @@
 package service.serviceimpl;
 
-import Entity.Purchase;
+import Entity.BuyRecord;
 import dao.PurchaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Autowired
     private PurchaseDao purchaseDao;
 
-    public Purchase create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy) {
+    public BuyRecord create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy) {
         if(strategy.pay()){
             return purchaseDao.create(customerId, shoppingCart);
         }else{
@@ -27,19 +27,19 @@ public class PurchaseServiceImpl implements PurchaseService {
         }
     }
 
-    public List<Purchase> getByCustomerId(int customerId) {
+    public List<BuyRecord> getByCustomerId(int customerId) {
         return purchaseDao.getByCustomerId(customerId);
     }
 
-    public Purchase getByPurchaseId(int purchseId) {
+    public BuyRecord getByPurchaseId(int purchseId) {
         return purchaseDao.getByPurchaseId(purchseId);
     }
 
-    public Purchase update(Purchase purchase) {
+    public BuyRecord update(BuyRecord purchase) {
         return purchaseDao.update(purchase);
     }
 
-    public List<Purchase> getTodayByCustomerId(int customerId) {
+    public List<BuyRecord> getTodayByCustomerId(int customerId) {
         return purchaseDao.getTodayByCustomerId(customerId);
     }
 }
