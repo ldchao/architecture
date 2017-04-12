@@ -1,6 +1,7 @@
 package dao.daoimpl;
 
-import dao.Connection;
+
+import dao.ReadConnection;
 import dao.SensitiveWordDao;
 import org.hibernate.Session;
 
@@ -13,12 +14,12 @@ public class SensitiveWordDaoImpl implements SensitiveWordDao {
 
     public List<String> getSentiveWord() {
 
-        Session session = Connection.getSession();
+        Session session = ReadConnection.getSession();
 
 //        String hql = "select word from SensitiveWord";
         String hql = "";
-        List<String> list = Connection.getSession().createQuery(hql).list();
-        Connection.closeSession(session);
+        List<String> list = ReadConnection.getSession().createQuery(hql).list();
+        ReadConnection.closeSession(session);
         return list;
     }
 }

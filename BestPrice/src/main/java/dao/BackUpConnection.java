@@ -19,7 +19,7 @@ public class BackUpConnection {
 
     public static Session getSession(){
         if (sessionFactory==null){
-            configuration=new Configuration().configure("hibernateRead.cfg.xml");
+            configuration=new Configuration().configure("hibernateBackUp.cfg.xml");
             sessionFactory=configuration.buildSessionFactory();
         
             

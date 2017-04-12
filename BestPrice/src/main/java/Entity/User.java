@@ -104,4 +104,10 @@ public class User {
         result = 31 * result + (state != null ? state.hashCode() : 0);
         return result;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return userid+";;"+name;
+    }
 }

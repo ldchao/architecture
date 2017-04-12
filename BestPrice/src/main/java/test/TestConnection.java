@@ -1,7 +1,9 @@
 package test;
 
 import Entity.ADs;
-import dao.Connection;
+
+import dao.ReadConnection;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -16,17 +18,17 @@ public class TestConnection {
     }
 
     public static boolean  test(){
-        Session session= Connection.getSession();
+        Session session= ReadConnection.getSession();
         try {
             String hql = "from ADs as a";
             Query query = session.createQuery(hql);
             List aList = query.list();
-            Connection.closeSession(session);
+            ReadConnection.closeSession(session);
             System.out.println("success!");
             return true;
         }catch(Exception e){
             e.printStackTrace();
-            Connection.closeSession(session);
+            ReadConnection.closeSession(session);
             return  false;
         }
     }
