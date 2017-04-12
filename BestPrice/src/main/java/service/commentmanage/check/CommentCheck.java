@@ -16,7 +16,7 @@ public abstract class CommentCheck {
      * 返回值：true->合法评论，未检测到敏感词汇，正常发布到平台并存储到评论表
      *        false->检测到敏感词汇，不需要存储到评论表，
      * */
-    public abstract boolean checkComment(String comment, int userId);
+    public abstract boolean checkComment(String comment, int userId, int proId);
 
     protected void register(MyObserver ob) {
         observers.add(ob);

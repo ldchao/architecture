@@ -10,7 +10,7 @@ import java.util.List;
 public interface SensitiveCommentDao {
 
     // 存储敏感评论，返回自增Id
-    int saveSenComment(String comment, int userId, int proId);
+    int saveSenComment(Comment comment);
 
     // 获取敏感评论
     List<Comment> getSenComment();

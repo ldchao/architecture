@@ -9,11 +9,12 @@ public class SensitiveIterator implements MyIterator {
 
     // 敏感词汇list
     private ArrayList<String> sensitveList = new ArrayList();
-    private int cursor = 0;
+    private int cursor = -1;
 
     // 初始化敏感词汇list
-    public SensitiveIterator() {
+    public SensitiveIterator(ArrayList<String> sensitveList) {
 
+        this.sensitveList = sensitveList;
     }
 
     public String first() {
@@ -34,6 +35,11 @@ public class SensitiveIterator implements MyIterator {
     }
 
     public String current() {
+
+        if (cursor ==  -1) {
+            return sensitveList.get(0);
+        }
+
         return sensitveList.get(cursor);
     }
 
