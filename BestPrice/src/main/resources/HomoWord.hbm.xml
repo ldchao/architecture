@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entity.HomoWord" table="homoword" schema="dbbestprice">
+        <id name="word">
+            <column name="word" sql-type="varchar(11)" length="11"/>
+        </id>
+        <property name="groupid">
+            <column name="groupid" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entity.Notify" table="notify" schema="dbbestprice">
+        <id name="id">
+            <column name="id" sql-type="int(11) unsigned"/>
+        </id>
+        <property name="commentid">
+            <column name="commentid" sql-type="int(11) unsigned" not-null="true"/>
+        </property>
+        <property name="sellerid">
+            <column name="sellerid" sql-type="int(11) unsigned" not-null="true"/>
+        </property>
+        <property name="isDeal">
+            <column name="isDeal" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

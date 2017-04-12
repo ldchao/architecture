@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entity.BuyRecord" table="buyrecord" schema="dbbestprice">
+        <id name="id">
+            <column name="id" sql-type="int(11) unsigned"/>
+        </id>
+        <property name="buydate">
+            <column name="buydate" sql-type="date" not-null="true"/>
+        </property>
+        <property name="buynum">
+            <column name="buynum" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="totalPrice">
+            <column name="totalPrice" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

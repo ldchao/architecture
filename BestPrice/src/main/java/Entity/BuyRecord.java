@@ -1,40 +1,29 @@
 package Entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 
 /**
- * Created by marioquer on 2017/4/10.
+ * Created by dlydd on 2017/4/12.
  */
 @Entity
-@IdClass(BuyRecordPK.class)
 public class BuyRecord {
-    private int productid;
-    private int userid;
+    private int id;
     private Date buydate;
     private Integer buynum;
     private Double totalPrice;
-    private Product productByProductid;
-    private User userByUserid;
 
     @Id
-    @Column(name = "productid", nullable = false)
-    public int getProductid() {
-        return productid;
+    @Column(name = "id", nullable = false)
+    public int getId() {
+        return id;
     }
 
-    public void setProductid(int productid) {
-        this.productid = productid;
-    }
-
-    @Id
-    @Column(name = "userid", nullable = false)
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
@@ -74,8 +63,7 @@ public class BuyRecord {
 
         BuyRecord buyRecord = (BuyRecord) o;
 
-        if (productid != buyRecord.productid) return false;
-        if (userid != buyRecord.userid) return false;
+        if (id != buyRecord.id) return false;
         if (buydate != null ? !buydate.equals(buyRecord.buydate) : buyRecord.buydate != null) return false;
         if (buynum != null ? !buynum.equals(buyRecord.buynum) : buyRecord.buynum != null) return false;
         if (totalPrice != null ? !totalPrice.equals(buyRecord.totalPrice) : buyRecord.totalPrice != null) return false;
@@ -85,31 +73,10 @@ public class BuyRecord {
 
     @Override
     public int hashCode() {
-        int result = productid;
-        result = 31 * result + userid;
+        int result = id;
         result = 31 * result + (buydate != null ? buydate.hashCode() : 0);
         result = 31 * result + (buynum != null ? buynum.hashCode() : 0);
         result = 31 * result + (totalPrice != null ? totalPrice.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "productid", referencedColumnName = "id", nullable = false)
-    public Product getProductByProductid() {
-        return productByProductid;
-    }
-
-    public void setProductByProductid(Product productByProductid) {
-        this.productByProductid = productByProductid;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "userid", referencedColumnName = "userid", nullable = false)
-    public User getUserByUserid() {
-        return userByUserid;
-    }
-
-    public void setUserByUserid(User userByUserid) {
-        this.userByUserid = userByUserid;
     }
 }

@@ -13,6 +13,25 @@ public class Product {
     private ProductType productTypeByTypeid;
     private Seller sellerBySellerid;
 
+    private int typeid;
+    private int sellerid;
+
+    public int getTypeid() {
+        return typeid;
+    }
+
+    public void setTypeid(int typeid) {
+        this.typeid = typeid;
+    }
+
+    public int getSellerid() {
+        return sellerid;
+    }
+
+    public void setSellerid(int sellerid) {
+        this.sellerid = sellerid;
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {

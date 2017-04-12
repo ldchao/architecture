@@ -9,15 +9,25 @@
     <property name="hbm2ddl.auto">update</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.connection.url">jdbc:mysql://115.159.183.139:3306/dbbestprice</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">afd701221cy</property>
     <property name="hibernate.connection.useUnicode">true</property>
     <property name="hibernate.connection.characterEncoding">UTF-8</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">afd701221cy</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <mapping class="Entity.ADs"/>
-    <mapping class="Entity.BuyRecord"/>
+    <mapping resource="ADs.hbm.xml"/>
     <mapping class="Entity.Comment"/>
+    <mapping resource="Comment.hbm.xml"/>
     <mapping class="Entity.HomoWord"/>
+    <mapping resource="HomoWord.hbm.xml"/>
+    <mapping resource="Notify.hbm.xml"/>
+    <mapping resource="Product.hbm.xml"/>
+    <mapping resource="Ip.hbm.xml"/>
+    <mapping resource="ProductType.hbm.xml"/>
+    <mapping resource="Seller.hbm.xml"/>
+    <mapping resource="SellerWordList.hbm.xml"/>
+    <mapping resource="SensitiveWord.hbm.xml"/>
+    <mapping resource="User.hbm.xml"/>
     <mapping class="Entity.Ip"/>
     <mapping class="Entity.Notify"/>
     <mapping class="Entity.Product"/>
@@ -26,5 +36,8 @@
     <mapping class="Entity.SellerWordList"/>
     <mapping class="Entity.SensitiveWord"/>
     <mapping class="Entity.User"/>
+    <mapping resource="BuyRecord.hbm.xml"/>
+    <mapping class="Entity.BuyRecord"/>
+
   </session-factory>
 </hibernate-configuration>

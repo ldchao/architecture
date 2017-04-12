@@ -11,6 +11,25 @@ public class Notify {
     private Integer isDeal;
     private Seller sellerBySellerid;
 
+    private int commentid;
+    private int sellerid;
+
+    public int getCommentid() {
+        return commentid;
+    }
+
+    public void setCommentid(int commentid) {
+        this.commentid = commentid;
+    }
+
+    public int getSellerid() {
+        return sellerid;
+    }
+
+    public void setSellerid(int sellerid) {
+        this.sellerid = sellerid;
+    }
+
     public Notify(){}
 
     public Notify(Seller seller){

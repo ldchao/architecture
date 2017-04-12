@@ -9,6 +9,35 @@ import java.sql.Timestamp;
 @Entity
 public class Comment {
     private int id;
+    private int productid;
+
+    public int getProductid() {
+        return productid;
+    }
+
+    public void setProductid(int productid) {
+        this.productid = productid;
+    }
+
+    private int userid;
+    private int replyid;
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public int getReplyid() {
+        return replyid;
+    }
+
+    public void setReplyid(int replyid) {
+        this.replyid = replyid;
+    }
+
     private Timestamp time;
     private String content;
     private Integer state;

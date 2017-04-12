@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entity.Comment" table="comment" schema="dbbestprice">
+
+        <id name="id">
+            <column name="id" sql-type="int(11) unsigned"/>
+        </id>
+        <property name="productid">
+            <column name="productid" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="userid">
+            <column name="userid" sql-type="int(11) unsigned"/>
+        </property>
+        <property name="replyid">
+            <column name="replyid" sql-type="int(11) unsigned"/>
+        </property>
+        <property name="time">
+            <column name="time" sql-type="datetime"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="text"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="int(11)"/>
+        </property>
+    </class>
+</hibernate-mapping>
