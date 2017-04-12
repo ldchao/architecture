@@ -15,8 +15,34 @@ public class BuyRecord {
     private Date buydate;
     private Integer buynum;
     private Double totalPrice;
+    
+    //modify add pid uid
+    
+    private int userid;
+    
+    private int productid;
+    
+    
+    
+    
 
-    @Id
+    public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	public int getProductid() {
+		return productid;
+	}
+
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
