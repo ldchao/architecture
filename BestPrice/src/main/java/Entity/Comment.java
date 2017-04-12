@@ -39,13 +39,14 @@ public class Comment {
     }
 
     private Timestamp time;
-    private String content;
+    private String content;   // -1，0，1
     private Integer state;
     private Product productByProductid;
     private User userByUserid;
     private Comment commentByReplyid;
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
