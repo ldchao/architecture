@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <property name="show_sql">true</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.connection.url">jdbc:mysql://115.159.122.196:3306/dbbestprice</property>
+    <property name="hibernate.connection.useUnicode">true</property>
+    <property name="hibernate.connection.characterEncoding">UTF-8</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">141250032</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <mapping class="Entity.ADs"/>
+    <mapping resource="ADs.hbm.xml"/>
+    <mapping class="Entity.Comment"/>
+    <mapping resource="Comment.hbm.xml"/>
+    <mapping class="Entity.HomoWord"/>
+    <mapping resource="HomoWord.hbm.xml"/>
+    <mapping resource="Notify.hbm.xml"/>
+    <mapping resource="Product.hbm.xml"/>
+    <mapping resource="Ip.hbm.xml"/>
+    <mapping resource="ProductType.hbm.xml"/>
+    <mapping resource="Seller.hbm.xml"/>
+    <mapping resource="SellerWordList.hbm.xml"/>
+    <mapping resource="SensitiveWord.hbm.xml"/>
+    <mapping resource="User.hbm.xml"/>
+    <mapping class="Entity.Ip"/>
+    <mapping class="Entity.Notify"/>
+    <mapping class="Entity.Product"/>
+    <mapping class="Entity.ProductType"/>
+    <mapping class="Entity.Seller"/>
+    <mapping class="Entity.SellerWordList"/>
+    <mapping class="Entity.SensitiveWord"/>
+    <mapping class="Entity.User"/>
+    <mapping resource="BuyRecord.hbm.xml"/>
+    <mapping class="Entity.BuyRecord"/>
+
+  </session-factory>
+</hibernate-configuration>
