@@ -7,7 +7,11 @@ import service.errorHandle.ErrorHandler;
  */
 public class CommError implements ErrorBase
 {
-    public void handle(ErrorHandler handler) {
-        handler.handle(this);
+    public void handle(GuiSysHandle guiSysHandle) {
+        
+    }
+
+    public void handle(LogSysHandle logSysHandle) {
+
     }
 }

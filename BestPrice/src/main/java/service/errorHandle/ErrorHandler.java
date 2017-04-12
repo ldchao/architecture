@@ -9,18 +9,12 @@ import service.serviceimpl.errorHandle.CommError;
 public interface ErrorHandler {
 
     /**
-     * 处理数据库差错
-     * @param dbError
+     * 调用errorBase中的handle方法，异常差错
+     * @param errorBase
      */
-    public void handle(DBError dbError);
+    public void announceError(ErrorBase errorBase);
 
 
-    /**
-     * 处理常规运行时差错
-     * @param commError
-     */
-
-    public void handle(CommError commError);
 
 
 }

@@ -12,11 +12,4 @@ public class LogSysHandle implements ErrorHandler
         error.handle(this);
     }
 
-    public void handle(DBError dbError) {
-         /* 通知日志系统进行有关数据库错误的处理 */
-    }
-    public void handle(CommError commError) {
-        /* 通知日志系统进行有关通信错误的处理 */
-
-    }
 }
