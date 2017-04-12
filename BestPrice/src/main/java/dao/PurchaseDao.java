@@ -29,6 +29,12 @@ public interface PurchaseDao {
      */
     public List<Purchase> getByCustomerId(int customerId);
 
+    /**
+     * 可以通过商品id得到购买记录
+     * @param goodId
+     * @return
+     */
+    public List<Purchase> getByGoodId(int goodId);
 
     /**
      * 可以通过购买记录单号获得购买信息

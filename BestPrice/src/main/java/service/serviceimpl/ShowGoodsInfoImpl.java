@@ -3,7 +3,11 @@ package service.serviceimpl;
 import org.springframework.stereotype.Service;
 import service.ShowGoodsInfoService;
 import java.util.List;
+
+import vo.BuyRecordVO;
+import vo.CommentVO;
 import vo.GoodInfo;
+import vo.GoodVO;
 
 
 /**
@@ -13,20 +17,15 @@ import vo.GoodInfo;
 public class ShowGoodsInfoImpl implements ShowGoodsInfoService {
 
 
-    public List<GoodInfo> getByShopId(int shopId,List<GoodInfo> goodList) {
-
+    public GoodVO getByGoodId(int goodId) {
         return null;
     }
 
-    public GoodInfo getByGoodId(int goodId,List<GoodInfo> goodList) {
-
+    public List<CommentVO> getCommentByGoodId(int goodId) {
         return null;
     }
 
-    public GoodInfo getByGoodName(String name,List<GoodInfo> goodList) {
-
+    public List<BuyRecordVO> getByShopId(int goodId) {
         return null;
     }
-
-
 }

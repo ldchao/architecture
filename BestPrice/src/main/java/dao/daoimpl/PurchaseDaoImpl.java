@@ -15,7 +15,11 @@ import java.util.List;
 @Repository
 public class PurchaseDaoImpl implements PurchaseDao {
 
-//    @Autowired
+    public List<Purchase> getByGoodId(int goodId) {
+        return null;
+    }
+
+    //    @Autowired
 //    private SessionFactory sessionFactory;
 
     //TODO customer相关
