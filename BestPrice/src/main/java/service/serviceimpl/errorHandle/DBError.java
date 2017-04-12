@@ -8,10 +8,10 @@ import service.errorHandle.ErrorHandler;
 public class DBError implements ErrorBase
 {
     public void handle(GuiSysHandle guiSysHandle) {
-
+        System.out.println("假装界面显示错误码：200");
     }
 
     public void handle(LogSysHandle logSysHandle) {
-
+        System.out.println("假装日志显示错误码：200");
     }
 }

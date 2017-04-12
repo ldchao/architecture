@@ -11,7 +11,7 @@ import vo.GoodVO;
  * Created by Xuanlin on 2017/4/9.
  */
 
-public interface ShowGoodsInfoService {
+public interface ShowGoodsService {
 
     /**
      * 根据商品id返回一条商品信息
