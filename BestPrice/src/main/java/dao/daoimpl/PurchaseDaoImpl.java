@@ -2,10 +2,17 @@ package dao.daoimpl;
 
 
 import Entity.BuyRecord;
+import dao.MainConnection;
 import dao.PurchaseDao;
+import dao.ReadConnection;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import vo.ShoppingCart;
-import java.util.List;
+
+import java.util.Date;
+import java.util.*;
 
 
 /**
@@ -16,25 +23,22 @@ import java.util.List;
 public class PurchaseDaoImpl implements PurchaseDao {
 
     public List<BuyRecord> getByGoodId(int goodId) {
-        return null;
+
+        BuyRecordDaoImpl buyRecordDao = new BuyRecordDaoImpl();
+        return buyRecordDao.searchByProductid(goodId);
     }
 
-    //    @Autowired
-//    private SessionFactory sessionFactory;
-
-    //TODO customer相关
-//    @Autowired
-//    private CustomerDao customerDao;
 
 
-    /**
-     * 创建购买商品记录
-     * @param customerId
-     * @param shoppingCart
-     * @return
-     */
+
+//    /**
+//     * 创建购买商品记录
+//     * @param customerId
+//     * @param shoppingCart
+//     * @return
+//     */
     public BuyRecord create(int customerId, ShoppingCart shoppingCart) {
-         return null;
+        return null;
 //        Session session = sessionFactory.getCurrentSession();
 
         //TODO Customer相关
@@ -84,39 +88,76 @@ public class PurchaseDaoImpl implements PurchaseDao {
     }
 
     public List<BuyRecord> getByCustomerId(int customerId) {
-//        Session session = sessionFactory.getCurrentSession();
-//        //TODO  query语句内容
-//        Query query = session.createQuery("");
-//        query.setInteget("customerId",customerId);
-//        return query.list();
-        return null;
+        Session session= ReadConnection.getSession();
+        try {
+            String hql="from BuyRecord as a where a.userid="+customerId;
+            Query query = session.createQuery(hql);
+            List aList = query.list();
+            ReadConnection.closeSession(session);
+            if(aList.size()==0){
+                return null;
+            }else {
+                List<BuyRecord> buyRecords = (List<BuyRecord>) aList;
+                return buyRecords;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            ReadConnection.closeSession(session);
+            return  null;
+        }
     }
 
     public BuyRecord getByPurchaseId(int purchaseId) {
-//        Session session = sessionFactory.getCurrentSession();
-//        //TODO query语句内容
-//        Query query = session.createQuery("");
-//        query.setInteger("id", purchaseId);
-//        if (query.list() == null || query.list().size() == 0) {
-//            return null;
-//        } else {
-//            return (Purchase) query.list().get(0);
-//        }
-        return null;
+        BuyRecordDaoImpl buyRecordDao = new BuyRecordDaoImpl();
+        return buyRecordDao.searchById(purchaseId);
     }
 
     public BuyRecord update(BuyRecord purchase) {
-//        Session session = sessionFactory.getCurrentSession();
-//        session.save(purchase);
-//        session.flush();
-//        return purchase;
-        return null;
+        Session session= MainConnection.getSession();
+
+        Transaction transaction= session.beginTransaction();
+
+        session.update(purchase);
+
+        transaction.commit();
+        session.close();
+        return purchase;
     }
 
     /* 要不要这个方法呢QAQ*/
     /*都行，这个不是我写的，我也不是很清楚这个要干嘛*/
     public List<BuyRecord> getTodayByCustomerId(int customerId) {
+        Session session= ReadConnection.getSession();
+        try {
+            String hql="from BuyRecord as a where a.userid="+customerId;
+            Query query = session.createQuery(hql);
+            List aList = query.list();
+            ReadConnection.closeSession(session);
+            ArrayList<BuyRecord> buyRecords = new ArrayList<BuyRecord>() ;
+            if(aList.size()==0){
+                return null;
+            }else {
+                for(int i=0;i<aList.size();i++){
+                    BuyRecord buyRecord = (BuyRecord) aList.get(i);
+                    Date date = new Date();
+                    java.sql.Date date1=buyRecord.getBuydate();
+                    System.out.println(date);
+                    System.out.println(buyRecord.getBuydate());
+                    if(date1.getYear()==date.getYear()&&
+                       date1.getMonth()==date.getMonth()&&
+                            date1.getDate()==date.getDate()){
+                        System.out.println("sasasa");
+                        buyRecords.add(buyRecord);
+                    }
+                }
+                return buyRecords;
+            }
 
-        return null;
+        }catch (Exception e){
+            e.printStackTrace();
+            ReadConnection.closeSession(session);
+            return  null;
+        }
     }
 }

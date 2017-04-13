@@ -10,10 +10,12 @@ import Entity.User;
 import dao.MainConnection;
 import dao.ReadConnection;
 import dao.UserDao;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDaoImpl implements UserDao{
 
-	@Override //user main
+	//user main
 	public int addAUser(User user) {
 		Session session=MainConnection.getSession();
 		
@@ -31,7 +33,7 @@ public class UserDaoImpl implements UserDao{
 		}
 	}
 
-	@Override  //user main
+	//user main
 	public void modifyUser(User user) {
 		Session session=MainConnection.getSession();
 		
@@ -44,7 +46,7 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
-	@Override  //user main
+	//user main
 	public boolean deleteUser(int userid) {
 		Session session=MainConnection.getSession();
 		
@@ -76,7 +78,7 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
-	@Override  //user read
+	//user read
 	public User getUserByEmail(String email) {
 		Session session=ReadConnection.getSession();
 		
@@ -97,7 +99,6 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 
-	@Override
 	public User getUserByID(int id) {
 		Session session=ReadConnection.getSession();
 		

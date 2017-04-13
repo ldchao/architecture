@@ -13,13 +13,13 @@ import java.util.List;
 
 public interface PurchaseDao {
 
-    /**
-     * 创建购买信息记录
-     * 结算购物车的商品
-     * @param customerId
-     * @param shoppingCart
-     * @return
-     */
+//    /**
+//     * 创建购买信息记录
+//     * 结算购物车的商品
+//     * @param customerId
+//     * @param shoppingCart
+//     * @return
+//     */
     public BuyRecord create(int customerId, ShoppingCart shoppingCart);
 
     /**

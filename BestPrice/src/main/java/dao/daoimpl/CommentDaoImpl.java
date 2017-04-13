@@ -1,7 +1,6 @@
 package dao.daoimpl;
 
 import Entity.Comment;
-import Entity.Product;
 import dao.CommentDao;
 import dao.MainConnection;
 import dao.ReadConnection;

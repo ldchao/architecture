@@ -11,8 +11,8 @@ import java.sql.Timestamp;
 public class TestCommentDao {
     public static  void  main(String args[]){
 
-        TestSave();
-        //testFetch(1);
+        //TestSave();
+        testFetch(1);
     }
 
     public static void  TestSave(){
@@ -32,6 +32,7 @@ public class TestCommentDao {
 
     public static void testFetch(int id){
         CommentDaoImpl commentDao =new CommentDaoImpl();
-        commentDao.fetch(id);
+        Comment comment=commentDao.fetch(id);
+
     }
 }
