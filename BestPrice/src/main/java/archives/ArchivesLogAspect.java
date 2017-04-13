@@ -27,7 +27,7 @@ public class ArchivesLogAspect {
     private User user = null;
     private HttpServletRequest request = null;
 
-    private boolean runTestMode = false;
+    private boolean runTestMode;
 
 
     /**
