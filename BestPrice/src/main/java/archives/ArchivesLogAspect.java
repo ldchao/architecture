@@ -1,6 +1,7 @@
 package archives;
-import model.User;
 import java.lang.reflect.Method;
+
+import Entity.User;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.springframework.web.context.request.RequestAttributes;

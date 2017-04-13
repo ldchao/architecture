@@ -1,5 +1,7 @@
 package dao.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -12,19 +14,22 @@ import dao.ReadConnection;
 public class ProductTypeDaoImpl implements ProductTypeDao{
 
 
-	public void addProductType(ProductType ptye) {
+	public int addProductType(ProductType ptye) {
+
 		// TODO Auto-generated method stub
 		
 		Session session=MainConnection.getSession();
 		
 		Transaction transaction= session.beginTransaction();
 		
-		session.save(ptye);
+		Integer id=(Integer) session.save(ptye);
 		
 		transaction.commit();
 		session.close();
-		
-		
+		if (id==null) {
+			return -1;
+		}
+		return id;
 		
 		
 	}
@@ -47,10 +52,20 @@ public class ProductTypeDaoImpl implements ProductTypeDao{
 		Session session=ReadConnection.getSession();
 		
 		Transaction transaction= session.beginTransaction();
-		ProductType pType=(ProductType) session.createQuery("from ProductType where id=?").setParameter(0, id).list().get(0);
+		
+		
+		List<ProductType> list=session.createQuery("from ProductType where id=?").setParameter(0, id).list();
 		
 		transaction.commit();
 		session.close();
+		
+		if (list.size()==0||list==null) {
+			return null;
+		}
+		
+		ProductType pType=list.get(0);
+		
+		
 		
 		return pType;
 	}
@@ -60,10 +75,17 @@ public class ProductTypeDaoImpl implements ProductTypeDao{
 		Session session=ReadConnection.getSession();
 		
 		Transaction transaction= session.beginTransaction();
-		ProductType pType=(ProductType) session.createQuery("from ProductType where name=?").setParameter(0, name).list().get(0);
+		List<ProductType> list=session.createQuery("from ProductType where name=?").setParameter(0, name).list();
 		
 		transaction.commit();
 		session.close();
+		
+		if (list.size()==0||list==null) {
+			return null;
+		}
+		
+		ProductType pType=list.get(0);
+		
 		
 		return pType;
 	}

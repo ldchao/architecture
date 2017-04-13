@@ -5,6 +5,9 @@ import Entity.User;
 import dao.MainConnection;
 import dao.ReadConnection;
 import dao.SellerDao;
+
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -33,27 +36,52 @@ public class SellerDaoImpl implements SellerDao {
         }
     }
 
-    public void deleteById(int id) {
+    public boolean deleteById(int id) {
     	Session session=MainConnection.getSession();
 		
 		Transaction transaction= session.beginTransaction();
-		Seller seller=(Seller) session.createQuery("from Seller where id=?").setParameter(0, id).list().get(0);
+		
+		
+		List<Seller> list=session.createQuery("from Seller where id=?").setParameter(0, id).list();
+		
+		if (list.size()==0||list==null) {
+			transaction.commit();
+			session.close();
+			return false;
+		}
+		
+		Seller seller=list.get(0);
+		
+		if (seller==null) {
+			transaction.commit();
+			session.close();
+			return false;
+		}
 		
 		session.delete(seller);
 
 		
 		transaction.commit();
 		session.close();
+		return true;
     }
 
     public Seller searchById(int id) {
     	Session session=ReadConnection.getSession();
 		
 		Transaction transaction= session.beginTransaction();
-		Seller seller=(Seller) session.createQuery("from Seller where id=?").setParameter(0, id).list().get(0);
+		List<Seller> list=session.createQuery("from Seller where id=?").setParameter(0, id).list();
+		
 		
 		transaction.commit();
 		session.close();
+		
+		if (list.size()==0||list==null) {
+			return null;
+		}
+		
+		Seller seller=list.get(0);
+		
 		
 		return seller;
     }

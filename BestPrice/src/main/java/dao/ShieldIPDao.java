@@ -14,26 +14,26 @@ public interface ShieldIPDao {
      * @param ip
      * @return
      */
-    public boolean add(Ip ip);
+    boolean add(Ip ip);
 
     /**
      * 删除屏蔽IP
      * @param ip
      * @return
      */
-    public boolean delete(Ip ip);
+    boolean delete(Ip ip);
 
     /**
      * 更新屏蔽IP
      * @param ip
      * @return
      */
-    public boolean update(Ip ip);
+    boolean update(Ip ip);
 
     /**
      * 获取被屏蔽ip
      * @return
      */
-    public List<Ip> query();
+    List<Ip> query();
 }
 

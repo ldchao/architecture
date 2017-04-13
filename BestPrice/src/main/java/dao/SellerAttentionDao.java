@@ -15,27 +15,27 @@ public interface SellerAttentionDao {
      * @param id 商家id
      * @param keys 关注词汇
      */
-    public void updateKeyWords(int id, List<String> keys);
+    void updateKeyWords(int id, List<String> keys);
 
     /**
      * 获得商家关注词汇
      * @param id 商家id
      * @return
      */
-    public List<String> getKeyWords(int id);
+    List<String> getKeyWords(int id);
 
     /**
      * 保存提醒信息
      * @param notify
      */
-    public void saveNotification(Notify notify);
+    void saveNotification(Notify notify);
 
     /**
      * 获得商家所有未读通知
-     * @param id
-     * @return 商家id
+     * @param id 商家id
+     * @return
      */
-    public List<Notify> getNotifications(int id);
+    List<Notify> getNotifications(int id);
 
 
 }

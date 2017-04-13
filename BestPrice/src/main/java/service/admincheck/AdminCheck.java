@@ -1,9 +1,9 @@
 package service.admincheck;
 
 import Entity.Comment;
+import Entity.User;
 import dao.SensitiveCommentDao;
 import dao.WaterUserDao;
-import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.admincheck.freezestrategy.FreezeStrategy;
 import service.admincheck.freezestrategy.LogoffStrategy;
