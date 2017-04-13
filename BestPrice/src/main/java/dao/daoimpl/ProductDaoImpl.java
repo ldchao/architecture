@@ -14,7 +14,7 @@ public class ProductDaoImpl implements ProductDao{
     public void save(Product product) {
         Session session= MainConnection.getSession();
         try {
-            if (search(product.getId())==null){
+            if (searchById(product.getId())==null){
                 session.save(product);
                 Transaction transaction=session.beginTransaction();
                 transaction.commit();
@@ -31,11 +31,11 @@ public class ProductDaoImpl implements ProductDao{
         }
     }
 
-    public void delete(int id) {
+    public void deleteById(int id) {
 
     }
 
-    public Product search(int id) {
+    public Product searchById(int id) {
         return null;
     }
 }

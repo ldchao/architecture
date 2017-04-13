@@ -17,11 +17,11 @@ public interface ProductDao {
      * 通过id删除商品
      * @param id
      */
-    public void delete(int id);
+    public void deleteById(int id);
 
     /**
      * 通过id搜索商品
      * @param id
      */
-    public Product search(int id);
+    public Product searchById(int id);
 }

@@ -17,12 +17,12 @@ public interface SellerDao {
      * 删seller
      * @param id
      */
-    public void delete(int id);
+    public void deleteById(int id);
 
     /**
      * 根据id搜seller
      * @param id
      * @return
      */
-    public Seller search(int id);
+    public Seller searchById(int id);
 }

@@ -13,7 +13,7 @@ public class SellerDaoImpl implements SellerDao {
     public void save(Seller seller) {
         Session session= MainConnection.getSession();
         try {
-            if (search(seller.getId())==null){
+            if (searchById(seller.getId())==null){
                 System.out.println("in!");
                 session.save(seller);
                 Transaction transaction=session.beginTransaction();
@@ -31,11 +31,11 @@ public class SellerDaoImpl implements SellerDao {
         }
     }
 
-    public void delete(int id) {
+    public void deleteById(int id) {
 
     }
 
-    public Seller search(int id) {
+    public Seller searchById(int id) {
         return null;
     }
 }
