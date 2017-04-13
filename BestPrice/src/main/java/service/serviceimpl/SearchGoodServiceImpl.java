@@ -6,15 +6,14 @@ import org.springframework.stereotype.Service;
 import service.SearchGoodService;
 import service.errorHandle.ErrorBase;
 import service.errorHandle.ErrorHandler;
-import service.search_good_shiled.Shield;
-import service.search_good_shiled.Shield_Compositor;
+import service.search_good_shield.Shield;
+import service.search_good_shield.Shield_Compositor;
 import service.search_good_sort.SortStrategy;
 import service.serviceimpl.errorHandle.CommError;
 import service.serviceimpl.errorHandle.GuiSysHandle;
 import vo.GoodVO;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -30,22 +29,22 @@ public class SearchGoodServiceImpl implements SearchGoodService{
     private List<GoodVO> goodVOS=null;
     private Shield shield=new Shield_Compositor();
 
-    public Iterator<GoodVO> searchGoods(String key) {
+    public List<GoodVO> searchGoods(String key) {
         goodVOS=new ArrayList<GoodVO>();
         List<String> synonymList=searchGoodDao.searchHomoWord(key);
         for (String synonymKey:synonymList) {
             List<GoodVO> subResult=searchGoodDao.searchGoods(synonymKey);
             goodVOS.addAll(subResult);
         }
-        return goodVOS.iterator();
+        return goodVOS;
     }
 
-    public Iterator<GoodVO> shieldGoods(String condition) {
+    public List<GoodVO> shieldGoods(String condition) {
         Class<?> shield_leaf=null;
         List<GoodVO> afterShield=new ArrayList<GoodVO>();
         afterShield.addAll(goodVOS);
         try {
-            shield_leaf=Class.forName("service.search_good_shiled."+condition);
+            shield_leaf=Class.forName("service.search_good_shield."+condition);
             Shield concreteShield=(Shield) shield_leaf.newInstance();
             shield.addShield(concreteShield);
             shield.shieldGood(afterShield);
@@ -55,16 +54,16 @@ public class SearchGoodServiceImpl implements SearchGoodService{
             ErrorBase errorBase=new CommError();
             errorHandler.announceError(errorBase);
         }finally {
-            return afterShield.iterator();
+            return afterShield;
         }
     }
 
-    public Iterator<GoodVO> cancleShield(String condition) {
+    public List<GoodVO> cancleShield(String condition) {
         Class<?> shield_leaf=null;
         List<GoodVO> afterShield=new ArrayList<GoodVO>();
         afterShield.addAll(goodVOS);
         try {
-            shield_leaf=Class.forName("service.search_good_shiled."+condition);
+            shield_leaf=Class.forName("service.search_good_shield."+condition);
             Shield concreteShield=(Shield) shield_leaf.newInstance();
             shield.removeShield(concreteShield);
             shield.shieldGood(afterShield);
@@ -74,11 +73,11 @@ public class SearchGoodServiceImpl implements SearchGoodService{
             ErrorBase errorBase=new CommError();
             errorHandler.announceError(errorBase);
         }finally {
-            return afterShield.iterator();
+            return afterShield;
         }
     }
 
-    public Iterator<GoodVO> sortResult(String sortRule) {
+    public List<GoodVO> sortResult(String sortRule) {
         Class<?> concreteStrategy = null;
         try {
             concreteStrategy = Class.forName("service.search_good_sort."+sortRule);
@@ -90,8 +89,9 @@ public class SearchGoodServiceImpl implements SearchGoodService{
             ErrorBase errorBase=new CommError();
             errorHandler.announceError(errorBase);
         } finally {
-            return goodVOS.iterator();
+            return goodVOS;
         }
     }
-    
+
+
 }

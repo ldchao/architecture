@@ -1,4 +1,4 @@
-package service.search_good_shiled;
+package service.search_good_shield;
 
 import vo.GoodVO;
 
