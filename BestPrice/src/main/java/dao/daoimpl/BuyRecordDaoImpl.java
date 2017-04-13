@@ -54,7 +54,24 @@ public class BuyRecordDaoImpl implements BuyRecordDao {
     }
 
     public BuyRecord searchById(int id) {
-        return null;
+        Session session= ReadConnection.getSession();
+        try {
+            String hql="from BuyRecord as a where a.id="+id;
+            Query query = session.createQuery(hql);
+            List aList = query.list();
+            ReadConnection.closeSession(session);
+            if(aList.size()==0){
+                return null;
+            }else {
+                BuyRecord buyRecord = (BuyRecord) aList.get(0);
+                return buyRecord;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            ReadConnection.closeSession(session);
+            return  null;
+        }
     }
 
     public List<BuyRecord> searchByProductid(int productid) {

@@ -11,7 +11,7 @@ import dao.ReadConnection;
 
 public class ProductTypeDaoImpl implements ProductTypeDao{
 
-	@Override
+
 	public void addProductType(ProductType ptye) {
 		// TODO Auto-generated method stub
 		
@@ -29,7 +29,7 @@ public class ProductTypeDaoImpl implements ProductTypeDao{
 		
 	}
 
-	@Override
+
 	public void modifyProductType(ProductType ptye) {
 		Session session=MainConnection.getSession();
 		
@@ -42,7 +42,7 @@ public class ProductTypeDaoImpl implements ProductTypeDao{
 		
 	}
 
-	@Override
+
 	public ProductType getProductTypeByID(int id) {
 		Session session=ReadConnection.getSession();
 		
@@ -55,7 +55,7 @@ public class ProductTypeDaoImpl implements ProductTypeDao{
 		return pType;
 	}
 
-	@Override
+
 	public ProductType getProductTypeByName(String name) {
 		Session session=ReadConnection.getSession();
 		

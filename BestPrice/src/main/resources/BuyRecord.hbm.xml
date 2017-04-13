@@ -8,6 +8,12 @@
         <id name="id">
             <column name="id" sql-type="int(11) unsigned"/>
         </id>
+        <property name="productid">
+            <column name="productid" sql-type="int(11) unsigned"/>
+        </property>
+        <property name="userid">
+            <column name="userid" sql-type="int(11) unsigned"/>
+        </property>
         <property name="buydate">
             <column name="buydate" sql-type="date" not-null="true"/>
         </property>
