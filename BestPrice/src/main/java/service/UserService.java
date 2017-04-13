@@ -10,11 +10,11 @@ public interface UserService {
 
     /**
      * 用户登录
-     * @param name  用户名
+     * @param email  邮箱
      * @param password  用户密码
      * @return 如果登录成功返回UserVO,否则返回null
      */
-    public UserVO login(String name, String password);
+    public UserVO login(String email, String password);
 
     /**
      * 用户注册新账号

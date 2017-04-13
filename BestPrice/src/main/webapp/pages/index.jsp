@@ -29,12 +29,9 @@
 </nav>
 
 <div id="index-banner" class="parallax-container" style="height: 100%;">
-    <div class="container">
+    <div class="container" style="margin-top: 140px;">
         <br><br>
-        <h1 class="header center white-text">爱比价网</h1>
-        <div class="row center">
-        <h5 class="header col s12 light white-text">最便宜的都在这</h5>
-        </div>
+        <h1 class="header center white-text">最便宜的都在这</h1>
         <div class="row center">
             <a href="#login" id="download-button"
                class="btn-large waves-effect waves-light white lighten-1 teal-text">立即体验</a>

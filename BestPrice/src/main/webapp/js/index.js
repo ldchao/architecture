@@ -13,31 +13,22 @@ function trans(flag) {
 }
 
 function login() {
-    var phone = $("#phone").val();
+    var username = $("#username").val();
     var password = $("#password").val();
 
     $.ajax({
         method: "post",
         url: "/user/login",
         async: false,
-        dataType: "json",
         data: {
-            "phone": phone,
+            "username": username,
             "password": password
         },
         success: function (result) {
-            if (result.state == "success") {
+            if (result == "success") {
                 Materialize.toast('登录成功!', 1200);
-                switch (result.role) {
-                    case 0:
-                        window.location.href = "/user/hotel";
-                        break;
-                    case 1:
-                        window.location.href = "/landlord/hotel-info";
-                        break;
-                    default:
-                        window.location.href = "/boss/apply";
-                }
+                window.location.href = "#";
+
             } else {
                 Materialize.toast('登录失败!', 1200);
             }
@@ -49,28 +40,27 @@ function login() {
 }
 
 function logup() {
-    var phone = $("#new_phone").val();
+    var username = $("#new_username").val();
     var password = $("#new_password").val();
-    var role = $("#new_role").val();
-    var name = $("#new_name").val();
+    var email = $("#new_email").val();
+    var address = $("#new_address").val();
 
     $.ajax({
         method: "post",
         url: "/user/logup",
         async: false,
         data: {
-            "phone": phone,
-            "name": name,
+            "username": username,
             "password": password,
-            "role": role
+            "email": email,
+            "address": address
         },
         success: function (result) {
             if (result == "success") {
                 Materialize.toast('注册成功!', 1800);
                 setInterval((function () {
-                    window.location.href = "/";
-                }()),1800);
-
+                    window.location.href = "/index";
+                }()), 1800);
             } else if (result == "exist") {
                 Materialize.toast('用户已存在!', 1200);
             } else {
@@ -83,6 +73,24 @@ function logup() {
     });
 }
 
-function logout(id) {
-    alert(id);
+function logout() {
+    $.ajax({
+        method: "post",
+        url: "/user/logout",
+        async: false,
+        success: function (result) {
+            if (result == "success") {
+                Materialize.toast('登出成功!', 1800);
+                setInterval((function () {
+                    window.location.href = "/index";
+                }()), 1800);
+            } else {
+                Materialize.toast('登出失败!', 1200);
+            }
+        },
+        error: function () {
+            Materialize.toast('请求出错!', 1200);
+        }
+    });
+
 }

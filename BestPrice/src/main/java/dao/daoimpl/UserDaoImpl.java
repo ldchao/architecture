@@ -46,7 +46,8 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
-	//user main
+
+	 //user main
 	public boolean deleteUser(int userid) {
 		Session session=MainConnection.getSession();
 		
@@ -98,7 +99,7 @@ public class UserDaoImpl implements UserDao{
 		
 		return user;
 	}
-
+	
 	public User getUserByID(int id) {
 		Session session=ReadConnection.getSession();
 		

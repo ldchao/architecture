@@ -27,9 +27,13 @@ public class SearchGoodServiceImpl implements SearchGoodService{
     private Shield shield=new Shield_Compositor();
 
     public Iterator<GoodVO> searchGoods(String key) {
-        List<String> synonymList=new ArrayList<String>();
-
-        return null;
+        List<GoodVO> result=new ArrayList<GoodVO>();
+        List<String> synonymList=searchGoodDao.searchHomoWord(key);
+        for (String synonymKey:synonymList) {
+            List<GoodVO> subResult=searchGoodDao.searchGoods(synonymKey);
+            result.addAll(subResult);
+        }
+        return result.iterator();
     }
 
     public Iterator<GoodVO> shieldGoods(String condition) {

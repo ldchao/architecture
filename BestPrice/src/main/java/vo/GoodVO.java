@@ -13,26 +13,20 @@ public class GoodVO {
     private String description;  //商品描述
     private String product_name;  //商品名称
 
-//    private Seller sellerBySellerid;
+public Double getCompetePrice() {
+		return competePrice;
+	}
+
+	//    private Seller sellerBySellerid;
     private String seller_name;  // 商家名称
     private String platform;  //平台名称
     private Integer isJoin;   //是否加盟
     private Double competePrice; //商家竞价排名出价
 
-
-
     private int sales_volume;  //销量
     private int comments_volume; //评论量
 
     public GoodVO() {
-    }
-
-    public Double getCompetePrice() {
-        return competePrice;
-    }
-
-    public void setCompetePrice(Double competePrice) {
-        this.competePrice = competePrice;
     }
 
     public int getId() {
@@ -106,4 +100,10 @@ public class GoodVO {
     public void setComments_volume(int comments_volume) {
         this.comments_volume = comments_volume;
     }
+    
+
+	public void setCompetePrice(Double competePrice) {
+		this.competePrice = competePrice;
+	}
+
 }
