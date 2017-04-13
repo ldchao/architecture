@@ -33,8 +33,9 @@ public class Shield_Compositor implements Shield{
 
     public void removeShield(Shield shield) {
         Shield needRemove=null;
+        String name=shield.getClass().getName();
         for (Shield s :shieldList) {
-            if(s.getClass()==shield.getClass()){
+            if(s.getClass().getName().equals(name)){
                 needRemove=s;
                 break;
             }
@@ -42,12 +43,4 @@ public class Shield_Compositor implements Shield{
         shieldList.remove(needRemove);
     }
 
-    public static void main(String[] args) {
-        Shield_Compositor shield_compositor=new Shield_Compositor(new ArrayList<Shield>());
-        Shield shield=new Shield_NotJoin();
-        shield_compositor.addShield(shield);
-        Shield shield1=new Shield_NotJoin();
-        shield_compositor.removeShield(shield1);
-        System.out.println(shield_compositor.shieldList.size());
-    }
 }

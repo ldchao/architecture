@@ -93,8 +93,5 @@ public class SearchGoodServiceImpl implements SearchGoodService{
             return goodVOS.iterator();
         }
     }
-
-    private List<String> getThesaurus(String key){
-        return null;
-    }
+    
 }
