@@ -1,6 +1,8 @@
 package controller;
 
 
+import org.springframework.stereotype.Controller;
+
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
@@ -21,6 +23,7 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 /**
  * Created by LeeKane on 17/4/9.
  */
+@Controller
 public class TestController {
     //读取配置文件 决定进入测试模式还是正常模式
 //    private Path path = null;

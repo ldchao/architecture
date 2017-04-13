@@ -18,6 +18,8 @@ public class MainController {
     @Autowired
     SearchGoodService searchGoodService;
 
+    private int onlineNum=0;
+
     @RequestMapping("/")
     public String main(){
         String ip=DispatcherMonitor.getIP();
@@ -27,6 +29,7 @@ public class MainController {
 
     @RequestMapping("/index")
     public String index(){
+        onlineNum++;
         return "index";
     }
 
@@ -34,7 +37,7 @@ public class MainController {
     @RequestMapping("/getVolume")
     @ResponseBody
     public String getVisitorVolume(){
-        return "10";
+        return ""+onlineNum;
     }
 
 }
