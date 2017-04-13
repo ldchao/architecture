@@ -17,7 +17,7 @@ public interface SellerDao {
      * 删seller
      * @param id
      */
-    public void deleteById(int id);
+    public boolean deleteById(int id);
 
     /**
      * 根据id搜seller

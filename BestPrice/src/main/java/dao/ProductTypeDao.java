@@ -5,7 +5,7 @@ import Entity.ProductType;
 public interface ProductTypeDao {
 	
 	//向数据库里添加一个品类
-	public void addProductType(ProductType ptye);
+	public int addProductType(ProductType ptye);
 	
 	//修改某品类
 	public void modifyProductType(ProductType ptye);

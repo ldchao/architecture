@@ -11,7 +11,7 @@ public interface UserDao {
 	public void modifyUser(User user);
 	
 	//通过id删用户
-	public void deleteUser(int id);
+	public boolean deleteUser(int id);
 	
 	//通过电子邮件获得user
 	public User getUserByEmail(String email);
