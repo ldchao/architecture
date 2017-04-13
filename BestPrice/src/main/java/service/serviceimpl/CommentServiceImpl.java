@@ -6,6 +6,7 @@ import service.CommentService;
 import service.commentmanage.filter.CommentCheck;
 import service.commentmanage.filter.CommentStorage;
 import service.commentmanage.filter.SellerAttention;
+import vo.CommentVO;
 
 /**
  * Created by Hanifor on 4/10/2017.
@@ -22,7 +23,7 @@ public class CommentServiceImpl implements CommentService{
         commentCheck = new SellerAttention(source);
     }
 
-    public void storeComment(Comment comment) {
-        commentCheck.storeComment(comment);
+    public void storeComment(CommentVO comment) {
+        commentCheck.storeComment(comment.makeComment());
     }
 }

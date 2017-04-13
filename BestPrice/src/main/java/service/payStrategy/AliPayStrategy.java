@@ -12,7 +12,6 @@ public class AliPayStrategy implements PayStrategy{
         this.password = password;
     }
 
-
     public boolean pay() {
         return true;
     }

@@ -32,8 +32,10 @@ public class Notify {
 
     public Notify(){}
 
-    public Notify(Seller seller){
+    public Notify(Seller seller, int commentid){
         this.sellerBySellerid = seller;
+        this.commentid = commentid;
+        this.sellerid = seller.getId();
         this.isDeal = 0;
     }
 

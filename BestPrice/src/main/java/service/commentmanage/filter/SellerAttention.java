@@ -30,7 +30,7 @@ public class SellerAttention implements CommentCheck {
         List<String> words = sellerAttentionDao.getKeyWords(seller.getId());
         for (String word : words) {
             if(content.contains(word)){
-                sellerAttentionDao.saveNotification(new Notify(seller));
+                sellerAttentionDao.saveNotification(new Notify(seller, comment.getId()));
                 break;
             }
         }

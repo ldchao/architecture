@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.PurchaseService;
 import service.payStrategy.PayStrategy;
+import vo.BuyRecordVO;
 import vo.ShoppingCart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,27 +21,50 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Autowired
     private PurchaseDao purchaseDao;
 
-    public BuyRecord create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy) {
+    public BuyRecordVO create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy) {
         if(strategy.pay()){
-            return purchaseDao.create(customerId, shoppingCart);
+            BuyRecord br = purchaseDao.create(customerId, shoppingCart);
+            BuyRecordVO brv = new BuyRecordVO();
+            brv.update(br);
+            return brv;
         }else{
             return null;
         }
     }
 
-    public List<BuyRecord> getByCustomerId(int customerId) {
-        return purchaseDao.getByCustomerId(customerId);
+    public List<BuyRecordVO> getByCustomerId(int customerId) {
+        List<BuyRecord> brs = purchaseDao.getByCustomerId(customerId);
+        List<BuyRecordVO> brvs = new ArrayList<BuyRecordVO>();
+        for (BuyRecord br: brs) {
+            BuyRecordVO brv = new BuyRecordVO();
+            brv.update(br);
+            brvs.add(brv);
+        }
+        return brvs;
     }
 
-    public BuyRecord getByPurchaseId(int purchseId) {
-        return purchaseDao.getByPurchaseId(purchseId);
+    public BuyRecordVO getByPurchaseId(int purchseId) {
+        BuyRecord br = purchaseDao.getByPurchaseId(purchseId);
+        BuyRecordVO brv = new BuyRecordVO();
+        brv.update(br);
+        return brv;
     }
 
-    public BuyRecord update(BuyRecord purchase) {
-        return purchaseDao.update(purchase);
+    public BuyRecordVO update(BuyRecordVO purchase) {
+        BuyRecord br = purchaseDao.update(purchase.makeBuyRecord());
+        BuyRecordVO brv = new BuyRecordVO();
+        brv.update(br);
+        return brv;
     }
 
-    public List<BuyRecord> getTodayByCustomerId(int customerId) {
-        return purchaseDao.getTodayByCustomerId(customerId);
+    public List<BuyRecordVO> getTodayByCustomerId(int customerId) {
+        List<BuyRecord> brs = purchaseDao.getTodayByCustomerId(customerId);
+        List<BuyRecordVO> brvs = new ArrayList<BuyRecordVO>();
+        for (BuyRecord br: brs) {
+            BuyRecordVO brv = new BuyRecordVO();
+            brv.update(br);
+            brvs.add(brv);
+        }
+        return brvs;
     }
 }
