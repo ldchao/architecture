@@ -1,5 +1,7 @@
 package service.serviceimpl;
 
+import dao.SearchGoodDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SearchGoodService;
 import service.search_good_shiled.Shield;
@@ -17,6 +19,9 @@ import java.util.List;
 
 @Service
 public class SearchGoodServiceImpl implements SearchGoodService{
+
+    @Autowired
+    private SearchGoodDao searchGoodDao;
 
     private List<GoodVO> goodVOS=null;
     private Shield shield=new Shield_Compositor();
