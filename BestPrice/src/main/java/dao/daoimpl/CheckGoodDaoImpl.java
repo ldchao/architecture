@@ -1,6 +1,7 @@
 package dao.daoimpl;
 
 import Entity.Product;
+import Entity.Seller;
 import dao.CheckGoodDao;
 import org.springframework.stereotype.Repository;
 import vo.GoodVO;
@@ -16,6 +17,13 @@ public class CheckGoodDaoImpl implements CheckGoodDao{
         ProductDaoImpl productDao = new ProductDaoImpl();
         Product product = productDao.searchById(goodId);
         goodVO.setPrice(product.getPrice());
+        SellerDaoImpl sellerDao = new SellerDaoImpl();
+        Seller seller = sellerDao.searchById(product.getSellerid());
+        goodVO.setSeller_name(seller.getName());
+        goodVO.setPlatform(seller.getPlatform());
+        goodVO.setIsJoin(seller.getIsJoin());
+        goodVO.setCompetePrice(seller.getCompetePrice());
+
         return goodVO;
     }
 }

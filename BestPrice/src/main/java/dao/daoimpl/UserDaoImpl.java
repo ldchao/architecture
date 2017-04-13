@@ -10,7 +10,7 @@ import dao.UserDao;
 
 public class UserDaoImpl implements UserDao{
 
-	@Override //user main
+
 	public void addAUser(User user) {
 		Session session=MainConnection.getSession();
 		
@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
-	@Override  //user main
+
 	public void modifyUser(User user) {
 		Session session=MainConnection.getSession();
 		
@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
-	@Override  //user main
+
 	public void deleteUser(int userid) {
 		Session session=MainConnection.getSession();
 		
@@ -51,7 +51,7 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
-	@Override  //user read
+
 	public User getUserByEmail(String email) {
 		Session session=ReadConnection.getSession();
 		
@@ -64,7 +64,7 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 
-	@Override
+
 	public User getUserByID(int id) {
 		Session session=ReadConnection.getSession();
 		

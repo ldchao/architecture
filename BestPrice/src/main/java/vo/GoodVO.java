@@ -19,10 +19,20 @@ public class GoodVO {
     private Integer isJoin;   //是否加盟
     private Double competePrice; //商家竞价排名出价
 
+
+
     private int sales_volume;  //销量
     private int comments_volume; //评论量
 
     public GoodVO() {
+    }
+
+    public Double getCompetePrice() {
+        return competePrice;
+    }
+
+    public void setCompetePrice(Double competePrice) {
+        this.competePrice = competePrice;
     }
 
     public int getId() {
