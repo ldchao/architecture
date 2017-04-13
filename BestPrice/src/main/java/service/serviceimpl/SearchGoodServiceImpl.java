@@ -4,9 +4,13 @@ import dao.SearchGoodDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SearchGoodService;
+import service.errorHandle.ErrorBase;
+import service.errorHandle.ErrorHandler;
 import service.search_good_shiled.Shield;
 import service.search_good_shiled.Shield_Compositor;
 import service.search_good_sort.SortStrategy;
+import service.serviceimpl.errorHandle.CommError;
+import service.serviceimpl.errorHandle.GuiSysHandle;
 import vo.GoodVO;
 
 import java.util.ArrayList;
@@ -27,13 +31,13 @@ public class SearchGoodServiceImpl implements SearchGoodService{
     private Shield shield=new Shield_Compositor();
 
     public Iterator<GoodVO> searchGoods(String key) {
-        List<GoodVO> result=new ArrayList<GoodVO>();
+        goodVOS=new ArrayList<GoodVO>();
         List<String> synonymList=searchGoodDao.searchHomoWord(key);
         for (String synonymKey:synonymList) {
             List<GoodVO> subResult=searchGoodDao.searchGoods(synonymKey);
-            result.addAll(subResult);
+            goodVOS.addAll(subResult);
         }
-        return result.iterator();
+        return goodVOS.iterator();
     }
 
     public Iterator<GoodVO> shieldGoods(String condition) {
@@ -45,12 +49,11 @@ public class SearchGoodServiceImpl implements SearchGoodService{
             Shield concreteShield=(Shield) shield_leaf.newInstance();
             shield.addShield(concreteShield);
             shield.shieldGood(afterShield);
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
+            ErrorHandler errorHandler=new GuiSysHandle();
+            ErrorBase errorBase=new CommError();
+            errorHandler.announceError(errorBase);
         }finally {
             return afterShield.iterator();
         }
@@ -65,12 +68,11 @@ public class SearchGoodServiceImpl implements SearchGoodService{
             Shield concreteShield=(Shield) shield_leaf.newInstance();
             shield.removeShield(concreteShield);
             shield.shieldGood(afterShield);
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
+            ErrorHandler errorHandler=new GuiSysHandle();
+            ErrorBase errorBase=new CommError();
+            errorHandler.announceError(errorBase);
         }finally {
             return afterShield.iterator();
         }
@@ -82,13 +84,11 @@ public class SearchGoodServiceImpl implements SearchGoodService{
             concreteStrategy = Class.forName("service.search_good_sort."+sortRule);
             SortStrategy sortStrategy = (SortStrategy) concreteStrategy.newInstance();
             sortStrategy.sort(goodVOS);
-        } catch (ClassNotFoundException e) {
-            // TODO: 2017/4/9
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
+            ErrorHandler errorHandler=new GuiSysHandle();
+            ErrorBase errorBase=new CommError();
+            errorHandler.announceError(errorBase);
         } finally {
             return goodVOS.iterator();
         }

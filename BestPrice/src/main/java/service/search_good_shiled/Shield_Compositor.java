@@ -22,6 +22,9 @@ public class Shield_Compositor implements Shield{
 
     public void shieldGood(List<GoodVO> list) {
 
+        for (Shield shield:shieldList) {
+            shield.shieldGood(list);
+        }
     }
 
     public void addShield(Shield shield) {
@@ -29,6 +32,22 @@ public class Shield_Compositor implements Shield{
     }
 
     public void removeShield(Shield shield) {
-         shieldList.remove(shield);
+        Shield needRemove=null;
+        for (Shield s :shieldList) {
+            if(s.getClass()==shield.getClass()){
+                needRemove=s;
+                break;
+            }
+        }
+        shieldList.remove(needRemove);
+    }
+
+    public static void main(String[] args) {
+        Shield_Compositor shield_compositor=new Shield_Compositor(new ArrayList<Shield>());
+        Shield shield=new Shield_NotJoin();
+        shield_compositor.addShield(shield);
+        Shield shield1=new Shield_NotJoin();
+        shield_compositor.removeShield(shield1);
+        System.out.println(shield_compositor.shieldList.size());
     }
 }

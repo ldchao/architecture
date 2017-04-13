@@ -24,7 +24,19 @@ public class UserController {
             return "fail";
         } else {
             request.getSession().setAttribute("user", userVO);
-            return "success";
+            if(userVO.getState()==1){
+                return "user";  //普通用户
+            }else if(userVO.getState()==-1){
+                return "wateruser";  //水军
+            }else if(userVO.getState()==0){
+                return "un";  //用户审核中
+            }else if(userVO.getState()==2){
+                return "fail";  //商家
+            }else if(userVO.getState()==3){
+                return "fail";  //管理员
+            }else{
+                return "fail";  //非法用户
+            }
         }
     }
 

@@ -10,6 +10,7 @@ import service.errorHandle.ErrorBase;
 public class GuiSysHandle implements ErrorHandler
 {
     public void announceError(ErrorBase error) {
+        System.out.println("假装界面显示错误码：");
         error.handle(this);
     }
 }

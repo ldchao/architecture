@@ -50,7 +50,7 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
 		   //o[i]
 		   
 		   GoodVO vo=new GoodVO();
-		   vo.setId((int) o[3]);
+		   vo.setId((Integer) o[3]);
 		   vo.setPrice((Double) o[4]);
 		   vo.setDescription((String) o[1]);
 		   vo.setProduct_name((String) o[2]);
@@ -59,9 +59,9 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
 		   vo.setIsJoin((Integer) o[8]);
 		   vo.setCompetePrice((Double) o[9]);
 		   
-		   vo.setComments_volume(cDao.fetchAll((int) o[3]).size());
+		   vo.setComments_volume(cDao.fetchAll((Integer) o[3]).size());
 		   
-		   vo.setSales_volume(pDao.getByGoodId((int) o[3]).size());
+		   vo.setSales_volume(pDao.getByGoodId((Integer) o[3]).size());
 		   
 		   goodVOs.add(vo);
 		  }
