@@ -1,13 +1,16 @@
 package dao.daoimpl;
 
 import Entity.Comment;
+import Entity.Product;
 import dao.CommentDao;
 import dao.MainConnection;
 import dao.ReadConnection;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,17 +41,62 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     public Comment fetch(int id) {
-        //TODO
-        return null;
+        Session session= ReadConnection.getSession();
+        try {
+            String hql="from Comment as a where a.id="+id;
+            Query query = session.createQuery(hql);
+            List aList = query.list();
+            ReadConnection.closeSession(session);
+            if(aList.size()==0){
+                return null;
+            }else {
+                Comment comment = (Comment) aList.get(0);
+                return comment;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            ReadConnection.closeSession(session);
+            return  null;
+        }
     }
 
     public List<Comment> fetchAll(int id) {
-        //TODO
-        return null;
+        Session session= ReadConnection.getSession();
+        try {
+            String hql="from Comment as a where a.productid="+id;
+            Query query = session.createQuery(hql);
+            List aList = query.list();
+            ReadConnection.closeSession(session);
+            if(aList.size()==0){
+                return null;
+            }else {
+                ArrayList<Comment> cList =(ArrayList<Comment>)aList;
+                return cList;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            ReadConnection.closeSession(session);
+            return  null;
+        }
     }
 
     public void delete(int id) {
-        //TODO
+        Session session = MainConnection.getSession();
+        try{
+            Comment comment=fetch(id);
+            session.delete(comment);
+
+            Transaction transaction=session.beginTransaction();
+            transaction.commit();
+            MainConnection.closeSession(session);
+
+        }catch(Exception e){
+            e.printStackTrace();
+            MainConnection.closeSession(session);
+
+        }
     }
 
     public List<Comment> getHistoryComments(int userId) {

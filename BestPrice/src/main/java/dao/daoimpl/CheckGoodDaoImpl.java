@@ -1,5 +1,6 @@
 package dao.daoimpl;
 
+import Entity.Product;
 import dao.CheckGoodDao;
 import org.springframework.stereotype.Repository;
 import vo.GoodVO;
@@ -10,6 +11,11 @@ import vo.GoodVO;
 @Repository
 public class CheckGoodDaoImpl implements CheckGoodDao{
     public GoodVO getGoodByGoodId(int goodId) {
-        return null;
+        GoodVO goodVO = new GoodVO();
+        goodVO.setId(goodId);
+        ProductDaoImpl productDao = new ProductDaoImpl();
+        Product product = productDao.searchById(goodId);
+        goodVO.setPrice(product.getPrice());
+        return goodVO;
     }
 }
