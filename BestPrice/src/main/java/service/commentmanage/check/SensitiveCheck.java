@@ -5,7 +5,6 @@ import dao.CommentDao;
 import dao.SensitiveCommentDao;
 import dao.SensitiveWordDao;
 import dao.WaterUserDao;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.commentmanage.iterator.MyIterator;
@@ -20,27 +19,26 @@ import java.util.ArrayList;
  * <p>
  * 检测评论中的敏感词汇
  */
-@Service
 public class SensitiveCheck extends CommentCheck {
 
     @Autowired
-    private SensitiveWordDao wordDao;
+    private SensitiveWordDao sensitiveWordDao;
 
     @Autowired
-    private SensitiveCommentDao senCommentDao;
+    private SensitiveCommentDao sensitiveCommentDao;
 
     @Autowired
     private CommentDao commentDao;
 
     @Autowired
-    private WaterUserDao waterDao;
+    private WaterUserDao waterUserDao;
 
-    private MyIterator senIterator;
+    private MyIterator myIterator;
 
     public SensitiveCheck() {
 
         // 初始化敏感词汇迭代器
-        senIterator = new SensitiveIterator(wordDao.getSentiveWord());
+        myIterator = new SensitiveIterator(sensitiveWordDao.getSentiveWord());
     }
 
     public boolean checkComment(String comment, int userId, int proId) {
@@ -69,7 +67,7 @@ public class SensitiveCheck extends CommentCheck {
             com.setUserid(userId);
             com.setProductid(proId);
 
-            int senId = senCommentDao.saveSenComment(com);
+            int senId = sensitiveCommentDao.saveSenComment(com);
             this.notifyAdminComment(senId);  // 通知管理员潜在敏感评论
 
             checkWater(userId);
@@ -83,8 +81,8 @@ public class SensitiveCheck extends CommentCheck {
 
         boolean valid = true;
 
-        while (!senIterator.isEnd()) {
-            if (comment.contains(senIterator.next())) {
+        while (!myIterator.isEnd()) {
+            if (comment.contains(myIterator.next())) {
                 valid = false;
                 break;
             }
@@ -113,7 +111,7 @@ public class SensitiveCheck extends CommentCheck {
 
         if (isWaterUser) {
 
-            waterDao.saveWater(userId);
+            waterUserDao.saveWater(userId);
 
             this.notifyAdminUser(userId); // 通知管理员潜在水军用户
         }
