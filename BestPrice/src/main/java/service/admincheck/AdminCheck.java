@@ -4,6 +4,8 @@ import Entity.Comment;
 import Entity.User;
 import dao.SensitiveCommentDao;
 import dao.WaterUserDao;
+import dao.daoimpl.SensitiveCommentDaoImpl;
+import dao.daoimpl.WaterUserDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.admincheck.freezestrategy.FreezeStrategy;
@@ -20,10 +22,8 @@ import java.util.ArrayList;
 @Service
 public class AdminCheck {
 
-    @Autowired
-    private SensitiveCommentDao sensitiveCommentDao;
-    @Autowired
-    private WaterUserDao waterUserDao;
+    private SensitiveCommentDao sensitiveCommentDao = new SensitiveCommentDaoImpl();
+    private WaterUserDao waterUserDao = new WaterUserDaoImpl();
 
     // 获取待审核敏感评论
     public ArrayList<Comment> getSenComment() {
