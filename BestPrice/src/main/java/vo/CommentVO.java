@@ -5,7 +5,9 @@ import Entity.Product;
 import Entity.User;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/4/11.
@@ -21,6 +23,18 @@ public class CommentVO {
 
     public CommentVO() {
     }
+
+    public CommentVO(String content, int productid, int userid, int replyid){
+        this.content = content;
+        this.productid = productid;
+        this.userid = userid;
+        this.replyid = replyid;
+        Date date = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        time = df.format(date);
+        this.state = 1;
+    }
+
 
     public int getId() {
         return id;
