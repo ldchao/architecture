@@ -111,15 +111,42 @@ public class SellerDaoImpl implements SellerDao {
 		
 	}
 
-//	@Override
-//	public Seller getAllSellers() {
-//		Session session=ReadConnection.getSession();
-//		Transaction transaction= session.beginTransaction();
-//		
-//		List<Seller> list=session.createQuery("from Seller").list();
-//		
-//		if()
-//		
-//		return null;
-//	}
+	@Override
+	public List<Seller> getAllSellers() {
+		Session session=ReadConnection.getSession();
+		Transaction transaction= session.beginTransaction();
+		
+		List<Seller> list=session.createQuery("from Seller").list();
+		
+		transaction.commit();
+		session.close();
+		
+		
+		if(list.size()==0||list==null){
+			return null;
+		}else{
+			return list;
+		}
+		
+	
+	}
+
+	@Override
+	public List<Seller> getAllSellersByPlatform(String platform) {
+		Session session=ReadConnection.getSession();
+		Transaction transaction= session.beginTransaction();
+		
+		List<Seller> list=session.createQuery("from Seller where platform=?").setParameter(0, platform).list();
+		
+		transaction.commit();
+		session.close();
+		
+		
+		if(list.size()==0||list==null){
+			return null;
+		}else{
+			return list;
+		}
+
+	}
 }

@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import Entity.Seller;
 
 /**
@@ -33,12 +35,20 @@ public interface SellerDao {
      */
     public Seller searchByName(String name);
     
-//    /**
-//     * 获得所有seller
-//     * @param name
-//     * @return
-//     */
-//    public Seller getAllSellers();
+    /**
+     * 获得所有seller
+     * @param name
+     * @return
+     */
+    public List<Seller> getAllSellers();
+    
+    
+    /**
+     * 获得所有seller
+     * @param name
+     * @return
+     */
+    public List<Seller> getAllSellersByPlatform(String platform);
     
     
 }
