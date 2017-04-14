@@ -86,7 +86,7 @@ public class MainController {
      */
     @RequestMapping("/adsManage")
     public ModelAndView adsManage() {
-        ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        ModelAndView mv = new ModelAndView("managerJSP/adsManage");
         return mv;
     }
 

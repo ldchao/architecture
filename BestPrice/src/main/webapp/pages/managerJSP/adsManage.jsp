@@ -1,4 +1,4 @@
-<%--
+<%@ page import="vo.UserVO" %><%--
   Created by IntelliJ IDEA.
   User: marioquer
   Date: 2017/4/14
@@ -6,10 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <%@include file="../commonJSP/head.jsp" %>
 </head>
+
+<%  HttpSession se = request.getSession();
+    UserVO userVO = (UserVO)se.getAttribute("user");
+    System.out.println(userVO.getName());
+%>
+
+
 <body>
 <header>
     <nav class="top-nav teal">
@@ -21,6 +29,7 @@
     <%@ include file="../commonJSP/managerNav.jsp" %>
 
 </header>
+
 
 <main>
     <div class="container" style="min-height: 500px;">
