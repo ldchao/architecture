@@ -68,6 +68,13 @@ public class MainController {
     }
 
 
+    @RequestMapping("/searchView")
+    public ModelAndView searchView(String key){
+        ModelAndView modelAndView = new ModelAndView("searchJSP/search");
+        return modelAndView;
+    }
+
+
     @RequestMapping("/getVolume")
     @ResponseBody
     public String getVisitorVolume() {
