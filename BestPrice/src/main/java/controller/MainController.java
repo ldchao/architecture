@@ -10,6 +10,10 @@ import task.DispatcherMonitor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by Administrator on 2017/3/29.
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class MainController {
 
+    private static String realPath;
     @Autowired
     SearchGoodService searchGoodService;
 
@@ -32,7 +37,9 @@ public class MainController {
      * @return index
      */
     @RequestMapping("/index")
-    public String index() {
+    public String index(HttpServletRequest httpServletRequest) {
+        realPath=httpServletRequest.getSession().getServletContext().getRealPath("/");
+        System.out.println(realPath);
         return "index";
     }
 
@@ -79,6 +86,10 @@ public class MainController {
     @ResponseBody
     public String getVisitorVolume() {
         return "10";
+    }
+
+    public static String getServletContextPath(){
+        return realPath;
     }
 
 }
