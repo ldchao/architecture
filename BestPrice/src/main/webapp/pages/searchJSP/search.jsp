@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>搜索</title>
-
+<%@include file="../commonJSP/head.jsp"%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/favicon.ico">
     <link rel="stylesheet" href="/css/search/normalize.css">
     <link rel="stylesheet" href="/css/search/font-awesome.min.css">
@@ -20,7 +20,9 @@
 
 <body>
 
-<%@include file="../commonJSP/navbar.jsp"%>
+<%--<%@include file="../commonJSP/navbar.jsp"%>--%>
+<%@include file="../commonJSP/header.jsp"%>
+
 <%@include file="../commonJSP/searchHeader.jsp"%>
 
 <div class="wrapper">
@@ -30,6 +32,23 @@
     </div>
 
 </div>
+
+<div class="choice">
+    <div class="sort">
+        <button class="sortButton">综合</button>
+        <button class="sortButton">购买量</button>
+        <button class="sortButton">评论量</button>
+        <button class="sortButton">价格</button>
+    </div>
+
+    <%--<div class="filter">--%>
+        <%--<button class="filterButton">未加盟</button>--%>
+        <%--<button class="filterButton">购买过少</button>--%>
+        <%--<button class="filterButton">评论过少</button>--%>
+    <%--</div>--%>
+
+</div>
+
 
 
 <script>
