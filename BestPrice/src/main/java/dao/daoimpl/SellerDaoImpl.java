@@ -85,4 +85,25 @@ public class SellerDaoImpl implements SellerDao {
 		
 		return seller;
     }
+
+	@Override
+	public Seller searchByName(String name) {
+		Session session=ReadConnection.getSession();
+		Transaction transaction= session.beginTransaction();
+		List<Seller> list=session.createQuery("from Seller where name=?").setParameter(0, name).list();
+		
+		
+		transaction.commit();
+		session.close();
+		
+		if (list.size()==0||list==null) {
+			return null;
+		}
+		
+		Seller seller=list.get(0);
+		
+		
+		return seller;
+		
+	}
 }

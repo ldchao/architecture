@@ -7,8 +7,28 @@ public class CrawlerConfig {
     private String url;
     private String handler;
     private String persistence;
+    
+    private String productName;
+    
+    private String platform;
 
-    public String getUrl() {
+    public String getPlatform() {
+		return platform;
+	}
+
+	public void setPlatform(String platform) {
+		this.platform = platform;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getUrl() {
         return url;
     }
 

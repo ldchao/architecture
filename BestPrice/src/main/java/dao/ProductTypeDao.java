@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import Entity.ProductType;
 
 public interface ProductTypeDao {
@@ -22,5 +24,8 @@ public interface ProductTypeDao {
 	
 	//根据品类名获得品类
 	public ProductType getProductTypeByName(String name);
+	
+	//获得所有品类名
+	public ArrayList<String> getAllProductName();
 	
 }

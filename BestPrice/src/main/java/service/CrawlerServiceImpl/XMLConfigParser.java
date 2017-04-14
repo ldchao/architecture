@@ -11,17 +11,21 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import vo.PatternAndPlatform;
+
 
 
 public class XMLConfigParser {
-	public static final String filepath="/Users/peiyulin/Desktop/crawlerConfig.xml";
+	public static final String filepath="src/main/resources/crawlerConfig.xml";
 	
-	public ArrayList<String> parseScheduler(){
+	public ArrayList<PatternAndPlatform> parseConfig(){
 		DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder db = factory.newDocumentBuilder();
 			Document doc = db.parse(filepath);  
 			
+			
+			ArrayList<PatternAndPlatform> pAndPlatforms=new ArrayList<PatternAndPlatform>();
 			
 			ArrayList<String> strarr=new ArrayList<String>();
 			
@@ -42,13 +46,24 @@ public class XMLConfigParser {
 				
 				String aString=url.getFirstChild().getNodeValue();
 				
-				strarr.add(aString);
+				
+				String plat=url.getAttributes().item(0).getNodeValue();
+				
+				PatternAndPlatform patternAndPlatform=new PatternAndPlatform();
+				
+				patternAndPlatform.setUrlpattern(aString);
+				
+				//add platform
+				
+				patternAndPlatform.setPlatform(plat);
+				
+				pAndPlatforms.add(patternAndPlatform);
 			}
 			
 			
 
 			
-			return strarr;
+			return pAndPlatforms;
 			
 			
 		} catch (Exception e) {

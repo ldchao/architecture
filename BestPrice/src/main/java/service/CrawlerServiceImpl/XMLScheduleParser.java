@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 
 
 public class XMLScheduleParser {
-	public static final String filepath="/Users/peiyulin/Desktop/time.xml";
+	public static final String filepath="src/main/resources/time.xml";
 	
 	public String parseScheduler(){
 		DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();

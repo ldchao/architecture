@@ -25,4 +25,13 @@ public interface SellerDao {
      * @return
      */
     public Seller searchById(int id);
+    
+    /**
+     * 根据name搜seller
+     * @param name
+     * @return
+     */
+    public Seller searchByName(String name);
+    
+    
 }
