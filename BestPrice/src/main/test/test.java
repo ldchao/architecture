@@ -1,34 +1,29 @@
-package service.CrawlerServiceImpl;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import service.CrawlerService.AbstractStrategy.AbstractHandler;
-import service.CrawlerServiceImpl.ConcreteStrategy.JingDongHandler;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import service.CrawlerServiceImpl.CrawlerScheduler;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by mm on 2017/4/10.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/dispatcher-servlet.xml" })
 public class test {
-    public static void main(String[] args){
-//        DangDang("iphone 6s plus");
-//        Handle("绿豆");
-//        ArrayList<String> arrayList=new ArrayList<>();
-//        arrayList.add("123");
-//        arrayList.add("shop");
-//        System.out.println(arrayList.contains("shop"));
-//        CrawlerConfiger cfg=new CrawlerConfiger();
-//        CrawlerConfigHandler crawlerConfigHandler=new CrawlerConfigHandler();
-//        ArrayList<Spider> arrayList=crawlerConfigHandler.handleConfig(cfg.getCrawlerConfigs());
+
+    @Test
+    public void test(){
         CrawlerScheduler crawlerScheduler=CrawlerScheduler.getInstance();
         crawlerScheduler.startControlCrawler();
-//        JingDongHandler jingDongHandler=new JingDongHandler();
-//        String target="绿豆";
-//        jingDongHandler.handlerHtml(fetch("https://search.jd.com/Search?keyword="+target+"&enc=utf-8&wq="+target));
+
     }
 
     public static Document fetch(String url) {

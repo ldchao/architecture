@@ -43,9 +43,9 @@ public class CrawlerConfiger {
 				
 				url=url.replaceAll("@@", pname);
 				
-				System.out.println(patternandplat.getPlatform());
+//				System.out.println(patternandplat.getPlatform());
 				
-//				System.out.println(url+";;;;;"+config.getProductName());
+				System.out.println(url+";;;;;"+config.getProductName());
 				
 				config.setUrl(url);
 				cfglist.add(config);

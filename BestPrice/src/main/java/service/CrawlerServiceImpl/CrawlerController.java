@@ -15,7 +15,7 @@ public class CrawlerController implements CrawlerControllerService,Runnable{
     private ArrayList<CrawlerConfig> crawlerConfigs;
     private CrawlerScheduleService crawlerSchedule;
 
-    @Autowired
+
     private CrawlerConfigHandlerService crawlerConfigHandler;
 
     private boolean activated;
@@ -29,6 +29,7 @@ public class CrawlerController implements CrawlerControllerService,Runnable{
     public boolean updateConfig(ArrayList<CrawlerConfig> crawlerConfigs) {
         this.crawlerConfigs=crawlerConfigs;
         if (this.crawlerConfigs!=null&&checkNotNulls(crawlerConfigs)){
+            crawlerConfigHandler=new CrawlerConfigHandler();
             this.spiders=crawlerConfigHandler.handleConfig(this.crawlerConfigs);
             return true;
         }else {

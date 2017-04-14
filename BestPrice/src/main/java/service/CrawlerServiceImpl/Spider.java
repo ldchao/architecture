@@ -5,8 +5,10 @@ import org.jsoup.nodes.Document;
 import service.CrawlerService.AbstractStrategy.AbstractHandler;
 import service.CrawlerService.AbstractStrategy.AbstractPersistence;
 import service.CrawlerService.SpiderService;
+import vo.CrawlerVO;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by mm on 2017/4/9.
@@ -14,7 +16,7 @@ import java.io.IOException;
 public class Spider implements SpiderService{
     AbstractHandler abstractHandler;
     AbstractPersistence abstractPersistence;
-    private String url;
+    public String url;
     private String target;
     public Spider(){
 
@@ -24,15 +26,20 @@ public class Spider implements SpiderService{
         this.abstractHandler = abstractHandler;
         this.abstractPersistence = abstractPersistence;
         this.url = url;
+        this.target=target;
     }
 
     public void startCrawlling() {
-        abstractPersistence.persist(abstractHandler.handlerHtml(fetch(url)),target);
+        ArrayList<CrawlerVO> arrayList= (ArrayList<CrawlerVO>) abstractHandler.handlerHtml(fetch(url));
+        abstractPersistence.registerShop(arrayList);
+        abstractPersistence.persist(arrayList,target);
     }
 
     public Document fetch(String url) {
         try {
-            return Jsoup.connect(url).get();
+            return Jsoup.connect(url).data("query", "Java").userAgent("Mozilla")
+                    .cookie("auth", "token")
+                    .post();
         } catch (IOException e) {
             e.printStackTrace();
         }

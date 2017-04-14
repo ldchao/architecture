@@ -32,6 +32,7 @@ public class DangDangHandler implements AbstractHandler<CrawlerVO> {
                     crawlerVO.setName(name);
                     crawlerVO.setPrice(Double.parseDouble(price.substring(1)));
                     crawlerVO.setStore(store);
+                    System.out.println(crawlerVO.getName()+" "+crawlerVO.getPrice()+" "+crawlerVO.getStore()+" "+crawlerVO.getLink());
                     arrayList.add(crawlerVO);
                 }catch (Exception e){
                     e.printStackTrace();

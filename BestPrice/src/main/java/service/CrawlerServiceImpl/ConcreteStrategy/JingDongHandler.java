@@ -45,6 +45,7 @@ public class JingDongHandler implements AbstractHandler<CrawlerVO>{
                     crawlerVO.setLink(url);
                     crawlerVO.setPrice(Double.parseDouble(price));
                     crawlerVO.setStore(store);
+                    System.out.println(crawlerVO.getName()+" "+crawlerVO.getPrice()+" "+crawlerVO.getStore()+" "+crawlerVO.getLink());
                     arrayList.add(crawlerVO);
                 } catch (Exception e) {
                     e.printStackTrace();

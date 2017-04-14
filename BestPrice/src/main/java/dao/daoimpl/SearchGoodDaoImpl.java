@@ -96,7 +96,7 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
 		
 		Transaction transaction= session.beginTransaction();
     	
-		List<String> strlist=session.createSQLQuery("select word from HomoWord where groupid in(select groupid from HomoWord where word=?)").setParameter(0, key).list();
+		List<String> strlist=session.createSQLQuery("select word from HomoWord where groupid in(select groupid from HomoWord where word=?) limit 0,30").setParameter(0, key).list();
     	
 		transaction.commit();
 		session.close();

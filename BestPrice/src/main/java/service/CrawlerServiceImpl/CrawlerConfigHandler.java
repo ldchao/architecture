@@ -1,5 +1,6 @@
 package service.CrawlerServiceImpl;
 
+import org.springframework.stereotype.Service;
 import service.CrawlerService.AbstractStrategy.AbstractHandler;
 import service.CrawlerService.AbstractStrategy.AbstractPersistence;
 import service.CrawlerService.CrawlerConfigHandlerService;
@@ -18,7 +19,7 @@ public class CrawlerConfigHandler implements CrawlerConfigHandlerService {
             try {
                 AbstractHandler abstractHandler= (AbstractHandler) Class.forName("service.CrawlerServiceImpl.ConcreteStrategy."+crawlerConfig.getHandler()).newInstance();
                 AbstractPersistence abstractPersistence=(AbstractPersistence) Class.forName("service.CrawlerServiceImpl.ConcreteStrategy."+crawlerConfig.getPersistence()).newInstance();
-                spiders.add(new Spider(abstractHandler, abstractPersistence, crawlerConfig.getUrl(),"target"));
+                spiders.add(new Spider(abstractHandler, abstractPersistence, crawlerConfig.getUrl(),crawlerConfig.getProductName()));
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

@@ -10,7 +10,7 @@ import vo.CrawlerConfig;
 
 public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 	
-	private static boolean isStart=true;
+	private static boolean isStart=false;
 	
 	private static CrawlerScheduler scheduler;
 	
@@ -34,8 +34,8 @@ public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 			System.out.println("crawler is already started,If you want to force start,call forceStart()");
 			return;
 		}
-		
-		
+
+
 		thread=new Thread(this);
 		thread.start();
 	}
@@ -47,10 +47,10 @@ public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 
 	public void run() {
 		XMLScheduleParser parser=new XMLScheduleParser();
-		
+
+		isStart=true;
+
 		while (isStart) {
-			
-		
 		String timegap=parser.parseScheduler();
 		
 		long timemills=(long) (Double.parseDouble(timegap)*60*1000);
@@ -66,9 +66,9 @@ public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 			ArrayList<CrawlerConfig> list= cfger.getCrawlerConfigs();
 			
 			csControllerService.updateConfig(list);
-			
-			csControllerService.StartCrawlling();
 			System.out.println("Crawler is starting");
+			csControllerService.StartCrawlling();
+
 			Thread.sleep(timemills);
 			
 		} catch (InterruptedException e) {
