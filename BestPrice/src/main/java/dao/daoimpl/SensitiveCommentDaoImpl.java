@@ -39,7 +39,7 @@ public class SensitiveCommentDaoImpl implements SensitiveCommentDao {
     public void deleteSenComment(int comId) {
 
         Session session = MainConnection.getSession();
-        Comment comment = session.load(Comment.class, comId);
+        Comment comment = session.get(Comment.class, comId);
         comment.setState(-1);
         session.update(comment);
         MainConnection.closeSession(session);
