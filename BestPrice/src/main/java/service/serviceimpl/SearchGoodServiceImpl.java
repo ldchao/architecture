@@ -32,9 +32,14 @@ public class SearchGoodServiceImpl implements SearchGoodService{
     public List<GoodVO> searchGoods(String key) {
         goodVOS=new ArrayList<GoodVO>();
         List<String> synonymList=searchGoodDao.searchHomoWord(key);
+        if(synonymList==null){
+            synonymList=new ArrayList<String>();
+            synonymList.add(key);
+        }
         for (String synonymKey:synonymList) {
             List<GoodVO> subResult=searchGoodDao.searchGoods(synonymKey);
-            goodVOS.addAll(subResult);
+            if(subResult!=null)
+                goodVOS.addAll(subResult);
         }
         return goodVOS;
     }
