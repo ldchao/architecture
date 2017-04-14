@@ -29,7 +29,7 @@ public class SensitiveCommentDaoImpl implements SensitiveCommentDao {
     public List<Comment> getSenComment() {
 
         Session session = ReadConnection.getSession();
-        String hql = "from Comment where state=0";
+        String hql = "from Comment c where c.state=0";
         List<Comment> comments = session.createQuery(hql).list();
         ReadConnection.closeSession(session);
 
@@ -39,7 +39,7 @@ public class SensitiveCommentDaoImpl implements SensitiveCommentDao {
     public void deleteSenComment(int comId) {
 
         Session session = MainConnection.getSession();
-        Comment comment = session.get(Comment.class, comId);
+        Comment comment = session.load(Comment.class, comId);
         comment.setState(-1);
         session.update(comment);
         MainConnection.closeSession(session);
