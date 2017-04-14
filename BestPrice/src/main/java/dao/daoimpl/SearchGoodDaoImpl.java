@@ -114,18 +114,19 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
 
 		Transaction transaction= session.beginTransaction();
 
-		List<Product> goodList=session.createSQLQuery("SELECT * FROM Product WHERE id >= ((SELECT MAX(id) FROM Product)-(SELECT MIN(id) FROM Product)) * RAND() + (SELECT MIN(id) FROM Product) LIMIT 4").list();
+		List<Object[]> goodList=session.createSQLQuery("SELECT * FROM Product WHERE id >= ((SELECT MAX(id) FROM Product)-(SELECT MIN(id) FROM Product)) * RAND() + (SELECT MIN(id) FROM Product) LIMIT 4").list();
+
 
 		ArrayList<GoodVO> goodVOs =new ArrayList<GoodVO>();
-		for(Product product:goodList){
+		for(Object[] o:goodList){
 			GoodVO goodVO = new GoodVO();
-			goodVO.setLink(product.getLink());
-			goodVO.setPrice(product.getPrice());
+			goodVO.setLink((String) o[3]);
+			goodVO.setPrice((Double)o[2]);
 			ProductTypeDaoImpl productTypeDao = new ProductTypeDaoImpl();
-			ProductType productType=productTypeDao.getProductTypeByID(product.getTypeid());
+			ProductType productType=productTypeDao.getProductTypeByID((Integer)o[1]);
 			goodVO.setProduct_name(productType.getName());
 			SellerDaoImpl sellerDao =new SellerDaoImpl();
-			Seller seller =sellerDao.searchById(product.getSellerid());
+			Seller seller =sellerDao.searchById((Integer)o[4]);
 			goodVO.setSeller_name(seller.getName());
 			goodVOs.add(goodVO);
 		}
