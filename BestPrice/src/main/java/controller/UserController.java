@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.UserService;
 import service.admincheck.AdminCheck;
+import vo.ShoppingCart;
 import vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,11 @@ public class UserController {
         if (userVO == null) {
             return "fail";
         } else {
+            ShoppingCart cart = new ShoppingCart();
+            Double allcost = 0.0;
             request.getSession().setAttribute("user", userVO);
+            request.getSession().setAttribute("shoppingCart", cart);
+            request.getSession().setAttribute("allcost", allcost);
             if(userVO.getState()==1){
                 return "user";  //普通用户
             }else if(userVO.getState()==-1){

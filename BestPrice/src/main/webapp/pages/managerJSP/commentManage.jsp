@@ -1,4 +1,9 @@
-<%@ page import="vo.UserVO" %><%--
+<%@ page import="vo.UserVO" %>
+<%@ page import="Entity.Comment" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page isELIgnored="false" %>
+
+<%--
   Created by IntelliJ IDEA.
   User: marioquer
   Date: 2017/4/14
@@ -12,12 +17,6 @@
     <%@include file="../commonJSP/head.jsp" %>
 </head>
 
-<%  HttpSession se = request.getSession();
-    UserVO userVO = (UserVO)se.getAttribute("user");
-    System.out.println(userVO.getName());
-%>
-
-
 <body>
 <header>
     <nav class="top-nav teal">
@@ -30,38 +29,97 @@
 
 </header>
 
-
 <main>
     <div class="container" style="min-height: 500px;">
         <table class="highlight">
             <thead>
             <tr>
                 <th>id</th>
-                <th></th>
-                <th>房间类型</th>
-                <%--<th>数目</th>--%>
-                <th>预定时间</th>
-                <th>总价</th>
-                <th>状态</th>
-                <th>操作</th>
+                <th>评论内容</th>
+                <th>时间</th>
+                <th>删除</th>
+                <th>发布</th>
             </tr>
             </thead>
             <tbody id="record_container">
-            <tr class="none" id="record_pattern">
-                <td class="record_id">1</td>
-                <td class="hotel_id none">老王客栈很长的</td>
-                <td class="hotel_name">老王客栈很长的</td>
-                <td class="room_style">单人房</td>
-                <%--<td class="days">2</td>--%>
-                <td class="book_time">2016-10-11 10:00:00</td>
-                <td class="amount">400</td>
-                <td class="status">已预定</td>
-                <td><a class="btn teal" onclick="cancel(this)">退订</a></td>
+            <%
+                ArrayList<Comment> comments = (ArrayList<Comment>) request.getAttribute("senComments");
+                for (int i = 0; i < comments.size(); i++) {
+            %>
+            <tr class="">
+                <td class="id"><%=comments.get(i).getId()%></td>
+                <td class="content"><%=comments.get(i).getContent()%></td>
+                <td class="productId none"><%=comments.get(i).getProductid()%></td>
+                <td class="userId none"><%=comments.get(i).getUserid()%></td>
+                <td class="replyId none"><%=comments.get(i).getReplyid()%></td>
+                <td class="time"><%=comments.get(i).getTime()%></td>
+                <td><a class="btn teal" onclick="cancel(this)">删除</a></td>
+                <td><a class="btn teal" onclick="publish(this)">发布</a></td>
             </tr>
+            <%
+                }
+            %>
             </tbody>
         </table>
     </div>
 </main>
 <%@include file="../commonJSP/script.jsp" %>
+<script>
+    function cancel(obj){
+        var id = obj.parentNode.parentNode.getElementsByClassName("id")[0].innerHTML;
+        $.ajax({
+            method: "post",
+            url: "/comment/comment/delete",
+            async: false,
+            data: {
+                "comId": id
+            },
+            success: function (result) {
+                if (result == "success") {
+                    Materialize.toast('操作成功!', 1800);
+                    setInterval((function () {
+                        window.location.reload();
+                    }()), 1800);
+                }
+            },
+            error: function () {
+                Materialize.toast('请求出错!', 1200);
+            }
+        });
+    }
+
+    function publish(obj){
+        var parent = obj.parentNode.parentNode;
+        var content = parent.getElementsByClassName("content")[0].innerHTML;
+        var productId = parent.getElementsByClassName("productId")[0].innerHTML;
+        var userId = parent.getElementsByClassName("userId")[0].innerHTML;
+        var replyId = parent.getElementsByClassName("replyId")[0].innerHTML;
+
+        $.ajax({
+            method: "post",
+            url: "/comment/comment/publish",
+            async: false,
+            data: {
+                "content": content,
+                "productid": productId,
+                "userid": userId,
+                "replyid": replyId
+            },
+            success: function (result) {
+                if (result == "success") {
+                    Materialize.toast('操作成功!', 1800);
+                    setInterval((function () {
+                        window.location.reload();
+                    }()), 1800);
+                }else{
+                    Materialize.toast('操作失败!', 1800);
+                }
+            },
+            error: function () {
+                Materialize.toast('请求出错!', 1200);
+            }
+        });
+    }
+</script>
 </body>
 </html>

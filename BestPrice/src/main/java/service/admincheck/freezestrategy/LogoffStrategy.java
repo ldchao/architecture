@@ -1,6 +1,7 @@
 package service.admincheck.freezestrategy;
 
 import dao.WaterUserDao;
+import dao.daoimpl.WaterUserDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LogoffStrategy implements FreezeStrategy {
 
-    @Autowired
-    private WaterUserDao waterUserDao;
+    private WaterUserDao waterUserDao = new WaterUserDaoImpl();
 
     public void freezeUser(int userId) {
 

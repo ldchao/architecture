@@ -73,7 +73,7 @@ public class MainController {
      */
     @RequestMapping("/userManage")
     public ModelAndView userManage() {
-        ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        ModelAndView mv = new ModelAndView("managerJSP/userManage");
         ArrayList<User> users = adminCheck.getWaterUser();
         mv.addObject("waterUser", users);
 
@@ -97,6 +97,11 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping("/toSearch")
+    public String searchView(String key, HttpServletRequest request){
+        request.getSession().setAttribute("key", key);
+        return "success";
+    }
 
     @RequestMapping("/getVolume")
     @ResponseBody
