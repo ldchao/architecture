@@ -42,8 +42,9 @@ public class MainController {
      * @return commentManage
      */
     @RequestMapping("/commentManage")
-    public String commentManage() {
-        return "managerJSP/commentManage";
+    public ModelAndView commentManage() {
+        ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        return mv;
     }
 
     /**
@@ -51,8 +52,9 @@ public class MainController {
      * @return userManage
      */
     @RequestMapping("/userManage")
-    public String userManage() {
-        return "managerJSP/userManage";
+    public ModelAndView userManage() {
+        ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        return mv;
     }
 
     /**
@@ -60,8 +62,9 @@ public class MainController {
      * @return adsManage
      */
     @RequestMapping("/adsManage")
-    public String adsManage() {
-        return "managerJSP/adsManage";
+    public ModelAndView adsManage() {
+        ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        return mv;
     }
 
 
