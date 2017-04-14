@@ -1,7 +1,12 @@
 package service.serviceimpl.adServiceImpl;
 
+import Entity.ADs;
+import dao.AdDao;
+import dao.daoimpl.AdDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.AdProcessorService;
+
+import java.util.List;
 
 /**
  * Created by marioquer on 2017/4/9.
@@ -10,7 +15,7 @@ public class AdManager {
 
     @Autowired
     AdProcessorService adProcessorService;
-
+    AdDao adDao =new AdDaoImpl();
     //observerList<>
 
     //设定广告处理策略类
@@ -18,7 +23,10 @@ public class AdManager {
         adProcessorService = ad;
     }
 
-    //增加广告
+
+    // 获取广告
+    public ADs get(){ return adDao.getAll().get(0);}
+
     public boolean add(){
         return false;
     }

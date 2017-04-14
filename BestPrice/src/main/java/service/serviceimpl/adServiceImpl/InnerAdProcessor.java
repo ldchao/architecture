@@ -1,5 +1,8 @@
 package service.serviceimpl.adServiceImpl;
 
+import Entity.ADs;
+import dao.AdDao;
+import dao.daoimpl.AdDaoImpl;
 import service.AdProcessorService;
 
 /**
@@ -7,9 +10,10 @@ import service.AdProcessorService;
  */
 public class InnerAdProcessor implements AdProcessorService {
 
-
+    AdDao adDao =new AdDaoImpl();
     //position
-
+    // 获取广告
+    public ADs get(){ return adDao.getAll().get(0);}
      public boolean add() {
         return false;
     }

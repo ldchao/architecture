@@ -23,11 +23,16 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
      * 商品信息页的生成方法
      */
     public void generate() {
+        System.out.println("ggg1");
         String path=MainController.getServletContextPath();
+        System.out.println("ggg2");
         String readFilePath = path+"html/recommendTemplate.html";
         String writeFilePath = path+"html/recommend.html";
         goodVOList= getHotGoodsService.getHotGoods();
+        System.out.println("gg3");
         googId = 0;
+        System.out.println("ggg4");
+        System.out.println(readFilePath);
         write(writeFilePath,read(readFilePath));
     }
 
@@ -55,14 +60,15 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
         BufferedReader br = null;
         String line = null;
         StringBuffer buf = new StringBuffer();
-
+        System.out.println(filePath);
         try {
             // 根据文件路径创建缓冲输入流
             br = new BufferedReader(new FileReader(filePath));
-
+            System.out.println(filePath);
             // 循环读取文件的每一行, 对需要修改的行进行修改, 放入缓冲对象中
             while ((line = br.readLine()) != null) {
                 // 此处根据实际需要修改某些行的内容
+                System.out.println(line);
                 if(line.contains("###商品名###"))
                 {
                     buf.append(replaceMyLine(line,goodVOList.get(googId).getProduct_name()));

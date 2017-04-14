@@ -10,7 +10,6 @@ import service.HtmlGenerateService;
 public class Generator {
 
 
-    @Autowired
     HtmlGenerateService htmlGenerateService;
 
     public void setHtmlGenerateService(HtmlGenerateService html){
