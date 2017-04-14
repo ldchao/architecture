@@ -29,6 +29,7 @@ public class WaterUserDaoImpl implements WaterUserDao {
         Session session = MainConnection.getSession();
         User user = session.find(User.class, userId);
         user.setState(-1);
+        session.update(user);
         MainConnection.closeSession(session);
     }
 
