@@ -6,6 +6,7 @@ import dao.daoimpl.AdDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.AdProcessorService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class AdManager {
 
 
     // 获取广告
-    public ADs get(){ return adDao.getAll().get(0);}
+    public ArrayList<ADs> get(){ return (ArrayList<ADs>)adDao.getAll();}
 
     public boolean add(){
         return false;

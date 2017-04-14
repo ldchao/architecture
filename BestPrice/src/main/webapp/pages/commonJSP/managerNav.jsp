@@ -13,7 +13,7 @@
                 <img src="/img/background.jpg">
             </div>
             <a href="#!user"><img class="circle" src="/img/mario.jpg"></a>
-            <a href="#!name" style="height: 60px; font-size: 30px;"><span class="white-text name"><%=userVO.getName()%></span></a>
+            <a href="#!name" style="height: 60px; font-size: 30px;"><span class="white-text name">${sessionScope.get("user").getName()}</span></a>
         </div>
     </li>
     <li class="margin-top-10"><a href="/commentManage" class="waves-effect"><i class="material-icons">business</i>评论管理</a></li>

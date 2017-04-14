@@ -1,5 +1,6 @@
 package controller;
 
+import Entity.ADs;
 import Entity.Comment;
 import Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import service.SearchGoodService;
 import service.admincheck.AdminCheck;
+import service.serviceimpl.adServiceImpl.AdManager;
 import task.DispatcherMonitor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,7 +75,7 @@ public class MainController {
      */
     @RequestMapping("/userManage")
     public ModelAndView userManage() {
-        ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        ModelAndView mv = new ModelAndView("managerJSP/userManage");
         ArrayList<User> users = adminCheck.getWaterUser();
         mv.addObject("waterUser", users);
 
@@ -86,7 +88,10 @@ public class MainController {
      */
     @RequestMapping("/adsManage")
     public ModelAndView adsManage() {
+        AdManager adManager = new AdManager();
         ModelAndView mv = new ModelAndView("managerJSP/adsManage");
+        ArrayList<ADs> ads = adManager.get();
+        mv.addObject("ads", ads);
         return mv;
     }
 
@@ -97,6 +102,10 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping("/toSearch")
+    public void toSearch(String key, HttpServletRequest request){
+        request.getSession().setAttribute("key", key);
+    }
 
     @RequestMapping("/getVolume")
     @ResponseBody

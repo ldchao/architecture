@@ -1,4 +1,9 @@
-<%@ page import="vo.UserVO" %><%--
+<%@ page import="vo.UserVO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Entity.User" %>
+<%@ page isELIgnored="false" %>
+
+<%--
   Created by IntelliJ IDEA.
   User: marioquer
   Date: 2017/4/14
@@ -12,12 +17,6 @@
     <%@include file="../commonJSP/head.jsp" %>
 </head>
 
-<%  HttpSession se = request.getSession();
-    UserVO userVO = (UserVO)se.getAttribute("user");
-    System.out.println(userVO.getName());
-%>
-
-
 <body>
 <header>
     <nav class="top-nav teal">
@@ -30,38 +29,59 @@
 
 </header>
 
-
 <main>
     <div class="container" style="min-height: 500px;">
         <table class="highlight">
             <thead>
             <tr>
-                <th>id</th>
-                <th></th>
-                <th>房间类型</th>
-                <%--<th>数目</th>--%>
-                <th>预定时间</th>
-                <th>总价</th>
-                <th>状态</th>
+                <th>用户id</th>
+                <th>用户名</th>
+                <th>邮箱</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody id="record_container">
-            <tr class="none" id="record_pattern">
-                <td class="record_id">1</td>
-                <td class="hotel_id none">老王客栈很长的</td>
-                <td class="hotel_name">老王客栈很长的</td>
-                <td class="room_style">单人房</td>
-                <%--<td class="days">2</td>--%>
-                <td class="book_time">2016-10-11 10:00:00</td>
-                <td class="amount">400</td>
-                <td class="status">已预定</td>
-                <td><a class="btn teal" onclick="cancel(this)">退订</a></td>
+            <%
+                ArrayList<User> users = (ArrayList<User>) request.getAttribute("waterUser");
+                for (int i = 0; i < users.size(); i++) {
+            %>
+            <tr class="">
+                <td class="id"><%=users.get(i).getUserid()%></td>
+                <td class="name"><%=users.get(i).getName()%></td>
+                <td class="email"><%=users.get(i).getEmail()%></td>
+                <td><a class="btn teal" onclick="freeze(this)">冻结</a></td>
             </tr>
+            <%
+                }
+            %>
             </tbody>
         </table>
     </div>
 </main>
 <%@include file="../commonJSP/script.jsp" %>
+<script>
+    function freeze(obj){
+        var id = obj.parentNode.parentNode.getElementsByClassName("id")[0].innerHTML;
+        $.ajax({
+            method: "post",
+            url: "/user/freezeUser",
+            async: false,
+            data: {
+                "userId": id
+            },
+            success: function (result) {
+                if (result == "success") {
+                    Materialize.toast('操作成功!', 1800);
+                    setInterval((function () {
+                        window.location.reload();
+                    }()), 1800);
+                }
+            },
+            error: function () {
+                Materialize.toast('请求出错!', 1200);
+            }
+        });
+    }
+</script>
 </body>
 </html>

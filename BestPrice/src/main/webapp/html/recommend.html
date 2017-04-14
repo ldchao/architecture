@@ -8,6 +8,9 @@
     <link href="/css/materialize.css" type="text/css" rel="stylesheet"
           media="screen,projection"/>
     <link href="/css/common.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="/css/search/normalize.css">
+    <link rel="stylesheet" href="/css/search/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/search/style.css">
 </head>
 <body>
 <!--导航栏-->
@@ -27,9 +30,15 @@
 
 <!--放搜索框和底下的推荐位-->
 
-<div>搜索框</div>
+<div class="content">
 
-<div class="container">
+    <div class="search">
+        <input class="input" id="js-search-input" type="text" placeholder="搜索商品...">
+        <button class="btn-search" id="js-btn-search" onclick="search(this)">搜索</button>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col s12 m3">
             <div class="card">
@@ -51,7 +60,7 @@
                 <div class="card-image">
                     <img src="/img/2.jpg">
                     <span class="card-title">###商品名###</span>
-            </div>
+                </div>
                 <div class="card-content" style="position: relative;">
                     <p>###商家名称###</p>
                     <span style="position:absolute;right: 20px; top: 20px;">###价格###</span>
@@ -100,5 +109,28 @@
 <script src="/js/materialize.js"></script>
 <script src="/js/init.js"></script>
 <script src="/js/index.js"></script>
+<script>
+    function search(obj) {
+        window.location.href = "/searchView";
+
+
+//        var key = $("#js-search-input").val();
+//        $.ajax({
+//            method: "post",
+//            url: "../toSearch",
+//            async: false,
+//            data: {
+//                "key": key
+//            },
+//            success: function (result) {
+//                window.location.href("/searchView");
+//            },
+//            error: function () {
+//                Materialize.toast('请求出错!', 1200);
+//            }
+//        });
+    }
+
+</script>
 </body>
 </html>
