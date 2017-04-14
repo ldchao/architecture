@@ -34,7 +34,6 @@ public class GoodsController{
     PurchaseService purchaseService;
 
     @RequestMapping(value ="/showGoodsInfo")
-    @ResponseBody
     public String showGoodsInfo(int GoodId, HttpServletRequest request) {
         HttpSession sc = request.getSession();
         GoodVO goodVO = showGoodsService.getByGoodId(GoodId);
@@ -97,7 +96,7 @@ public class GoodsController{
         sc.setAttribute("buy_price", buy_price);
         sc.setAttribute("buy_num", buy_num);
         sc.setAttribute("num_buy", buy_date.length); //次数
-        return success;
+        return "goodsJSP/goodsInfo";
 
     }
 

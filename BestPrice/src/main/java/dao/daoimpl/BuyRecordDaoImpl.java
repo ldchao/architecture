@@ -80,12 +80,8 @@ public class BuyRecordDaoImpl implements BuyRecordDao {
             Query query = session.createQuery(hql);
             List aList = query.list();
             ReadConnection.closeSession(session);
-            if(aList.size()==0){
-                return null;
-            }else {
-                List<BuyRecord> buyRecords = (List<BuyRecord>) aList;
-                return buyRecords;
-            }
+            List<BuyRecord> buyRecords = (List<BuyRecord>) aList;
+            return buyRecords;
 
         }catch (Exception e){
             e.printStackTrace();

@@ -56,15 +56,14 @@
             <!-- About section -->
             <div class="about">
                 <%
-                    String goodid = (String)request.getServletContext().getAttribute("goodid");
-                    String price = (String)request.getServletContext().getAttribute("price");
-                    String description = (String)request.getServletContext().getAttribute("description");
-                    String product_name = (String)request.getServletContext().getAttribute("product_name");
-                    String seller_name = (String)request.getServletContext().getAttribute("seller_name");
-                    String platform = (String)request.getServletContext().getAttribute("platform");
-                    String isJoin = (String)request.getServletContext().getAttribute("isJoin");
-                    String sales_volume=(String)request.getServletContext().getAttribute("sales_volume");
-                    String comments_volume=(String)request.getServletContext().getAttribute("comments_volume");
+                    String goodid = (String)session.getAttribute("goodid");
+                    String price = (String)session.getAttribute("price");
+                    String description = (String)session.getAttribute("description");
+                    String product_name = (String)session.getAttribute("product_name");
+                    String seller_name = (String)session.getAttribute("seller_name");
+                    String platform = (String)session.getAttribute("platform");
+                    String isJoin = (String)session.getAttribute("isJoin");
+
 
                 %>
                 <div class="photo-inner"><img src="/img/shop.jsp" height="180" width="180" /></div>
@@ -81,8 +80,7 @@
                 <li><label>出售商家</label><span><%=seller_name%></span></li>
                 <li><label>平台</label><span><%=platform%></span></li>
                 <li><label>是否加入平台</label><span><%=isJoin%></span></li>
-                <li><label>销售数量</label><span><%=sales_volume%></span></li>
-                <li><label>评论数量</label><span><%=comments_volume%></span></li>
+
                 <a href=""class="button gray medium" style="float:right;">去购买</a>
             </ul>
             <!-- /Personal info section -->
@@ -97,10 +95,10 @@
                 <ul class="timeline">
                     <%
 
-                        String[] comment_UsersId= (String[])request.getServletContext().getAttribute("comment_UsersId");
-                        String[] comment_date= (String[])request.getServletContext().getAttribute("comment_date");
-                        String[] comment_content= (String[])request.getServletContext().getAttribute("comment_content");
-                        int num_comment= (Integer)request.getServletContext().getAttribute("num_comment");
+                        String[] comment_UsersId= (String[])session.getAttribute("comment_UsersId");
+                        String[] comment_date= (String[])session.getAttribute("comment_date");
+                        String[] comment_content= (String[])session.getAttribute("comment_content");
+                        int num_comment= (Integer)session.getAttribute("num_comment");
                         for(int i = 0;i<num_comment;i++){
                     %>
                     <li>
@@ -122,11 +120,11 @@
                 <h3 class="main-heading"><span>购买记录</span></h3>
                 <ul class="timeline">
                     <%
-                        String[] buy_UserId = (String[])request.getServletContext().getAttribute("buy_UserId");
-                        String[] buy_date= (String[])request.getServletContext().getAttribute("buy_date");
-                        String[] buy_price = (String[])request.getServletContext().getAttribute("buy_price");
-                        String[] buy_num= (String[])request.getServletContext().getAttribute("buy_num");
-                        int num_buy = (Integer)request.getServletContext().getAttribute("num_buy");
+                        String[] buy_UserId = (String[])session.getAttribute("buy_UserId");
+                        String[] buy_date= (String[])session.getAttribute("buy_date");
+                        String[] buy_price = (String[])session.getAttribute("buy_price");
+                        String[] buy_num= (String[])session.getAttribute("buy_num");
+                        int num_buy = (Integer)session.getAttribute("num_buy");
                         for(int i = 0;i<num_buy ;i++){
                     %>
                     <li>
@@ -161,7 +159,7 @@
             <div class="contact-form">
                 <h3 class="main-heading"><span>发表评论</span></h3>
                 <div id="contact-status"></div>
-                <form action="/comment/makeComment" method="post" id="contactform">
+                <form action="/comment/comment/publish" method="post" id="contactform">
                     <p>
                         <label>评论内容</label>
                         <input type="text" name="content" class="input">

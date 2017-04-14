@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.CommentService;
 import service.admincheck.AdminCheck;
 import vo.CommentVO;
+import vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -35,8 +36,10 @@ public class CommentsController {
      */
     @RequestMapping(value = "/comment/publish")
     @ResponseBody
-    public String makeComment(String content, int productid, int userid, int replyid, HttpServletRequest request) {
-        CommentVO commentVO = new CommentVO(content, productid, userid, replyid);
+    public String makeComment(String content, HttpServletRequest request) {
+        int productid = Integer.parseInt((String)request.getSession().getAttribute("goodid"));
+        UserVO user = (UserVO)request.getSession().getAttribute("user");
+        CommentVO commentVO = new CommentVO(content, productid, user.getUserid(), -1);
         if(commentService.storeComment(commentVO)){
             return success;
         }else{
