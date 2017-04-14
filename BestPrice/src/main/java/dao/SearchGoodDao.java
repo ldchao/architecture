@@ -25,4 +25,10 @@ public interface SearchGoodDao {
      */
     public List<String> searchHomoWord(String key);
 
+    /**
+     * 返回热门商品
+     * @return
+     */
+    public List<GoodVO> getHotGoods();
+
 }

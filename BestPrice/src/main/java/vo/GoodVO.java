@@ -8,6 +8,7 @@ public class GoodVO {
 
     private int id;   //商品id
     private Double price;   //价格
+    private String link;    //商品链接
 
 //    private ProductType productTypeByTypeid;
     private String description;  //商品描述
@@ -27,6 +28,14 @@ public Double getCompetePrice() {
     private int comments_volume; //评论量
 
     public GoodVO() {
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public int getId() {

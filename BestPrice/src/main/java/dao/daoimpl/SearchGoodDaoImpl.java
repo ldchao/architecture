@@ -1,10 +1,14 @@
 package dao.daoimpl;
 
+import Entity.Product;
+import Entity.ProductType;
+import Entity.Seller;
 import dao.CommentDao;
 import dao.PurchaseDao;
 import dao.ReadConnection;
 import dao.SearchGoodDao;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -88,4 +92,30 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
     	
         return strlist;
     }
+
+	public List<GoodVO> getHotGoods() {
+		Session session=ReadConnection.getSession();
+
+		Transaction transaction= session.beginTransaction();
+
+		List<Product> goodList=session.createSQLQuery("SELECT * FROM Product WHERE id >= ((SELECT MAX(id) FROM Product)-(SELECT MIN(id) FROM Product)) * RAND() + (SELECT MIN(id) FROM Product) LIMIT 4").list();
+
+		ArrayList<GoodVO> goodVOs =new ArrayList<GoodVO>();
+		for(Product product:goodList){
+			GoodVO goodVO = new GoodVO();
+			goodVO.setLink(product.getLink());
+			goodVO.setPrice(product.getPrice());
+			ProductTypeDaoImpl productTypeDao = new ProductTypeDaoImpl();
+			ProductType productType=productTypeDao.getProductTypeByID(product.getTypeid());
+			goodVO.setProduct_name(productType.getName());
+			SellerDaoImpl sellerDao =new SellerDaoImpl();
+			Seller seller =sellerDao.searchById(product.getSellerid());
+			goodVO.setSeller_name(seller.getName());
+			goodVOs.add(goodVO);
+		}
+		transaction.commit();
+		session.close();
+		return goodVOs;
+	}
+
 }

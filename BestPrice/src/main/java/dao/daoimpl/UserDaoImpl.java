@@ -99,7 +99,7 @@ public class UserDaoImpl implements UserDao{
 		
 		return user;
 	}
-	
+
 	public User getUserByID(int id) {
 		Session session=ReadConnection.getSession();
 		
