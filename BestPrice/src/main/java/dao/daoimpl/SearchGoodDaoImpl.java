@@ -8,7 +8,6 @@ import dao.PurchaseDao;
 import dao.ReadConnection;
 import dao.SearchGoodDao;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -62,6 +61,7 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
 		   vo.setPlatform((String) o[10]);
 		   vo.setIsJoin((Integer) o[8]);
 		   vo.setCompetePrice((Double) o[9]);
+		   vo.setLink((String) o[5]);
 
 
 			  List<Comment> comments =cDao.fetchAll((Integer) o[3]);
