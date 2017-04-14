@@ -12,7 +12,6 @@
     <%--个性化的css文件统一放在上面include的文件末尾，方便后期合并--%>
 </head>
 <body>
-<%--TODO:个性化的body主体--%>
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo blue-grey-text">爱比价网</a>

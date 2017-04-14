@@ -67,17 +67,12 @@ public class CommentDaoImpl implements CommentDao {
             Query query = session.createQuery(hql);
             List aList = query.list();
             ReadConnection.closeSession(session);
-            if(aList.size()==0){
-                return null;
-            }else {
-                ArrayList<Comment> cList =(ArrayList<Comment>)aList;
-                return cList;
-            }
-
+            ArrayList<Comment> cList =(ArrayList<Comment>)aList;
+            return cList;
         }catch (Exception e){
             e.printStackTrace();
             ReadConnection.closeSession(session);
-            return  null;
+            return  new ArrayList<Comment>();
         }
     }
 

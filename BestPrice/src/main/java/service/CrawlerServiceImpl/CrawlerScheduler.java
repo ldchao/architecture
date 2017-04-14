@@ -2,8 +2,11 @@ package service.CrawlerServiceImpl;
 
 
 
+import java.util.ArrayList;
+
 import service.CrawlerService.CrawlerControllerService;
 import service.CrawlerService.CrawlerScheduleService;
+import vo.CrawlerConfig;
 
 public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 	
@@ -58,6 +61,12 @@ public class CrawlerScheduler implements CrawlerScheduleService,Runnable{
 			// start crawling
 			
 			CrawlerControllerService csControllerService=new CrawlerController();
+			
+			CrawlerConfiger cfger=new CrawlerConfiger();
+			ArrayList<CrawlerConfig> list= cfger.getCrawlerConfigs();
+			
+			csControllerService.updateConfig(list);
+			
 			csControllerService.StartCrawlling();
 			System.out.println("Crawler is starting");
 			Thread.sleep(timemills);

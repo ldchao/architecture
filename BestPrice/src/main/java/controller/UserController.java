@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.UserService;
+import service.admincheck.AdminCheck;
 import vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     @Autowired
     UserService userService;
+    @Autowired
+    AdminCheck adminCheck;
 
     @RequestMapping(value = "/login")
     @ResponseBody
@@ -65,4 +68,16 @@ public class UserController {
         request.getSession().removeAttribute("user");
         return "success";
     }
+
+    /**
+     * 冻结水军
+     * */
+    @RequestMapping(value = "/freezeUser")
+    @ResponseBody
+    public String freezeUser(int userId) {
+
+        adminCheck.freezeUser(userId, "never");
+        return "success";
+    }
+
 }

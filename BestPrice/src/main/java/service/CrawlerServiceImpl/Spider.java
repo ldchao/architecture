@@ -15,18 +15,19 @@ public class Spider implements SpiderService{
     AbstractHandler abstractHandler;
     AbstractPersistence abstractPersistence;
     private String url;
+    private String target;
     public Spider(){
 
     }
 
-    public Spider(AbstractHandler abstractHandler, AbstractPersistence abstractPersistence, String url) {
+    public Spider(AbstractHandler abstractHandler, AbstractPersistence abstractPersistence, String url,String target) {
         this.abstractHandler = abstractHandler;
         this.abstractPersistence = abstractPersistence;
         this.url = url;
     }
 
     public void startCrawlling() {
-        abstractPersistence.persist(abstractHandler.handlerHtml(fetch(url)));
+        abstractPersistence.persist(abstractHandler.handlerHtml(fetch(url)),target);
     }
 
     public Document fetch(String url) {

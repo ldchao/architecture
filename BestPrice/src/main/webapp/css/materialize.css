@@ -2645,8 +2645,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .valign-wrapper .valign {
@@ -2703,10 +2703,10 @@ a {
 }
 
 .bold-divider{
-    height: 2px;
-    overflow: hidden;
-    background-color: rgba(0,0,0,0);
-    margin-top: 5px;
+  height: 2px;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0);
+  margin-top: 5px;
 }
 
 blockquote {
@@ -2863,7 +2863,7 @@ video.responsive-video {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .pin-top, .pin-bottom {
@@ -2884,7 +2884,7 @@ ul.staggered-list li {
 .fade-in {
   opacity: 0;
   -webkit-transform-origin: 0 50%;
-          transform-origin: 0 50%;
+  transform-origin: 0 50%;
 }
 
 /*********************
@@ -3274,7 +3274,7 @@ nav ul a span.badge {
   bottom: 0;
   will-change: left, right;
   -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-          animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
 }
 
 .progress .indeterminate:after {
@@ -3286,9 +3286,9 @@ nav ul a span.badge {
   bottom: 0;
   will-change: left, right;
   -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-          animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+  animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
   -webkit-animation-delay: 1.15s;
-          animation-delay: 1.15s;
+  animation-delay: 1.15s;
 }
 
 @-webkit-keyframes indeterminate {
@@ -3412,8 +3412,8 @@ input[type=range] + .thumb {
 .material-icons {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga';
-     -moz-font-feature-settings: 'liga';
-          font-feature-settings: 'liga';
+  -moz-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
 }
 
 .container {
@@ -3720,22 +3720,22 @@ input[type=range] + .thumb {
     left: auto;
     right: auto;
   }
-    
-    .row .col.m2-5{
-       width: 20%;
+
+  .row .col.m2-5{
+    width: 20%;
     margin-left: auto;
     left: auto;
-    right: auto; 
-    }
-    
-    .row .col.m5-0{
-       width: 60%;
+    right: auto;
+  }
+
+  .row .col.m5-0{
+    width: 60%;
     margin-left: auto;
     left: auto;
-    right: auto; 
-    }
-    
-    
+    right: auto;
+  }
+
+
   .row .col.m3 {
     width: 25%;
     margin-left: auto;
@@ -3919,23 +3919,23 @@ input[type=range] + .thumb {
     left: auto;
     right: auto;
   }
-    
+
   .row .col.l2-5{
-       width: 20%;
+    width: 20%;
     margin-left: auto;
     left: auto;
-    right: auto; 
-    }
-    
-    .row .col.l5-0{
-       width: 60%;
+    right: auto;
+  }
+
+  .row .col.l5-0{
+    width: 60%;
     margin-left: auto;
     left: auto;
-    right: auto; 
-    }    
-    
-    
-    
+    right: auto;
+  }
+
+
+
   .row .col.l3 {
     width: 25%;
     margin-left: auto;
@@ -4163,19 +4163,19 @@ nav .brand-logo {
 nav .brand-logo.center {
   left: 50%;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
     left: 50%;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
   }
   nav .brand-logo.left, nav .brand-logo.right {
     padding: 0;
     -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   nav .brand-logo.left {
     left: 0.5rem;
@@ -4272,7 +4272,7 @@ nav .input-field label.active i {
 
 nav .input-field label.active {
   -webkit-transform: translateY(0);
-          transform: translateY(0);
+  transform: translateY(0);
 }
 
 .navbar-fixed {
@@ -4297,36 +4297,36 @@ nav .input-field label.active {
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Thin), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Thin.eot");
-  src: url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Thin.woff") format("woff"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Thin.ttf") format("truetype");
+  src: local(Roboto Thin), url("/fonts/roboto/Roboto-Thin.eot");
+  src: url("/fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("/fonts/roboto/Roboto-Thin.woff") format("woff"), url("/fonts/roboto/Roboto-Thin.ttf") format("truetype");
   font-weight: 200;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Light), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Light.eot");
-  src: url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Light.woff") format("woff"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Light.ttf") format("truetype");
+  src: local(Roboto Light), url("/fonts/roboto/Roboto-Light.eot");
+  src: url("/fonts/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("/fonts/roboto/Roboto-Light.woff") format("woff"), url("/fonts/roboto/Roboto-Light.ttf") format("truetype");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Regular), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Regular.eot");
-  src: url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Regular.woff") format("woff"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  src: local(Roboto Regular), url("/fonts/roboto/Roboto-Regular.eot");
+  src: url("/fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("/fonts/roboto/Roboto-Regular.woff") format("woff"), url("/fonts/roboto/Roboto-Regular.ttf") format("truetype");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Medium.eot");
-  src: url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Medium.woff") format("woff"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Medium.ttf") format("truetype");
+  src: url("/fonts/roboto/Roboto-Medium.eot");
+  src: url("/fonts/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("/fonts/roboto/Roboto-Medium.woff") format("woff"), url("/fonts/roboto/Roboto-Medium.ttf") format("truetype");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Bold.eot");
-  src: url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Bold.woff") format("woff"), url("../../../../../../../../Applications/MAMP/htdocs/sweatgo/prototype/fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  src: url("/fonts/roboto/Roboto-Bold.eot");
+  src: url("/fonts/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("/fonts/roboto/Roboto-Bold.woff") format("woff"), url("/fonts/roboto/Roboto-Bold.ttf") format("truetype");
   font-weight: 700;
 }
 
@@ -4652,18 +4652,18 @@ small {
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   position: relative;
 }
 
 .card.horizontal .card-stacked .card-content {
   -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .card.sticky-action .card-action {
@@ -4797,11 +4797,11 @@ small {
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .toast .btn, .toast .btn-large, .toast .btn-flat {
@@ -4923,9 +4923,9 @@ small {
   background-color: #323232;
   z-index: -1;
   -webkit-transform-origin: 50% 0%;
-          transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
   -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .btn, .btn-large,
@@ -5026,7 +5026,7 @@ small {
 }
 
 .btn-floating img{
-    margin-top: 11px;
+  margin-top: 11px;
 }
 
 .btn-floating i {
@@ -5081,7 +5081,7 @@ button.btn-floating {
   right: 64px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   height: 100%;
   left: auto;
   width: 500px;
@@ -5240,7 +5240,7 @@ button.btn-floating {
   transition-property: transform, opacity;
   transition-property: transform, opacity, -webkit-transform;
   -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
   pointer-events: none;
 }
 
@@ -5291,7 +5291,7 @@ button.btn-floating {
 
 .waves-circle {
   -webkit-transform: translateZ(0);
-          transform: translateZ(0);
+  transform: translateZ(0);
   -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
 }
 
@@ -5969,7 +5969,7 @@ textarea.materialize-textarea + label:after {
 .input-field label.active {
   font-size: 0.8rem;
   -webkit-transform: translateY(-140%);
-          transform: translateY(-140%);
+  transform: translateY(-140%);
 }
 
 .input-field .prefix {
@@ -6112,9 +6112,9 @@ textarea.materialize-textarea {
   transition: .28s ease;
   /* webkit (konqueror) browsers */
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 [type="radio"] + label:before,
@@ -6148,7 +6148,7 @@ textarea.materialize-textarea {
 [type="radio"]:not(:checked) + label:after {
   z-index: -1;
   -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
 }
 
 /* Checked styles */
@@ -6170,13 +6170,13 @@ textarea.materialize-textarea {
 
 [type="radio"]:checked + label:after {
   -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 /* Radio With gap */
 [type="radio"].with-gap:checked + label:after {
   -webkit-transform: scale(0.5);
-          transform: scale(0.5);
+  transform: scale(0.5);
 }
 
 /* Focused styles */
@@ -6274,7 +6274,7 @@ form p:last-child {
 [type="checkbox"]:not(.filled-in) + label:after {
   border: 0;
   -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
 }
 
 [type="checkbox"]:not(:checked):disabled + label:before {
@@ -6284,7 +6284,7 @@ form p:last-child {
 
 [type="checkbox"].tabbed:focus + label:after {
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
   border: 0;
   border-radius: 50%;
   box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
@@ -6301,11 +6301,11 @@ form p:last-child {
   border-right: 2px solid #26a69a;
   border-bottom: 2px solid #26a69a;
   -webkit-transform: rotate(40deg);
-          transform: rotate(40deg);
+  transform: rotate(40deg);
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform-origin: 100% 100%;
-          transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
 }
 
 [type="checkbox"]:checked:disabled + label:before {
@@ -6324,11 +6324,11 @@ form p:last-child {
   border-right: 2px solid #26a69a;
   border-bottom: none;
   -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform-origin: 100% 100%;
-          transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
 }
 
 [type="checkbox"]:indeterminate:disabled + label:before {
@@ -6698,9 +6698,9 @@ input[type=range] + .thumb {
   top: 10px;
   margin-left: -6px;
   -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 input[type=range] + .thumb .value {
@@ -6710,7 +6710,7 @@ input[type=range] + .thumb .value {
   color: #26a69a;
   font-size: 0;
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 input[type=range] + .thumb.active {
@@ -6742,7 +6742,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 50%;
   background-color: #26a69a;
   -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
   margin: -5px 0 0 0;
   transition: .3s;
 }
@@ -6855,7 +6855,7 @@ input[type=range]:focus::-ms-fill-upper {
   top: 0;
   margin: 0;
   -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  transform: translateX(-100%);
   height: 100%;
   height: calc(100% + 60px);
   height: -moz-calc(100%);
@@ -6863,22 +6863,22 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: #fff;
   z-index: 999;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   overflow-y: auto;
   will-change: transform;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateX(-105%);
-          transform: translateX(-105%);
+  transform: translateX(-105%);
 }
 
 .side-nav.right-aligned {
   right: 0;
   -webkit-transform: translateX(105%);
-          transform: translateX(105%);
+  transform: translateX(105%);
   left: auto;
   -webkit-transform: translateX(100%);
-          transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .side-nav .collapsible {
@@ -7022,7 +7022,7 @@ input[type=range]:focus::-ms-fill-upper {
 .side-nav.fixed {
   left: 0;
   -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
   position: fixed;
 }
 
@@ -7034,11 +7034,11 @@ input[type=range]:focus::-ms-fill-upper {
 @media only screen and (max-width: 992px) {
   .side-nav.fixed {
     -webkit-transform: translateX(-105%);
-            transform: translateX(-105%);
+    transform: translateX(-105%);
   }
   .side-nav.fixed.right-aligned {
     -webkit-transform: translateX(105%);
-            transform: translateX(105%);
+    transform: translateX(105%);
   }
   .side-nav a {
     padding: 0 16px;
@@ -7126,7 +7126,7 @@ input[type=range]:focus::-ms-fill-upper {
 @keyframes container-rotate {
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -7244,42 +7244,42 @@ input[type=range]:focus::-ms-fill-upper {
 @keyframes fill-unfill-rotate {
   12.5% {
     -webkit-transform: rotate(135deg);
-            transform: rotate(135deg);
+    transform: rotate(135deg);
   }
   /* 0.5 * ARCSIZE */
   25% {
     -webkit-transform: rotate(270deg);
-            transform: rotate(270deg);
+    transform: rotate(270deg);
   }
   /* 1   * ARCSIZE */
   37.5% {
     -webkit-transform: rotate(405deg);
-            transform: rotate(405deg);
+    transform: rotate(405deg);
   }
   /* 1.5 * ARCSIZE */
   50% {
     -webkit-transform: rotate(540deg);
-            transform: rotate(540deg);
+    transform: rotate(540deg);
   }
   /* 2   * ARCSIZE */
   62.5% {
     -webkit-transform: rotate(675deg);
-            transform: rotate(675deg);
+    transform: rotate(675deg);
   }
   /* 2.5 * ARCSIZE */
   75% {
     -webkit-transform: rotate(810deg);
-            transform: rotate(810deg);
+    transform: rotate(810deg);
   }
   /* 3   * ARCSIZE */
   87.5% {
     -webkit-transform: rotate(945deg);
-            transform: rotate(945deg);
+    transform: rotate(945deg);
   }
   /* 3.5 * ARCSIZE */
   to {
     -webkit-transform: rotate(1080deg);
-            transform: rotate(1080deg);
+    transform: rotate(1080deg);
   }
   /* 4   * ARCSIZE */
 }
@@ -7520,15 +7520,15 @@ input[type=range]:focus::-ms-fill-upper {
 @keyframes left-spin {
   from {
     -webkit-transform: rotate(130deg);
-            transform: rotate(130deg);
+    transform: rotate(130deg);
   }
   50% {
     -webkit-transform: rotate(-5deg);
-            transform: rotate(-5deg);
+    transform: rotate(-5deg);
   }
   to {
     -webkit-transform: rotate(130deg);
-            transform: rotate(130deg);
+    transform: rotate(130deg);
   }
 }
 
@@ -7547,15 +7547,15 @@ input[type=range]:focus::-ms-fill-upper {
 @keyframes right-spin {
   from {
     -webkit-transform: rotate(-130deg);
-            transform: rotate(-130deg);
+    transform: rotate(-130deg);
   }
   50% {
     -webkit-transform: rotate(5deg);
-            transform: rotate(5deg);
+    transform: rotate(5deg);
   }
   to {
     -webkit-transform: rotate(-130deg);
-            transform: rotate(-130deg);
+    transform: rotate(-130deg);
   }
 }
 
@@ -7680,11 +7680,11 @@ input[type=range]:focus::-ms-fill-upper {
   width: 100%;
   height: 400px;
   -webkit-perspective: 500px;
-          perspective: 500px;
+  perspective: 500px;
   -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
   -webkit-transform-origin: 0% 50%;
-          transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
 }
 
 .carousel.carousel-slider {
@@ -8121,7 +8121,7 @@ input[type=range]:focus::-ms-fill-upper {
 .picker--focused .picker__day--selected {
   border-radius: 50%;
   -webkit-transform: scale(0.75);
-          transform: scale(0.75);
+  transform: scale(0.75);
   background: #0089ec;
   color: #ffffff;
 }
@@ -8149,11 +8149,11 @@ input[type=range]:focus::-ms-fill-upper {
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .picker__button--today,
@@ -8323,7 +8323,7 @@ input[type=range]:focus::-ms-fill-upper {
 .picker--focused .picker__day--selected {
   border-radius: 50%;
   -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  transform: scale(0.9);
   background-color: #26a69a;
   color: #ffffff;
 }
