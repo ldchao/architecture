@@ -17,12 +17,6 @@ public interface AdProcessorService {
     boolean add();
 
     /**
-     * 获取广告
-     * @return boolean
-     */
-    boolean get();
-
-    /**
      * 更新广告
      * @return boolean
      */

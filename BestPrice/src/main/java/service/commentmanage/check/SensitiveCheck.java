@@ -5,7 +5,9 @@ import dao.CommentDao;
 import dao.SensitiveCommentDao;
 import dao.SensitiveWordDao;
 import dao.WaterUserDao;
+import dao.daoimpl.SensitiveWordDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import service.commentmanage.iterator.MyIterator;
 import service.commentmanage.iterator.SensitiveIterator;
@@ -21,7 +23,6 @@ import java.util.ArrayList;
  */
 public class SensitiveCheck extends CommentCheck {
 
-    @Autowired
     private SensitiveWordDao sensitiveWordDao;
 
     @Autowired
@@ -38,6 +39,7 @@ public class SensitiveCheck extends CommentCheck {
     public SensitiveCheck() {
 
         // 初始化敏感词汇迭代器
+        sensitiveWordDao=new SensitiveWordDaoImpl();
         myIterator = new SensitiveIterator(sensitiveWordDao.getSentiveWord());
     }
 

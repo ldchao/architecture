@@ -21,4 +21,5 @@ public class InnerAdProcessor implements AdProcessorService {
     public boolean delete() {
         return false;
     }
+
 }
