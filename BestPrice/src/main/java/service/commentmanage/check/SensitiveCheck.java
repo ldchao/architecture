@@ -5,7 +5,9 @@ import dao.CommentDao;
 import dao.SensitiveCommentDao;
 import dao.SensitiveWordDao;
 import dao.WaterUserDao;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import service.commentmanage.iterator.MyIterator;
 import service.commentmanage.iterator.SensitiveIterator;
 import service.commentmanage.observer.MyObserver;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
  * <p>
  * 检测评论中的敏感词汇
  */
+@Service
 public class SensitiveCheck extends CommentCheck {
 
     @Autowired

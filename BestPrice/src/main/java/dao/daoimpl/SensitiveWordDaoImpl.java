@@ -17,7 +17,6 @@ public class SensitiveWordDaoImpl implements SensitiveWordDao {
     public ArrayList<String> getSentiveWord() {
 
         Session session = ReadConnection.getSession();
-
         String hql = "from SensitiveWord";
         ArrayList<String> list = (ArrayList<String>) session.createQuery(hql).list();
         ReadConnection.closeSession(session);

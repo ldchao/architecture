@@ -5,6 +5,7 @@ import Entity.User;
 import dao.SensitiveCommentDao;
 import dao.WaterUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import service.admincheck.freezestrategy.FreezeStrategy;
 import service.admincheck.freezestrategy.LogoffStrategy;
 import service.admincheck.freezestrategy.LongFreezeStrategy;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 /**
  * Created by L.H.S on 2017/4/9.
  */
+
+@Service
 public class AdminCheck {
 
     @Autowired
@@ -31,8 +34,7 @@ public class AdminCheck {
     // 获取待审核水军
     public ArrayList<User> getWaterUser() {
 
-        //return waterService.getWater();
-        return null;
+        return waterService.getWater();
     }
 
     // 若是敏感评论，则删除敏感评论；
