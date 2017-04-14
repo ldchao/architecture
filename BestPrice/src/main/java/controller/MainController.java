@@ -29,13 +29,41 @@ public class MainController {
 
     /**
      * 首页
-     *
      * @return index
      */
     @RequestMapping("/index")
     public String index() {
         return "index";
     }
+
+
+    /**
+     * 评论管理页面
+     * @return commentManage
+     */
+    @RequestMapping("/commentManage")
+    public String commentManage() {
+        return "managerJSP/commentManage";
+    }
+
+    /**
+     * 用户管理页面
+     * @return userManage
+     */
+    @RequestMapping("/userManage")
+    public String userManage() {
+        return "managerJSP/userManage";
+    }
+
+    /**
+     * 广告管理页面
+     * @return adsManage
+     */
+    @RequestMapping("/adsManage")
+    public String adsManage() {
+        return "managerJSP/adsManage";
+    }
+
 
     @RequestMapping("/getVolume")
     @ResponseBody
