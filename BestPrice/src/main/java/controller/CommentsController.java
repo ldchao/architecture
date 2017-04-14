@@ -9,6 +9,7 @@ import service.admincheck.AdminCheck;
 import vo.CommentVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Xuanlin on 2017/4/12.
@@ -44,11 +45,16 @@ public class CommentsController {
     /**
      * 删除敏感评论
      * */
-    @RequestMapping(value = "/deleteSen")
+    @RequestMapping(value = "/comment/delete")
     @ResponseBody
     public String deleteSen(int comId) {
-
         adminCheck.deleteSenComment(comId);
         return "success";
+    }
+
+    @RequestMapping(value = "/comment/get")
+    @ResponseBody
+    public List<CommentVO> getComment(int productId){
+        return commentService.getComments(productId);
     }
 }
