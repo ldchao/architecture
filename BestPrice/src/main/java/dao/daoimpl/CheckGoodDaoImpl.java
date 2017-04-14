@@ -19,6 +19,7 @@ public class CheckGoodDaoImpl implements CheckGoodDao{
         ProductDaoImpl productDao = new ProductDaoImpl();
         Product product = productDao.searchById(goodId);
         goodVO.setPrice(product.getPrice());
+        goodVO.setLink(product.getLink());
 
         ProductTypeDaoImpl productTypeDao = new ProductTypeDaoImpl();
         ProductType productType = productTypeDao.getProductTypeByID(product.getTypeid());
