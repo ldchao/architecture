@@ -25,12 +25,15 @@ public class CommentsController {
      * 发布评论
      * @param commentVO
      * @param request
-     * @return
+     * @return success if succeed, input if the comment contains sensitive words and fails to be published.
      */
     @RequestMapping(value = "/comment/publish")
     @ResponseBody
     public String makeComment(CommentVO commentVO,HttpServletRequest request) {
-        commentService.storeComment(commentVO);
-        return success;
+        if(commentService.storeComment(commentVO)){
+            return success;
+        }else{
+            return input;
+        }
     }
 }

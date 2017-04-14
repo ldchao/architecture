@@ -9,5 +9,5 @@ public interface CommentService {
     /**
      * 存储评论并审核
      */
-    public void storeComment(CommentVO comment);
+    public boolean storeComment(CommentVO comment);
 }
