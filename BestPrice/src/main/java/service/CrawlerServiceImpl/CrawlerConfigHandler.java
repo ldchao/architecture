@@ -18,7 +18,7 @@ public class CrawlerConfigHandler implements CrawlerConfigHandlerService {
             try {
                 AbstractHandler abstractHandler= (AbstractHandler) Class.forName("service.CrawlerServiceImpl.ConcreteStrategy."+crawlerConfig.getHandler()).newInstance();
                 AbstractPersistence abstractPersistence=(AbstractPersistence) Class.forName("service.CrawlerServiceImpl.ConcreteStrategy."+crawlerConfig.getPersistence()).newInstance();
-                spiders.add(new Spider(abstractHandler,abstractPersistence,crawlerConfig.getUrl()));
+                spiders.add(new Spider(abstractHandler, abstractPersistence, crawlerConfig.getUrl(),"target"));
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
