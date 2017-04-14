@@ -26,7 +26,7 @@ a {
 }
 
 .sort{
-    margin-left: 200px;
+    margin-left: 300px;
 }
 
 .sortButton{
@@ -35,16 +35,21 @@ a {
     color: #fff;
     font-size: 14px;
     border: none;
-    margin-left: 30px;
-    margin-top: 50px;
+    margin-left: 50px;
+    margin-top: 30px;
 }
 
 
 
 .filter{
-    left: 500px;
-    margin-right: 100px;
-    width: 300px;
+    margin-left: 360px;
+    margin-top: 10px;
+    /*width: 300px;*/
+}
+
+.filter label {
+    margin-top: 15px;
+    margin-right: 20px;
 }
 
 .filterButton{
@@ -52,9 +57,20 @@ a {
     color: #090909;
     font-size: 14px;
     border: none;
-    margin-top: 50px;
+    margin: 50px;
 }
 
+#checkbox1{
+
+}
+
+#checkbox2{
+
+}
+
+#checkbox3{
+
+}
 
 .wrapper {
     margin-top: 20px;

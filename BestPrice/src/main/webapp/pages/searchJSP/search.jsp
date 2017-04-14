@@ -48,9 +48,9 @@
     <%--</div>--%>
 
     <div class="filter">
-        <label><input name="filter" type="checkbox" onchange="filter('Shield_NotJoin')">未加盟</label>
-        <label><input name="filter" type="checkbox" onchange="filter('Shield_SalesLess')">购买过少</label>
-        <label><input name="filter" type="checkbox" onchange="filter('Shield_CommentsLess')">评论过少</label>
+        <input name="filter" type="checkbox" onchange="filter('Shield_NotJoin')" id="checkbox1"><label for="checkbox1">未加盟</label>
+        <input name="filter" type="checkbox" onchange="filter('Shield_SalesLess')" id="checkbox2"><label for="checkbox2">购买过少</label>
+        <input name="filter" type="checkbox" onchange="filter('Shield_CommentsLess')" id="checkbox3"><label for="checkbox3">评论过少</label>
     </div>
 </div>
 
