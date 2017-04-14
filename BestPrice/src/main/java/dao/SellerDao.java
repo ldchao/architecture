@@ -11,7 +11,7 @@ public interface SellerDao {
      * 存Seller
      * @param seller
      */
-    public void save(Seller seller);
+    public int save(Seller seller);
 
     /**
      * 删seller
@@ -32,6 +32,13 @@ public interface SellerDao {
      * @return
      */
     public Seller searchByName(String name);
+    
+//    /**
+//     * 获得所有seller
+//     * @param name
+//     * @return
+//     */
+//    public Seller getAllSellers();
     
     
 }

@@ -15,12 +15,14 @@ import org.hibernate.Transaction;
  * Created by dlydd on 2017/4/13.
  */
 public class SellerDaoImpl implements SellerDao {
-    public void save(Seller seller) {
+    public int save(Seller seller) {
         Session session= MainConnection.getSession();
+        Integer id=new Integer(-1);
+        
         try {
             if (searchById(seller.getId())==null){
                 System.out.println("in!");
-                session.save(seller);
+               id= (Integer) session.save(seller);
                 Transaction transaction=session.beginTransaction();
                 transaction.commit();
                 MainConnection.closeSession(session);
@@ -34,6 +36,8 @@ public class SellerDaoImpl implements SellerDao {
             MainConnection.closeSession(session);
 
         }
+        return id;
+        
     }
 
     public boolean deleteById(int id) {
@@ -106,4 +110,16 @@ public class SellerDaoImpl implements SellerDao {
 		return seller;
 		
 	}
+
+//	@Override
+//	public Seller getAllSellers() {
+//		Session session=ReadConnection.getSession();
+//		Transaction transaction= session.beginTransaction();
+//		
+//		List<Seller> list=session.createQuery("from Seller").list();
+//		
+//		if()
+//		
+//		return null;
+//	}
 }
