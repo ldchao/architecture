@@ -1,6 +1,7 @@
 <%@ page import="vo.UserVO" %>
 <%@ page import="Entity.Comment" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="Entity.ADs" %>
 <%@ page isELIgnored="false" %>
 
 <%--
@@ -35,26 +36,23 @@
             <thead>
             <tr>
                 <th>id</th>
-                <th>评论内容</th>
-                <th>时间</th>
-                <th>删除</th>
-                <th>发布</th>
+                <th>类型</th>
+                <th>目标链接</th>
+                <th>图片链接</th>
+                <th>开始时间</th>
             </tr>
             </thead>
             <tbody id="record_container">
             <%
-                ArrayList<Comment> comments = (ArrayList<Comment>) request.getAttribute("senComments");
-                for (int i = 0; i < comments.size(); i++) {
+                ArrayList<ADs> ads = (ArrayList<ADs>) request.getAttribute("ads");
+                for (int i = 0; i < ads.size(); i++) {
             %>
             <tr class="">
-                <td class="id"><%=comments.get(i).getId()%></td>
-                <td class="content"><%=comments.get(i).getContent()%></td>
-                <td class="productId none"><%=comments.get(i).getProductid()%></td>
-                <td class="userId none"><%=comments.get(i).getUserid()%></td>
-                <td class="replyId none"><%=comments.get(i).getReplyid()%></td>
-                <td class="time"><%=comments.get(i).getTime()%></td>
-                <td><a class="btn teal" onclick="cancel(this)">删除</a></td>
-                <td><a class="btn teal" onclick="publish(this)">发布</a></td>
+                <td class="id"><%=ads.get(i).getId()%></td>
+                <td class="type"><%=ads.get(i).getType()%></td>
+                <td class="targetlink"><%=ads.get(i).getTargetlink()%></td>
+                <td class="piclink"><%=ads.get(i).getPiclink()%></td>
+                <td class="starttime"><%=ads.get(i).getStarttime()%></td>
             </tr>
             <%
                 }
@@ -65,61 +63,6 @@
 </main>
 <%@include file="../commonJSP/script.jsp" %>
 <script>
-    function cancel(obj){
-        var id = obj.parentNode.parentNode.getElementsByClassName("id")[0].innerHTML;
-        $.ajax({
-            method: "post",
-            url: "/comment/comment/delete",
-            async: false,
-            data: {
-                "comId": id
-            },
-            success: function (result) {
-                if (result == "success") {
-                    Materialize.toast('操作成功!', 1800);
-                    setInterval((function () {
-                        window.location.reload();
-                    }()), 1800);
-                }
-            },
-            error: function () {
-                Materialize.toast('请求出错!', 1200);
-            }
-        });
-    }
-
-    function publish(obj){
-        var parent = obj.parentNode.parentNode;
-        var content = parent.getElementsByClassName("content")[0].innerHTML;
-        var productId = parent.getElementsByClassName("productId")[0].innerHTML;
-        var userId = parent.getElementsByClassName("userId")[0].innerHTML;
-        var replyId = parent.getElementsByClassName("replyId")[0].innerHTML;
-
-        $.ajax({
-            method: "post",
-            url: "/comment/comment/publsh",
-            async: false,
-            data: {
-                "content": content,
-                "productid": productId,
-                "userid": userId,
-                "replyid": replyId
-            },
-            success: function (result) {
-                if (result == "success") {
-                    Materialize.toast('操作成功!', 1800);
-                    setInterval((function () {
-                        window.location.reload();
-                    }()), 1800);
-                }else{
-                    Materialize.toast('操作失败!', 1800);
-                }
-            },
-            error: function () {
-                Materialize.toast('请求出错!', 1200);
-            }
-        });
-    }
 </script>
 </body>
 </html>
