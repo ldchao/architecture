@@ -2,6 +2,7 @@ package service.serviceimpl;
 
 import Entity.BuyRecord;
 import dao.PurchaseDao;
+import dao.daoimpl.PurchaseDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.PurchaseService;
@@ -17,9 +18,7 @@ import java.util.List;
  */
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
-
-    @Autowired
-    private PurchaseDao purchaseDao;
+    private PurchaseDao purchaseDao = new PurchaseDaoImpl();
 
     public List<BuyRecordVO> create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy) {
         if(strategy.pay()){

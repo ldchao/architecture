@@ -23,16 +23,8 @@
 
     <div class="search">
         <input class="input" id="js-search-input" type="text" placeholder="搜索商品...">
-        <button class="btn-search" id="js-btn-search" onclick="searchInit(this)">搜索</button>
+        <button class="btn-search" id="js-btn-search" onclick="searchInit()">搜索</button>
     </div>
-</div>
-
-<div class="wrapper">
-
-    <div class="content">
-        <div class="product-panel" id="product-panel"></div>
-    </div>
-
 </div>
 
 <div class="choice">
@@ -44,10 +36,17 @@
     </div>
 
     <div class="filter">
-        <input name="filter" type="checkbox" onchange="filter('Shield_NotJoin')" id="checkbox1"><label for="checkbox1">未加盟</label>
-        <input name="filter" type="checkbox" onchange="filter('Shield_SalesLess')" id="checkbox2"><label for="checkbox2">购买过少</label>
-        <input name="filter" type="checkbox" onchange="filter('Shield_CommentsLess')" id="checkbox3"><label for="checkbox3">评论过少</label>
+        <input name="filter" type="checkbox" onchange="filter(0, this)" id="checkbox1"><label for="checkbox1">未加盟</label>
+        <input name="filter" type="checkbox" onchange="filter(1, this)" id="checkbox2"><label for="checkbox2">购买过少</label>
+        <input name="filter" type="checkbox" onchange="filter(2, this)" id="checkbox3"><label for="checkbox3">评论过少</label>
     </div>
+</div>
+
+<div class="wrapper">
+    <div class="content">
+        <div class="product-panel" id="product-panel"></div>
+    </div>
+
 </div>
 
 <script src="../../js/search/jquery-2.1.4.min.js" type="text/javascript"></script>

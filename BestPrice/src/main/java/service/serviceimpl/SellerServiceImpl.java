@@ -3,6 +3,7 @@ package service.serviceimpl;
 import Entity.Comment;
 import Entity.Notify;
 import dao.SellerAttentionDao;
+import dao.daoimpl.SellerAttentionDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SellerService;
@@ -16,8 +17,7 @@ import java.util.List;
  */
 @Service
 public class SellerServiceImpl implements SellerService {
-    @Autowired
-    private SellerAttentionDao sellerAttentionDao;
+    private SellerAttentionDao sellerAttentionDao = new SellerAttentionDaoImpl();
 
     public void updateKeyWords(int id, List<String> keys) {
         sellerAttentionDao.updateKeyWords(id, keys);

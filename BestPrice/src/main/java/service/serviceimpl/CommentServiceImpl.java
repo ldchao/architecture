@@ -2,6 +2,7 @@ package service.serviceimpl;
 
 import Entity.Comment;
 import dao.CommentDao;
+import dao.daoimpl.CommentDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.CommentService;
@@ -19,8 +20,7 @@ import java.util.List;
  */
 @Service
 public class CommentServiceImpl implements CommentService{
-    @Autowired
-    private CommentDao commentDao;
+    private CommentDao commentDao = new CommentDaoImpl();
 
     private CommentCheck commentCheck;
     private service.commentmanage.check.CommentCheck sensitiveCheck;

@@ -21,31 +21,41 @@ function toaster(message, type) {
 
 
 /////////////////////////////////
-function filter(condition) {
 
-    $.ajax({
-        type: "POST",
-        url: "/shieldSearchResult",
-        data: {
-            "condition": condition
-        },
-        success: function (data) {
+var DATA_TEMP;  // 用来缓存上一次过滤的结果
 
-            setGoodsResult(data);
-        },
-        error: function () {
-            alert("筛选失败");
-        }
-    });
+//过滤
+function filter(index) {
+
+    var conditions = ["Shield_NotJoin", "Shield_SalesLess", "Shield_CommentsLess"];
+    var condition = conditions[index];
+
+    var input = arguments[1];
+    if (input.checked) {
+        $.ajax({
+            type: "POST",
+            url: "/goods/shieldSearchResult",
+            data: {
+                "condition": condition
+            },
+            success: function (data) {
+                setGoodsResult(data);
+            },
+            error: function () {
+                alert("筛选失败");
+            }
+        });
+    } else {
+        setGoodsResult(DATA_TEMP);
+    }
+
 }
 
-function mysort(sortRule) {
-
-    alert(sortRule);
+function sort(sortRule) {
 
     $.ajax({
         type: "POST",
-        url: "/sortSearchResult",
+        url: "/goods/sortSearchResult",
         data: {
             "sortRule": sortRule
         },
@@ -59,20 +69,18 @@ function mysort(sortRule) {
 }
 
 function searchInit() {
-    $("#js-btn-search").click(function () {
-        getGoods( $("#js-search-input").val())
-    });
+    getGoods( $("#js-search-input").val())
 }
 
 function getGoods(key){
     $.ajax({
         type:"POST",
-        url:"/searchGoods",
+        url:"/goods/searchGoods",
         data:{
             key: key
         },
         success: function (list) {
-
+            DATA_TEMP = list;
             console.log(list);
             setGoodsResult(list);
         },
@@ -90,7 +98,7 @@ function setGoodsResult(list) {
 
         var cardDiv = $("<div class='product-card' productId=" + list[i].id +"></div>");
         var nameDiv = $("<div class='product-name'>" + list[i].product_name + "</div>");
-        var priceDiv = $("<div class='product-price'>"+ ￥ + list[i].price +"</div>");
+        var priceDiv = $("<div class='product-price'>"+ "￥" + list[i].price +"</div>");
         $(cardDiv).append(nameDiv);
         $(cardDiv).append(priceDiv);
 
