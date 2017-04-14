@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import vo.ShoppingCart;
+import vo.ShoppingCartItem;
 
 import java.util.Date;
 import java.util.*;
@@ -38,53 +39,23 @@ public class PurchaseDaoImpl implements PurchaseDao {
 //     * @return
 //     */
     public List<BuyRecord> create(int customerId, ShoppingCart shoppingCart) {
-        return null;
-//        Session session = sessionFactory.getCurrentSession();
+        List<ShoppingCartItem> shoppingCartItems = shoppingCart.getShoppingCartItems();
+        ArrayList<BuyRecord> buyRecords = new ArrayList<BuyRecord>();
+        for (ShoppingCartItem shoppingCartItem : shoppingCartItems) {
+            BuyRecord buyRecord = new BuyRecord();
+            buyRecord.setProductid(shoppingCartItem.getGoodsId());
+            buyRecord.setUserid(customerId);
+            java.sql.Date date = (java.sql.Date) new Date();
+            buyRecord.setBuydate(date);
+            buyRecord.setBuynum(shoppingCartItem.getNumber());
+            buyRecord.setTotalPrice(shoppingCartItem.getGoodsPrice());
+            BuyRecordDaoImpl buyRecordDao = new BuyRecordDaoImpl();
+            buyRecordDao.save(buyRecord);
+            buyRecords.add(buyRecord);
+        }
 
-        //TODO Customer相关
-//        Customer customer = customerDao.findById(customerId);
+        return buyRecords;
 
-//        Purchase purchase = new Purchase();
-//
-//        purchase.setCustomerId(customerId);
-//        purchase.setBuyTime(new Timestamp(System.currentTimeMillis()));
-//        //TODO Goods相关
-//        purchase.setDiscount();
-//
-//        session.save(purchase);
-//        session.flush();
-//
-//        double originalTotal = 0;
-//
-//        Set<PurchaseItem> items = new HashSet<PurchaseItem>();
-//        for (ShoppingCartItem item: shoppingCart.getShoppingCartItems()){
-//            PurchaseItem purchaseItem = new PurchaseItem();
-//            purchaseItem.setPurchase(purchase);
-//            purchaseItem.setNumber(item.getNumber());
-//            purchaseItem.setPrice(item.getGoodsPrice());
-//
-//            //TODO Goods相关
-////            Goods goods = new Goods();
-////            goods.setId(item.getGoodsId());
-////            purchaseItem.setGoods(goods);
-//
-//            originalTotal += item.getGoodsPrice()*item.getNumber();
-//
-//            items.add(purchaseItem);
-//
-//            //TODO 商品需要减少库存 （如果有库存的话？）
-//
-//        }
-//
-//        purchase.setPurchaseItems(items);
-//        purchase.setOriginalTotal(originalTotal);
-//        purchase.setActualTotal(originalTotal*purchase.getDiscount());
-//
-//
-//        session.save(purchase);
-//        session.flush();
-//
-//        return purchase;
     }
 
     public List<BuyRecord> getByCustomerId(int customerId) {
