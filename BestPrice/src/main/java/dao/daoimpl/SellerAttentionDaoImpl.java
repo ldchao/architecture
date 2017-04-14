@@ -7,6 +7,7 @@ import dao.ReadConnection;
 import dao.SellerAttentionDao;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
+import vo.CommentVO;
 
 import java.util.List;
 
@@ -37,13 +38,13 @@ public class SellerAttentionDaoImpl implements SellerAttentionDao {
     }
 
     public List<String> getKeyWords(int id) {
-
+        //TODO
         Session session = ReadConnection.getSession();
-        String hql = "select s.word from SellerWordList s where s.sellerid=" + id;
-        List<String> list = session.createQuery(hql).list();
+//        String hql = "select s.word from SellerWordList s where s.sellerid=" + id;
+//        List<String> list = session.createQuery(hql).list();
         ReadConnection.closeSession(session);
 
-        return list;
+        return null;
     }
 
     public void saveNotification(Notify notify) {
@@ -53,13 +54,13 @@ public class SellerAttentionDaoImpl implements SellerAttentionDao {
         MainConnection.closeSession(session);
     }
 
-    public List<Notify> getNotifications(int id) {
+    public List<CommentVO> getNotifications(int id) {
 
         Session session = ReadConnection.getSession();
         String hql = "from Notify where id=" + id;
         List<Notify> list = session.createQuery(hql).list();
         ReadConnection.closeSession(session);
-
-        return list;
+        //TODO
+        return null;
     }
 }

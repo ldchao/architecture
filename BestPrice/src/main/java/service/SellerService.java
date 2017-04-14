@@ -1,6 +1,7 @@
 package service;
 
 import Entity.Notify;
+import vo.CommentVO;
 
 import java.util.List;
 
@@ -27,5 +28,5 @@ public interface SellerService {
      * @param id 商家id
      * @return
      */
-    public List<Notify> getNotification(int id);
+    public List<CommentVO> getNotification(int id);
 }

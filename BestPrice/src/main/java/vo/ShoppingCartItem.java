@@ -8,12 +8,10 @@ import java.io.Serializable;
  * 购物车内容列表
  */
 public class ShoppingCartItem implements Serializable{
-
     private int goodsId;
     private String goodsName;
     private double goodsPrice;
     private int number;
-
 
     public int getGoodsId() {
         return goodsId;

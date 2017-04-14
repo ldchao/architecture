@@ -1,6 +1,5 @@
 package service;
 
-import Entity.BuyRecord;
 import service.payStrategy.PayStrategy;
 import vo.BuyRecordVO;
 import vo.ShoppingCart;
@@ -22,7 +21,7 @@ public interface PurchaseService {
      * @param shoppingCart
      * @return
      */
-    public BuyRecordVO create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy);
+    public List<BuyRecordVO> create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy);
 
     /**
      * 可以通过顾客的id得到购买记录

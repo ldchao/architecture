@@ -11,7 +11,6 @@ public class ShoppingCart {
 
     private List<ShoppingCartItem> shoppingCartItems;
 
-
     public List<ShoppingCartItem> getShoppingCartItems() {
         return shoppingCartItems;
     }

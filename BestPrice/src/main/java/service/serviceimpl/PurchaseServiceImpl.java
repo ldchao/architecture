@@ -21,12 +21,16 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Autowired
     private PurchaseDao purchaseDao;
 
-    public BuyRecordVO create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy) {
+    public List<BuyRecordVO> create(int customerId, ShoppingCart shoppingCart, PayStrategy strategy) {
         if(strategy.pay()){
-            BuyRecord br = purchaseDao.create(customerId, shoppingCart);
-            BuyRecordVO brv = new BuyRecordVO();
-            brv.update(br);
-            return brv;
+            List<BuyRecord> brs = purchaseDao.create(customerId, shoppingCart);
+            List<BuyRecordVO> brvs = new ArrayList<BuyRecordVO>();
+            for (BuyRecord br: brs) {
+                BuyRecordVO brv = new BuyRecordVO();
+                brv.update(br);
+                brvs.add(brv);
+            }
+            return brvs;
         }else{
             return null;
         }

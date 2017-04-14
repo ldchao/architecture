@@ -5,6 +5,7 @@ import dao.SellerAttentionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SellerService;
+import vo.CommentVO;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class SellerServiceImpl implements SellerService {
         return sellerAttentionDao.getKeyWords(id);
     }
 
-    public List<Notify> getNotification(int id) {
+    public List<CommentVO> getNotification(int id) {
         return sellerAttentionDao.getNotifications(id);
     }
 }

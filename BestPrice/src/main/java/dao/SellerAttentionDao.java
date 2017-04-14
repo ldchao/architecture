@@ -2,6 +2,7 @@ package dao;
 
 import Entity.Notify;
 import org.springframework.stereotype.Repository;
+import vo.CommentVO;
 
 import java.util.List;
 
@@ -35,7 +36,5 @@ public interface SellerAttentionDao {
      * @param id 商家id
      * @return
      */
-    List<Notify> getNotifications(int id);
-
-
+    List<CommentVO> getNotifications(int id);
 }

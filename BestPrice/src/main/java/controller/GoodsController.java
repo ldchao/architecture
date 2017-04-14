@@ -7,9 +7,10 @@ import service.CommentService;
 import service.PurchaseService;
 import service.SearchGoodService;
 import service.ShowGoodsService;
-import vo.GoodVO;
-import vo.CommentVO;
-import vo.BuyRecordVO;
+import service.payStrategy.AliPayStrategy;
+import service.payStrategy.BankPayStrategy;
+import vo.*;
+
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,8 @@ public class GoodsController{
     ShowGoodsService showGoodsService;
     @Autowired
     SearchGoodService searchGoodService;
+    @Autowired
+    PurchaseService purchaseService;
 
     @RequestMapping(value ="/showGoodsInfo")
     @ResponseBody
@@ -99,17 +102,19 @@ public class GoodsController{
 
     }
 
-    @RequestMapping(value ="/buyGoods")
+    @RequestMapping(value ="/buyGoods/bank")
     @ResponseBody
-    public String buyGoods(int num,HttpServletRequest request) {
-
-
-
-
-        return success;
-
+    public List<BuyRecordVO> buyGoodsWithBank(ShoppingCart cart, String account, String password, HttpServletRequest request) {
+        Object o = request.getSession().getAttribute("user");
+        return purchaseService.create(((UserVO)o).getUserid(), cart, new BankPayStrategy(account, password));
     }
 
+    @RequestMapping(value ="/buyGoods/alipay")
+    @ResponseBody
+    public List<BuyRecordVO> buyGoodsWithAlipay(ShoppingCart cart, String account, String password, HttpServletRequest request) {
+        Object o = request.getSession().getAttribute("user");
+        return purchaseService.create(((UserVO)o).getUserid(), cart, new AliPayStrategy(account, password));
+    }
 
     @RequestMapping(value ="/searchGoods")
     @ResponseBody

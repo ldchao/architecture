@@ -37,7 +37,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 //     * @param shoppingCart
 //     * @return
 //     */
-    public BuyRecord create(int customerId, ShoppingCart shoppingCart) {
+    public List<BuyRecord> create(int customerId, ShoppingCart shoppingCart) {
         return null;
 //        Session session = sessionFactory.getCurrentSession();
 

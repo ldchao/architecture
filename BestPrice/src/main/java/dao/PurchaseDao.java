@@ -20,7 +20,7 @@ public interface PurchaseDao {
 //     * @param shoppingCart
 //     * @return
 //     */
-    public BuyRecord create(int customerId, ShoppingCart shoppingCart);
+    public List<BuyRecord> create(int customerId, ShoppingCart shoppingCart);
 
     /**
      * 可以通过顾客的id得到购买记录

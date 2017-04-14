@@ -21,15 +21,10 @@ public class CommentsController {
     private String success = "success";
     private String input = "input";
 
-
-    @RequestMapping(value = "/makeComment")
+    @RequestMapping(value = "/comment/publish")
     @ResponseBody
-    public String makeComment(String content,HttpServletRequest request) {
-        CommentVO commentVO =new CommentVO();
-        commentVO.setContent(content);
-//unfinished
-        return "success";
+    public String makeComment(CommentVO commentVO,HttpServletRequest request) {
+        commentService.storeComment(commentVO);
+        return success;
     }
-
-
 }
