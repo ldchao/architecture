@@ -15,8 +15,9 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
      * 商品信息页的生成方法
      */
     public void generate() {
+        
         String readFilePath = "./html/recommendTemplate.html";
-        String writeFilePath = "./html/recommend.html"
+        String writeFilePath = "./html/recommend.html";
         write(writeFilePath,read(readFilePath));
     }
 
