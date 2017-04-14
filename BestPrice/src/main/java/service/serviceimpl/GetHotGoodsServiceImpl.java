@@ -19,7 +19,6 @@ public class GetHotGoodsServiceImpl implements GetHotGoodsService{
 
     @Override
     public List<GoodVO> getHotGoods() {
-//        searchGoodDao.
-        return null;
+       return searchGoodDao.getHotGoods();
     }
 }
