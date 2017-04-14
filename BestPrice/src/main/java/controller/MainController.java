@@ -1,11 +1,14 @@
 package controller;
 
+import Entity.Comment;
+import Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import service.SearchGoodService;
+import service.admincheck.AdminCheck;
 import task.DispatcherMonitor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2017/3/29.
@@ -23,7 +27,9 @@ public class MainController {
 
     private static String realPath;
     @Autowired
-    SearchGoodService searchGoodService;
+    private SearchGoodService searchGoodService;
+    @Autowired
+    private AdminCheck adminCheck;
 
     @RequestMapping("/")
     public String main() {
@@ -46,21 +52,31 @@ public class MainController {
 
     /**
      * 评论管理页面
+     * @by LHS
      * @return commentManage
+     * 返回待审核的敏感评论
      */
     @RequestMapping("/commentManage")
     public ModelAndView commentManage() {
         ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        ArrayList<Comment> comments = adminCheck.getSenComment();
+        mv.addObject("senComments", comments);
+
         return mv;
     }
 
     /**
      * 用户管理页面
+     * @by LHS
      * @return userManage
+     * 返回待审核的水军
      */
     @RequestMapping("/userManage")
     public ModelAndView userManage() {
         ModelAndView mv = new ModelAndView("managerJSP/commentManage");
+        ArrayList<User> users = adminCheck.getWaterUser();
+        mv.addObject("waterUser", users);
+
         return mv;
     }
 

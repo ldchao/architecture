@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.CommentService;
+import service.admincheck.AdminCheck;
 import vo.CommentVO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 public class CommentsController {
     @Autowired
     CommentService commentService;
+    @Autowired
+    AdminCheck adminCheck;
 
     private String success = "success";
     private String input = "input";
@@ -35,5 +38,17 @@ public class CommentsController {
         }else{
             return input;
         }
+    }
+
+
+    /**
+     * 删除敏感评论
+     * */
+    @RequestMapping(value = "/deleteSen")
+    @ResponseBody
+    public String deleteSen(int comId) {
+
+        adminCheck.deleteSenComment(comId);
+        return "success";
     }
 }
