@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by ldchao on 2017/4/12.
  */
 @Repository
-public class CheckGoodDaoImpl implements CheckGoodDao{
+public class CheckGoodDaoImpl implements CheckGoodDao {
     public GoodVO getGoodByGoodId(int goodId) {
         GoodVO goodVO = new GoodVO();
         goodVO.setId(goodId);
@@ -34,16 +34,18 @@ public class CheckGoodDaoImpl implements CheckGoodDao{
         goodVO.setCompetePrice(seller.getCompetePrice());
 
         BuyRecordDaoImpl buyRecordDao = new BuyRecordDaoImpl();
-        ArrayList<BuyRecord> buyRecords =(ArrayList<BuyRecord>)buyRecordDao.searchByProductid(product.getId());
-        int sales_volume=0;
-        for(BuyRecord buyRecord :buyRecords){
-            sales_volume+=buyRecord.getBuynum();
+        ArrayList<BuyRecord> buyRecords = (ArrayList<BuyRecord>) buyRecordDao.searchByProductid(product.getId());
+        int sales_volume = 0;
+        if (buyRecords !=null) {
+            for (BuyRecord buyRecord : buyRecords) {
+                sales_volume += buyRecord.getBuynum();
+            }
         }
         goodVO.setSales_volume(sales_volume);
 
         CommentDaoImpl commentDao = new CommentDaoImpl();
-        ArrayList<Comment> comments = (ArrayList<Comment>)commentDao.fetchAll(product.getId());
-        int comments_volume=comments.size();
+        ArrayList<Comment> comments = (ArrayList<Comment>) commentDao.fetchAll(product.getId());
+        int comments_volume = comments == null ? 0 : comments.size();
         goodVO.setComments_volume(comments_volume);
 
         return goodVO;
