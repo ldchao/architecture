@@ -46,6 +46,7 @@ public class ArchivesLogAspect {
             //user = (User)request.getSession().getAttribute();
 
             startTimeMillis = System.currentTimeMillis(); //记录方法开始执行的时间
+            System.out.println(startTimeMillis);
         }
     }
 
@@ -84,9 +85,9 @@ public class ArchivesLogAspect {
             //格式化结束时间
             String endTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(endTimeMillis);
 
-            Object obj = request.getParameter("fileName");
+            Object obj = request.getParameter("user");
             System.out.println("方法调用后: " + obj);
-//        System.out.println(" 操作人: "+user.getUsername()+" 操作方法: "+operationName+" 操作开始时间: "+startTime +" 操作结束时间: "+endTime);
+            System.out.println(" 操作人: "+user.getName()+" 操作方法: "+operationName+" 操作开始时间: "+startTime +" 操作结束时间: "+endTime);
 
         }
     }
