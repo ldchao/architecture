@@ -63,12 +63,31 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
             // 循环读取文件的每一行, 对需要修改的行进行修改, 放入缓冲对象中
             while ((line = br.readLine()) != null) {
                 // 此处根据实际需要修改某些行的内容
-
-                buf.append(replaceMyLine(line,goodVOList.get(googId).getProduct_name()));
-                buf.append(System.getProperty("line.separator"));
-                if(line.contains("###购买链接###"))
+                if(line.contains("###商品名###"))
                 {
+                    buf.append(replaceMyLine(line,goodVOList.get(googId).getProduct_name()));
+                    buf.append(System.getProperty("line.separator"));
+                }
+                else if(line.contains("###商家名称###"))
+                {
+                    buf.append(replaceMyLine(line,goodVOList.get(googId).getSeller_name()));
+                    buf.append(System.getProperty("line.separator"));
+                }
+                else if(line.contains("###价格###"))
+                {
+                    buf.append(replaceMyLine(line,goodVOList.get(googId).getPrice()+""));
+                    buf.append(System.getProperty("line.separator"));
+                }
+                else if(line.contains("###购买链接###"))
+                {
+                    buf.append(replaceMyLine(line,goodVOList.get(googId).getLink()));
+                    buf.append(System.getProperty("line.separator"));
                     googId++;
+                }
+                else
+                {
+                    buf.append(line);
+                    buf.append(System.getProperty("line.separator"));
                 }
             }
         } catch (Exception e) {
