@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.CommentService;
 import service.PurchaseService;
+import service.SearchGoodService;
 import service.ShowGoodsService;
 import vo.GoodVO;
 import vo.CommentVO;
@@ -22,6 +23,8 @@ public class GoodsController{
     private String success = "success";
     @Autowired
     ShowGoodsService showGoodsService;
+    @Autowired
+    SearchGoodService searchGoodService;
 
     @RequestMapping(value ="/showGoodsInfo")
     @ResponseBody
@@ -103,6 +106,35 @@ public class GoodsController{
 
         return success;
 
+    }
+
+
+    @RequestMapping(value ="/searchGoods")
+    @ResponseBody
+    public List<GoodVO> searchGood(String key){
+        List<GoodVO> goodVOS = searchGoodService.searchGoods(key);
+        return goodVOS;
+    }
+
+    @RequestMapping(value ="/sortSearchResult")
+    @ResponseBody
+    public List<GoodVO> sortSearchResult(String sortRule){
+        List<GoodVO> goodVOS = searchGoodService.sortResult(sortRule);
+        return goodVOS;
+    }
+
+    @RequestMapping(value ="/shieldSearchResult")
+    @ResponseBody
+    public List<GoodVO> shieldSearchResult(String condition){
+        List<GoodVO> goodVOS = searchGoodService.shieldGoods(condition);
+        return goodVOS;
+    }
+
+    @RequestMapping(value ="/cancleShieldSearchResult")
+    @ResponseBody
+    public List<GoodVO> cancleShieldSearchResult(String condition){
+        List<GoodVO> goodVOS = searchGoodService.cancleShield(condition);
+        return goodVOS;
     }
 
     private String pickIsJoin(Integer isJoin){
