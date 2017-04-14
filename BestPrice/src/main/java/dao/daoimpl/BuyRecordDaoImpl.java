@@ -32,7 +32,6 @@ public class BuyRecordDaoImpl implements BuyRecordDao {
         }catch (Exception e){
             e.printStackTrace();
             MainConnection.closeSession(session);
-
         }
     }
 

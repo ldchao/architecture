@@ -1,5 +1,6 @@
 package service.serviceimpl;
 
+import Entity.Comment;
 import Entity.Notify;
 import dao.SellerAttentionDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import service.SellerService;
 import vo.CommentVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +28,13 @@ public class SellerServiceImpl implements SellerService {
     }
 
     public List<CommentVO> getNotification(int id) {
-        return sellerAttentionDao.getNotifications(id);
+        List<Comment> cs = sellerAttentionDao.getNotifications(id);
+        List<CommentVO> cvs = new ArrayList<CommentVO>();
+        for (Comment comment: cs) {
+            CommentVO cv = new CommentVO();
+            cv.update(comment);
+            cvs.add(cv);
+        }
+        return cvs;
     }
 }

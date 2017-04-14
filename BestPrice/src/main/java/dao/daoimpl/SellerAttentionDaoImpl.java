@@ -1,5 +1,6 @@
 package dao.daoimpl;
 
+import Entity.Comment;
 import Entity.Notify;
 import Entity.SellerWordList;
 import dao.MainConnection;
@@ -7,8 +8,8 @@ import dao.ReadConnection;
 import dao.SellerAttentionDao;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import vo.CommentVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,13 +39,12 @@ public class SellerAttentionDaoImpl implements SellerAttentionDao {
     }
 
     public List<String> getKeyWords(int id) {
-        //TODO
         Session session = ReadConnection.getSession();
-//        String hql = "select s.word from SellerWordList s where s.sellerid=" + id;
-//        List<String> list = session.createQuery(hql).list();
+        String hql = "select s.word from sellerwordlist s where s.sellerid=" + id;
+        List<String> list = session.createNativeQuery(hql).list();
         ReadConnection.closeSession(session);
 
-        return null;
+        return list;
     }
 
     public void saveNotification(Notify notify) {
@@ -54,13 +54,16 @@ public class SellerAttentionDaoImpl implements SellerAttentionDao {
         MainConnection.closeSession(session);
     }
 
-    public List<CommentVO> getNotifications(int id) {
-
+    public List<Comment> getNotifications(int id) {
         Session session = ReadConnection.getSession();
         String hql = "from Notify where id=" + id;
         List<Notify> list = session.createQuery(hql).list();
+        List<Comment> comments = new ArrayList<Comment>();
+        for (Notify notify: list) {
+            hql = "from Comment where id=" + notify.getCommentid();
+            comments.add(session.createQuery(hql, Comment.class).getSingleResult());
+        }
         ReadConnection.closeSession(session);
-        //TODO
-        return null;
+        return comments;
     }
 }
