@@ -19,11 +19,7 @@ import org.springframework.stereotype.Controller;
 /**
  * Created by Xuanlin on 2017/4/12.
  */
-<<<<<<< HEAD
 @Controller
-public class GoodsController {
-=======
-
 @RequestMapping(value = "/goods")
 public class GoodsController{
     private String success = "success";
@@ -150,8 +146,4 @@ public class GoodsController{
             return "已加入";
         }
     }
-
-
-
->>>>>>> origin/master
 }
