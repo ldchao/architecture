@@ -1,11 +1,16 @@
+import dao.SensitiveWordDao;
+import dao.ShieldIPDao;
+import dao.UserDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import service.GetHotGoodsService;
 import service.SearchGoodService;
 import service.UserService;
+import service.serviceimpl.GetHotGoodsServiceImpl;
 import vo.GoodVO;
 import vo.UserVO;
 
@@ -22,13 +27,21 @@ public class GoodTest {
 
     @Autowired
     SearchGoodService searchGoodService;
+    @Autowired
+    GetHotGoodsService getHotGoodsService;
+    @Autowired
+    SensitiveWordDao sensitiveWordDao;
+    @Autowired
+    ShieldIPDao shieldIPDao;
 
     @Test
     public void searchGoods(){
-        List<GoodVO> list=searchGoodService.searchGoods("one");
-        for (GoodVO g:list) {
-            System.out.println(g.getProduct_name());
-        }
+//        shieldIPDao.query();
+//        sensitiveWordDao.getSentiveWord();
+//        List<GoodVO> list=getHotGoodsService.getHotGoods();
+//        for (GoodVO g:list) {
+//            System.out.println(g.getProduct_name());
+//        }
 
     }
 }

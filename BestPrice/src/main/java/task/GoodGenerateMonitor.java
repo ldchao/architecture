@@ -11,7 +11,7 @@ import service.serviceimpl.htmlGenerateServiceImpl.GoodsInfoGenerate;
 @Component
 public class GoodGenerateMonitor {
 
-    @Scheduled(fixedDelay = 6000)  //10分钟更新一次
+    @Scheduled(fixedDelay = 60000)  //1分钟更新一次
     public void generatorGoods() {
         Generator generator=new Generator();
         generator.setHtmlGenerateService(new GoodsInfoGenerate());

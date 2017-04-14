@@ -1,6 +1,7 @@
 package service.serviceimpl;
 
 import dao.SearchGoodDao;
+import dao.daoimpl.SearchGoodDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.GetHotGoodsService;
@@ -14,11 +15,11 @@ import java.util.List;
 @Service
 public class GetHotGoodsServiceImpl implements GetHotGoodsService{
 
-    @Autowired
-    SearchGoodDao searchGoodDao;
+    SearchGoodDao searchGoodDao=new SearchGoodDaoImpl();
 
     @Override
     public List<GoodVO> getHotGoods() {
+        System.out.println("sss");
        return searchGoodDao.getHotGoods();
     }
 }

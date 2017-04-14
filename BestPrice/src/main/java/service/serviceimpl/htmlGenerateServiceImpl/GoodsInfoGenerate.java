@@ -5,6 +5,7 @@ import controller.MainController;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.GetHotGoodsService;
 import service.HtmlGenerateService;
+import service.serviceimpl.GetHotGoodsServiceImpl;
 import vo.GoodVO;
 
 import java.io.*;
@@ -15,8 +16,8 @@ import java.util.List;
  * Created by marioquer on 2017/4/10.
  */
 public class GoodsInfoGenerate implements HtmlGenerateService {
-    @Autowired
-    GetHotGoodsService getHotGoodsService;
+
+    GetHotGoodsService getHotGoodsService=new GetHotGoodsServiceImpl();
     private List<GoodVO> goodVOList = new ArrayList<GoodVO>();
     private int googId=0;
     /**
@@ -25,9 +26,10 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
     public void generate() {
         System.out.println("ggg1");
         String path=MainController.getServletContextPath();
-        System.out.println("ggg2");
+        if(path==null) return;
         String readFilePath = path+"html/recommendTemplate.html";
         String writeFilePath = path+"html/recommend.html";
+        System.out.println("ggg2");
         goodVOList= getHotGoodsService.getHotGoods();
         System.out.println("gg3");
         googId = 0;
@@ -63,7 +65,7 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
         System.out.println(filePath);
         try {
             // 根据文件路径创建缓冲输入流
-            br = new BufferedReader(new FileReader(filePath));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "utf-8"));
             System.out.println(filePath);
             // 循环读取文件的每一行, 对需要修改的行进行修改, 放入缓冲对象中
             while ((line = br.readLine()) != null) {
@@ -123,7 +125,7 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
 
         try {
             // 根据文件路径创建缓冲输出流
-            bw = new BufferedWriter(new FileWriter(filePath));
+            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath), "utf-8"));
             // 将内容写入文件中
             bw.write(content);
         } catch (Exception e) {
