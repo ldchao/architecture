@@ -19,11 +19,14 @@ import java.util.List;
 public class CommentsController {
     @Autowired
     CommentService commentService;
-    @Autowired
     AdminCheck adminCheck;
 
     private String success = "success";
     private String input = "input";
+
+    public CommentsController(){
+        adminCheck = new AdminCheck();
+    }
 
     /**
      * 发布评论
@@ -40,7 +43,6 @@ public class CommentsController {
             return input;
         }
     }
-
 
     /**
      * 删除敏感评论
