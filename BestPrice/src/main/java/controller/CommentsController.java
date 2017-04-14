@@ -21,6 +21,12 @@ public class CommentsController {
     private String success = "success";
     private String input = "input";
 
+    /**
+     * 发布评论
+     * @param commentVO
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/comment/publish")
     @ResponseBody
     public String makeComment(CommentVO commentVO,HttpServletRequest request) {
