@@ -122,6 +122,7 @@ public class GoodsController{
 
     /**
      * 用支付宝购买
+     * 6+
      * @param cart
      * @param account
      * @param password
