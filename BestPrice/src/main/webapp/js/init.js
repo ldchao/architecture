@@ -18,25 +18,3 @@ $(document).ready(function () {
     $('ul.tabs').tabs();
     $('select').material_select();
 });
-
-function logout(id) {
-    $.ajax({
-        method: "post",
-        url: "/user/logout",
-        async: false,
-        data: {
-            "id": id
-        },
-        success: function (result) {
-            if (result == "success") {
-                Materialize.toast('退出成功!', 1200);
-                window.location.href = "/";
-            } else {
-                Materialize.toast('退出失败!', 1200);
-            }
-        },
-        error: function () {
-            Materialize.toast('请求出错!', 1200);
-        }
-    });
-}

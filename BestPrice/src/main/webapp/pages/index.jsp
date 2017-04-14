@@ -49,8 +49,8 @@
         <h4 class="center-align">登 录</h4>
         <div class="row">
             <div class="input-field col s12">
-                <input id="username" type="text" class="validate">
-                <label for="username">用户名</label>
+                <input id="email" type="text" class="validate">
+                <label for="email">邮箱</label>
             </div>
             <div class="input-field col s12">
                 <input id="password" type="password" class="validate">
@@ -71,30 +71,29 @@
         <h4 class="center-align teal-text">注 册</h4>
         <div class="row">
             <div class="input-field col s12">
-                <input placeholder="请输入手机号码" id="new_username" type="text" class="validate">
-                <label for="new_username">用户名</label>
+                <input placeholder="输入您的邮箱" id="new_email" type="text" class="validate">
+                <label for="new_email">邮箱</label>
             </div>
             <div class="input-field col s12">
                 <input placeholder="不超过20位字母或数字" id="new_password" type="password" class="validate">
                 <label for="new_password">密码</label>
             </div>
             <div class="input-field col s12">
-                <input placeholder="输入您的邮箱" id="new_email" type="text" class="validate">
-                <label for="new_email">邮箱</label>
+                <input placeholder="请输入用户名" id="new_username" type="text" class="validate">
+                <label for="new_username">用户名</label>
             </div>
             <div class="input-field col s12">
                 <input placeholder="输入您的主配送地址" id="new_address" type="text" class="validate">
                 <label for="new_address">地址</label>
             </div>
-            <%--<div class="input-field col s12">--%>
-            <%--<select id="new_role">--%>
-            <%--<option value="" disabled selected>选择你的目的</option>--%>
-            <%--<option value="0">订房</option>--%>
-            <%--<option value="1">开客栈</option>--%>
-            <%--<option value="2">总经理</option>--%>
-            <%--</select>--%>
-            <%--<label>目的</label>--%>
-            <%--</div>--%>
+            <div class="input-field col s12">
+            <select id="new_state">
+            <option value="" disabled selected>选择你的目的</option>
+            <option value="1">买东西</option>
+            <option value="3">开店</option>
+            </select>
+            <label>目的</label>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

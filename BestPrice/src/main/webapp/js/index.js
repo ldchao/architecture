@@ -13,7 +13,7 @@ function trans(flag) {
 }
 
 function login() {
-    var username = $("#username").val();
+    var email = $("#email").val();
     var password = $("#password").val();
 
     $.ajax({
@@ -21,16 +21,29 @@ function login() {
         url: "/user/login",
         async: false,
         data: {
-            "username": username,
+            "email": email,
             "password": password
         },
         success: function (result) {
-            if (result == "success") {
-                Materialize.toast('登录成功!', 1200);
-                window.location.href = "#";
-
-            } else {
-                Materialize.toast('登录失败!', 1200);
+            switch (result) {
+                case "user":
+                    Materialize.toast('欢迎光临!', 1200);
+                    window.location.href = "html/recommend.html";
+                    break;
+                case "wateruser":
+                    Materialize.toast('由于评论过多，您已被系统冻结!', 1200);
+                    break;
+                case "un":
+                    Materialize.toast('用户仍在审核中!', 1200);
+                    break;
+                case "shop":
+                    Materialize.toast('祝您财运滚滚!', 1200);
+                    break;
+                case "manager":
+                    Materialize.toast('欢迎您!', 1200);
+                    break;
+                case "fail":
+                    Materialize.toast('非法用户!', 1200);
             }
         },
         error: function () {
@@ -44,6 +57,7 @@ function logup() {
     var password = $("#new_password").val();
     var email = $("#new_email").val();
     var address = $("#new_address").val();
+    var state = $("#state").val();
 
     $.ajax({
         method: "post",
@@ -53,7 +67,8 @@ function logup() {
             "username": username,
             "password": password,
             "email": email,
-            "address": address
+            "address": address,
+            "state": state
         },
         success: function (result) {
             if (result == "success") {
@@ -92,5 +107,4 @@ function logout() {
             Materialize.toast('请求出错!', 1200);
         }
     });
-
 }
