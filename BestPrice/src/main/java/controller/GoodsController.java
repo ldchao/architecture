@@ -102,6 +102,14 @@ public class GoodsController{
 
     }
 
+    /**
+     * 用银行账号购买
+     * @param cart
+     * @param account
+     * @param password
+     * @param request
+     * @return 购买记录，当账号无效时返回Null
+     */
     @RequestMapping(value ="/buyGoods/bank")
     @ResponseBody
     public List<BuyRecordVO> buyGoodsWithBank(ShoppingCart cart, String account, String password, HttpServletRequest request) {
@@ -109,6 +117,14 @@ public class GoodsController{
         return purchaseService.create(((UserVO)o).getUserid(), cart, new BankPayStrategy(account, password));
     }
 
+    /**
+     * 用支付宝购买
+     * @param cart
+     * @param account
+     * @param password
+     * @param request
+     * @return 购买记录，当账号无效时返回Null
+     */
     @RequestMapping(value ="/buyGoods/alipay")
     @ResponseBody
     public List<BuyRecordVO> buyGoodsWithAlipay(ShoppingCart cart, String account, String password, HttpServletRequest request) {

@@ -9,12 +9,13 @@
 <html>
 <head>
     <title>搜索</title>
+
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/favicon.ico">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search/normalize.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search/font-awesome.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search/style.css">
-    <script src="${pageContext.request.contextPath}/js/search/jquery-2.1.4.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/search/script.js"></script>
+    <link rel="stylesheet" href="/css/search/normalize.css">
+    <link rel="stylesheet" href="/css/search/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/search/style.css">
+    <script src="/js/search/jquery-2.1.4.min.js"></script>
+    <script src="/js/search/script.js"></script>
 </head>
 
 <body>

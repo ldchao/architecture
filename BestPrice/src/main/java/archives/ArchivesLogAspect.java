@@ -87,8 +87,8 @@ public class ArchivesLogAspect {
 
             Object obj = request.getParameter("user");
             System.out.println("方法调用后: " + obj);
-            System.out.println(" 操作人: "+user.getName()+" 操作方法: "+operationName+" 操作开始时间: "+startTime +" 操作结束时间: "+endTime);
-
+            //System.out.println(" 操作人: "+user.getName()+" 操作方法: "+operationName+" 操作开始时间: "+startTime +" 操作结束时间: "+endTime);
+            System.out.println(" 操作方法: "+operationName+" 操作开始时间: "+startTime +" 操作结束时间: "+endTime);
         }
     }
 

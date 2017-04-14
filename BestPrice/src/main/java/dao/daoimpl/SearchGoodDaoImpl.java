@@ -1,8 +1,8 @@
 package dao.daoimpl;
 
-import Entity.Product;
-import Entity.ProductType;
-import Entity.Seller;
+
+import Entity.*;
+
 import dao.CommentDao;
 import dao.PurchaseDao;
 import dao.ReadConnection;
@@ -62,10 +62,26 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
 		   vo.setPlatform((String) o[10]);
 		   vo.setIsJoin((Integer) o[8]);
 		   vo.setCompetePrice((Double) o[9]);
-		   
-		   vo.setComments_volume(cDao.fetchAll((Integer) o[3]).size());
-		   
-		   vo.setSales_volume(pDao.getByGoodId((Integer) o[3]).size());
+
+
+			  List<Comment> comments =cDao.fetchAll((Integer) o[3]);
+
+		   if(comments==null){
+			   vo.setComments_volume(0);
+		   }else{
+			   vo.setComments_volume(comments.size());
+		   }
+
+
+			  List<BuyRecord> records=pDao.getByGoodId((Integer) o[3]);
+
+			  if(records==null){
+				  vo.setSales_volume(0);
+			  }else{
+				  vo.setSales_volume(records.size());
+			  }
+
+
 		   
 		   goodVOs.add(vo);
 		  }
