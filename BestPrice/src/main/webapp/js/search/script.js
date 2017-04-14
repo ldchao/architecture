@@ -96,7 +96,7 @@ function setGoodsResult(list) {
 
     for (var i = 0; i < list.length; i++) {
 
-        var cardDiv = $("<div class='product-card' productId=" + list[i].id +"></div>");
+        var cardDiv = $("<div class='product-card' onclick='gotoDetail(this)' productId=" + list[i].id +"></div>");
         var nameDiv = $("<div class='product-name'>" + list[i].product_name + "</div>");
         var priceDiv = $("<div class='product-price'>"+ "￥" + list[i].price +"</div>");
         $(cardDiv).append(nameDiv);
@@ -104,7 +104,13 @@ function setGoodsResult(list) {
 
         $("#product-panel").append(cardDiv);
     }
-    $("#product-panel").children(".product-card").click(function () {
-        window.location.href = "/product?id=" + $(this).attr("productId");
-    });
+    // $("#product-panel").children(".product-card").click(function () {
+    //     window.location.href = "/product?id=" + $(this).attr("productId");
+    // });
+}
+
+function gotoDetail(cardDiv) {
+
+    var proId = $(cardDiv).attr("productId");
+    window.location.href =  "/goods/showGoodsInfo?GoodId=" + proId;
 }

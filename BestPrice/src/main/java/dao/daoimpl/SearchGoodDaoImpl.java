@@ -30,7 +30,7 @@ public class SearchGoodDaoImpl implements SearchGoodDao{
 		
 		Transaction transaction= session.beginTransaction();
 
-		List<Object[]> objectlist=session.createSQLQuery("select  PType.id as typeid,description,PType.name as typename,p.id as pid,p.price as price,link,sellerid,s.name as sellername,isJoin,competePrice,platform from (select * from ProductType where name like ? or description like ?) as PType,Product as p,Seller s where p.typeid=PType.id and s.id=p.sellerid")
+		List<Object[]> objectlist=session.createSQLQuery("select  PType.id as typeid,description,PType.name as typename,p.id as pid,p.price as price,link,sellerid,s.name as sellername,isJoin,competePrice,platform from (select * from ProductType where name like ? or description like ?) as PType,Product as p,Seller s where p.typeid=PType.id and s.id=p.sellerid limit 0,30")
 		.setParameter(0, likekey).setParameter(1, likekey).list();
 		
 		
