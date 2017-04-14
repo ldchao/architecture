@@ -117,4 +117,10 @@ public class MainController {
         return realPath;
     }
 
+    @RequestMapping("/shopFocus")
+    public ModelAndView shopFocus() {
+        ModelAndView mv = new ModelAndView("shop/shopFocus");
+
+        return mv;
+    }
 }

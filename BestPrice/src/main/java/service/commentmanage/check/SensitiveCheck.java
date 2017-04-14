@@ -31,13 +31,7 @@ public class SensitiveCheck extends CommentCheck {
     private CommentDao commentDao = new CommentDaoImpl();
     private WaterUserDao waterUserDao = new WaterUserDaoImpl();
 
-    private MyIterator myIterator;
-
-    public SensitiveCheck() {
-
-        // 初始化敏感词汇迭代器
-        myIterator = new SensitiveIterator(sensitiveWordDao.getSentiveWord());
-    }
+    private MyIterator myIterator = new SensitiveIterator(sensitiveWordDao.getSentiveWord());;
 
     public boolean checkComment(String comment, int userId, int proId) {
 
