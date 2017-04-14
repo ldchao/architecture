@@ -1,23 +1,33 @@
 package service.serviceimpl.htmlGenerateServiceImpl;
 
 import Entity.Product;
+import controller.MainController;
+import org.springframework.beans.factory.annotation.Autowired;
+import service.GetHotGoodsService;
 import service.HtmlGenerateService;
+import vo.GoodVO;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by marioquer on 2017/4/10.
  */
 public class GoodsInfoGenerate implements HtmlGenerateService {
-
-
+    @Autowired
+    GetHotGoodsService getHotGoodsService;
+    private List<GoodVO> goodVOList = new ArrayList<GoodVO>();
+    private int googId=0;
     /**
      * 商品信息页的生成方法
      */
     public void generate() {
-        
-        String readFilePath = "./html/recommendTemplate.html";
-        String writeFilePath = "./html/recommend.html";
+        String path=MainController.getServletContextPath();
+        String readFilePath = path+"html/recommendTemplate.html";
+        String writeFilePath = path+"html/recommend.html";
+        goodVOList= getHotGoodsService.getHotGoods();
+        googId = 0;
         write(writeFilePath,read(readFilePath));
     }
 
@@ -53,12 +63,13 @@ public class GoodsInfoGenerate implements HtmlGenerateService {
             // 循环读取文件的每一行, 对需要修改的行进行修改, 放入缓冲对象中
             while ((line = br.readLine()) != null) {
                 // 此处根据实际需要修改某些行的内容
-                if(line.contains("###"))
-                {
-                    //todo
-                }
-                buf.append(replaceMyLine(line,"ssss"));
+
+                buf.append(replaceMyLine(line,goodVOList.get(googId).getProduct_name()));
                 buf.append(System.getProperty("line.separator"));
+                if(line.contains("###购买链接###"))
+                {
+                    googId++;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
