@@ -14,16 +14,18 @@
     <link rel="stylesheet" href="/css/search/normalize.css">
     <link rel="stylesheet" href="/css/search/font-awesome.min.css">
     <link rel="stylesheet" href="/css/search/style.css">
-    <script src="/js/search/jquery-2.1.4.min.js"></script>
-    <script src="/js/search/script.js"></script>
 </head>
 
 <body>
 
-<%--<%@include file="../commonJSP/navbar.jsp"%>--%>
 <%@include file="../commonJSP/header.jsp"%>
+<div class="content">
 
-<%@include file="../commonJSP/searchHeader.jsp"%>
+    <div class="search">
+        <input class="input" id="js-search-input" type="text" placeholder="搜索商品...">
+        <button class="btn-search" id="js-btn-search" onclick="searchInit(this)">搜索</button>
+    </div>
+</div>
 
 <div class="wrapper">
 
@@ -41,12 +43,6 @@
         <button class="sortButton" onclick="sort('SortByPrice')">价格</button>
     </div>
 
-    <%--<div class="filter">--%>
-        <%--<button class="filterButton">未加盟</button>--%>
-        <%--<button class="filterButton">购买过少</button>--%>
-        <%--<button class="filterButton">评论过少</button>--%>
-    <%--</div>--%>
-
     <div class="filter">
         <input name="filter" type="checkbox" onchange="filter('Shield_NotJoin')" id="checkbox1"><label for="checkbox1">未加盟</label>
         <input name="filter" type="checkbox" onchange="filter('Shield_SalesLess')" id="checkbox2"><label for="checkbox2">购买过少</label>
@@ -54,96 +50,7 @@
     </div>
 </div>
 
-
-
-<script>
-    $(document).ready(function () {
-
-        getGoods(key);
-    });
-
-    function filter(condition) {
-
-        $.ajax({
-            type: "POST",
-            url: "/shieldSearchResult",
-            data: {
-                "condition": condition
-            },
-            success: function (data) {
-
-                setGoodsResult(data);
-            },
-            error: function () {
-                alert("筛选失败");
-            }
-        });
-    }
-
-    function sort(sortRule) {
-
-        $.ajax({
-            type: "POST",
-            url: "/sortSearchResult",
-            data: {
-                "sortRule": sortRule
-            },
-            success: function (data) {
-                setGoodsResult(data);
-            },
-            error: function () {
-                alert("排序失败");
-            }
-        });
-    }
-
-
-    function searchInit() {
-        $("#js-btn-search").click(function () {
-            getGoods( $("#js-search-input").val())
-        });
-    }
-
-    function getGoods(key){
-        $.ajax({
-            type:"POST",
-            url:"/searchGoods",
-            data:{
-                key: key
-            },
-            success: function (list) {
-
-                console.log(list);
-                setGoodsResult(list);
-            },
-            error: function () {
-                toaster("服务器出现问题，请稍微再试！", "error");
-            }
-        });
-    }
-
-    function setGoodsResult(list) {
-
-        $("#product-panel").empty();
-
-        for (var i = 0; i < list.length; i++) {
-
-            var cardDiv = $("<div class='product-card' productId=" + list[i].id +"></div>");
-            var nameDiv = $("<div class='product-name'>" + list[i].product_name + "</div>");
-            var priceDiv = $("<div class='product-price'>"+ ￥ + list[i].price +"</div>");
-            $(cardDiv).append(nameDiv);
-            $(cardDiv).append(priceDiv);
-
-            $("#product-panel").append(cardDiv);
-        }
-        $("#product-panel").children(".product-card").click(function () {
-            window.location.href = "/product?id=" + $(this).attr("productId");
-        });
-    }
-
-</script>
-
-
-
+<script src="../../js/search/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="../../js/search/script.js" type="text/javascript"></script>
 </body>
 </html>

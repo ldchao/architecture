@@ -19,14 +19,13 @@ a {
 }
 
 .choice{
-    top:100px;
-    left: 100px;
-    width: 800px;
-    height: 100px;
+    width: 500px;
+    margin: 30px auto;
+    position: relative;
 }
 
 .sort{
-    margin-left: 300px;
+    width: 100%;
 }
 
 .sortButton{
@@ -42,9 +41,9 @@ a {
 
 
 .filter{
-    margin-left: 360px;
-    margin-top: 10px;
-    /*width: 300px;*/
+    width: 100%;
+    padding-left: 50px;
+    box-sizing: border-box;
 }
 
 .filter label {
