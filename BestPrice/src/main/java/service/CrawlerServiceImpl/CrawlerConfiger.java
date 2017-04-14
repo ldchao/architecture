@@ -43,7 +43,9 @@ public class CrawlerConfiger {
 				
 				url=url.replaceAll("@@", pname);
 				
-				System.out.println(url);
+				System.out.println(patternandplat.getPlatform());
+				
+//				System.out.println(url+";;;;;"+config.getProductName());
 				
 				config.setUrl(url);
 				cfglist.add(config);
@@ -51,19 +53,30 @@ public class CrawlerConfiger {
 			
 		}
 		
-		
-		
 		return cfglist;	
 	}
 	
 	
 	
-	private String getHandler(String url){
-		return "Handler java fileName";
+	private String getHandler(String platform){
+		String handler="";
+		if(platform.equals("dangdang")){
+			handler="DangDangHandler";
+		}else if(platform.equals("jingdong")){
+			handler="JingDongHandler";
+		}
+		return handler;
+		
 	}
 	
-	private String getPersistence(String url){
-		return "Persistence java fileName";
+	private String getPersistence(String platform){
+		String persistence="";
+		if(platform.equals("dangdang")){
+			persistence="DangDangPersistence";
+		}else if(platform.equals("jingdong")){
+			persistence="JingDongPersistence";
+		}
+		return persistence;
 	}
 	
 }
