@@ -19,13 +19,14 @@ a {
 }
 
 .choice{
+    top:100px;
     left: 100px;
     width: 800px;
     height: 100px;
 }
 
 .sort{
-    left: 200px;
+    margin-left: 200px;
 }
 
 .sortButton{
@@ -38,19 +39,21 @@ a {
     margin-top: 50px;
 }
 
-/*.filter{*/
-    /*left: 500px;*/
-    /*margin-right: 100px;*/
-    /*width: 300px;*/
-/*}*/
 
-/*.filterButton{*/
-    /*outline: none;*/
-    /*color: #090909;*/
-    /*font-size: 14px;*/
-    /*border: none;*/
-    /*margin-top: 50px;*/
-/*}*/
+
+.filter{
+    left: 500px;
+    margin-right: 100px;
+    width: 300px;
+}
+
+.filterButton{
+    outline: none;
+    color: #090909;
+    font-size: 14px;
+    border: none;
+    margin-top: 50px;
+}
 
 
 .wrapper {

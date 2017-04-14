@@ -35,10 +35,10 @@
 
 <div class="choice">
     <div class="sort">
-        <button class="sortButton">综合</button>
-        <button class="sortButton">购买量</button>
-        <button class="sortButton">评论量</button>
-        <button class="sortButton">价格</button>
+        <button class="sortButton" onclick="sort('SortByBidding')">综合</button>
+        <button class="sortButton" onclick="sort('SortBySalesVolume')">购买量</button>
+        <button class="sortButton" onclick="sort('SortByCommentsVolume')">评论量</button>
+        <button class="sortButton" onclick="sort('SortByPrice')">价格</button>
     </div>
 
     <%--<div class="filter">--%>
@@ -47,6 +47,11 @@
         <%--<button class="filterButton">评论过少</button>--%>
     <%--</div>--%>
 
+    <div class="filter">
+        <label><input name="filter" type="checkbox" onchange="filter('Shield_NotJoin')">未加盟</label>
+        <label><input name="filter" type="checkbox" onchange="filter('Shield_SalesLess')">购买过少</label>
+        <label><input name="filter" type="checkbox" onchange="filter('Shield_CommentsLess')">评论过少</label>
+    </div>
 </div>
 
 
@@ -55,36 +60,39 @@
     $(document).ready(function () {
 
         getGoods(key);
-        searchInit();
     });
 
-    function getGoods(key){
+    function filter(condition) {
+
         $.ajax({
-            type:"GET",
-            url:"/search",
-            data:{
-                key: key
+            type: "POST",
+            url: "/shieldSearchResult",
+            data: {
+                "condition": condition
             },
             success: function (data) {
-                console.log(data);
-                $("#product-panel").empty();
-                var list = data.list;
-                for (var i = 0; i < list.length; i++) {
-                    var html =
-                        '<div class="product-card" productId="' + list[i].id + '">' +
-                        '<img src="' + list[i].imgPath + '" class="product-img">' +
-                        '<div class="product-name">' + list[i].name + '</div>' +
-                        '<div class="product-price">￥' + list[i].minPrice + '</div>' +
-                        '</div>';
-                    $("#product-panel").append(html);
-                }
-                $("#product-panel").children(".product-card").click(function () {
-                    window.location.href = "/product?id=" + $(this).attr("productId");
-                });
 
+                setGoodsResult(data);
             },
             error: function () {
-                toaster("服务器出现问题，请稍微再试！", "error");
+                alert("筛选失败");
+            }
+        });
+    }
+
+    function sort(sortRule) {
+
+        $.ajax({
+            type: "POST",
+            url: "/sortSearchResult",
+            data: {
+                "sortRule": sortRule
+            },
+            success: function (data) {
+                setGoodsResult(data);
+            },
+            error: function () {
+                alert("排序失败");
             }
         });
     }
@@ -93,6 +101,43 @@
     function searchInit() {
         $("#js-btn-search").click(function () {
             getGoods( $("#js-search-input").val())
+        });
+    }
+
+    function getGoods(key){
+        $.ajax({
+            type:"POST",
+            url:"/searchGoods",
+            data:{
+                key: key
+            },
+            success: function (list) {
+
+                console.log(list);
+                setGoodsResult(list);
+            },
+            error: function () {
+                toaster("服务器出现问题，请稍微再试！", "error");
+            }
+        });
+    }
+
+    function setGoodsResult(list) {
+
+        $("#product-panel").empty();
+
+        for (var i = 0; i < list.length; i++) {
+
+            var cardDiv = $("<div class='product-card' productId=" + list[i].id +"></div>");
+            var nameDiv = $("<div class='product-name'>" + list[i].product_name + "</div>");
+            var priceDiv = $("<div class='product-price'>"+ ￥ + list[i].price +"</div>");
+            $(cardDiv).append(nameDiv);
+            $(cardDiv).append(priceDiv);
+
+            $("#product-panel").append(cardDiv);
+        }
+        $("#product-panel").children(".product-card").click(function () {
+            window.location.href = "/product?id=" + $(this).attr("productId");
         });
     }
 

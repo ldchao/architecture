@@ -10,7 +10,7 @@
 
         <div class="search">
             <input class="input" id="js-search-input" type="text" placeholder="搜索商品...">
-            <button class="btn-search" id="js-btn-search">搜索</button>
+            <button class="btn-search" id="js-btn-search" onclick="searchInit(this)">搜索</button>
         </div>
         <%--<div class="shopping-cart">--%>
             <%--<button class="btn-cart" onclick="window.location.href='/shoppingCart'">--%>
