@@ -93,7 +93,9 @@
     <!--AOP 测试模式-->
     <context:component-scan base-package="archives" />
     <aop:aspectj-autoproxy proxy-target-class="true" />
-    <bean id="logAspect" class="archives.ArchivesLogAspect"></bean>
+    <bean id="logAspect" class="archives.ArchivesLogAspect">
+        <property name="runTestMode" value="true"/>
+    </bean>
     <aop:config>
         <!--调用日志类-->
         <aop:aspect id="LogAspect" ref="logAspect">
@@ -103,5 +105,6 @@
             <!-- 方法后触发 --><aop:after pointcut-ref="log" method="after"/>
         </aop:aspect>
     </aop:config>
+
 
 </beans>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping(value = "/user")
+@Controller
 public class UserController {
     @Autowired
     UserService userService;
